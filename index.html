@@ -958,6 +958,15 @@ var Store = {
     }).then(function(r){ if(!r.ok) throw new Error("저장 실패 "+r.status); return true; });
   },
 
+  pollState:function(){
+    if(!Store.live()) return Promise.resolve(MEMSTATE);
+    if(typeof fetch !== "function") return Promise.resolve(null);
+    return fetch(SB_URL+"/rest/v1/gg_state?select=d&id=eq.1", {headers:sbHead()})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ return (j && j[0] && j[0].d) ? Object.assign({}, MEMSTATE, j[0].d) : null; })
+      .catch(function(){ return null; });
+  },
+
   fetchAll:function(){
     if(!Store.live()) return Promise.resolve({rows:MEM.slice(), state:MEMSTATE});
     if(typeof fetch !== "function"){ NETFAIL++; return Promise.resolve({rows:CACHE.slice(), state:STATE}); }
@@ -1971,7 +1980,7 @@ function hookTalk(){
 }
 
 /* ══════════ 16. 현장 화면 ══════════ */
-var LIVE={pane:0, auto:true, timer:null, poll:null, rot:null, seen:{}};
+var LIVE={pane:0, auto:true, timer:null, poll:null, rot:null, tick:null, seen:{}};
 function lbars(c,o,n){ return bars(c,o,"lbar"); }
 /* 화면에 넘치지 않게 상위 N개만 그리고, 나머지는 한 줄로 알린다 */
 function lbarsTop(counts, keys, n){
@@ -2274,7 +2283,20 @@ function vScreen(){
       SIG = sg;
       if((location.hash||"").indexOf("screen")>-1) vScreen();
     });
-  }, 1200);
+  }, 3000);
+  clearInterval(LIVE.tick);
+  LIVE.tick = setInterval(function(){     // 진행 상태만 가볍게 확인 — 화면 전환이 빨라진다
+    if (document.hidden) return;
+    if ((location.hash||"").indexOf("screen") < 0) return;
+    if (Date.now() - LOCALTS < 2000) return;   // 방금 내가 바꾼 건 그대로 둔다
+    Store.pollState().then(function(st){
+      if (!st) return;
+      var a = JSON.stringify(STATE.screen||{}) + "|" + (STATE.show===undefined?1:STATE.show);
+      var b = JSON.stringify(st.screen||{}) + "|" + (st.show===undefined?1:st.show);
+      if (a === b) return;
+      STATE = st; SIG = sigOf(); vScreen();
+    });
+  }, 400);
   clearInterval(LIVE.rot);
   if (STREAMPAGES > 1){                   // 의견이 한 화면을 넘치면 돌아가며 보여준다
     LIVE.rot = setInterval(function(){
@@ -2312,9 +2334,19 @@ function screenMove(dir){
     if (list[i].v===cur.v && list[i].p===(cur.p||0)) { at = i; break; }
   var n = (at + dir + list.length) % list.length;
   STATE.screen = {v:list[n].v, p:list[n].p};
-  if (adminOK()) Store.post({type:"state", state:STATE}).then(function(){ vScreen(); })
-                      .catch(function(){ vScreen(); });
-  else vScreen();     // 진행자가 아니면 내 화면만 넘긴다
+  SIG = sigOf();          // 내가 바꾼 것을 다음 조회가 되돌리지 않게
+  vScreen();              // 먼저 그리고
+  if (adminOK()) saveScreen();                                                  // 저장은 뒤에서
+}
+var LOCALTS = 0;          // 내가 마지막으로 화면을 바꾼 시각
+function saveScreen(){
+  LOCALTS = Date.now();
+  Store.post({type:"state", state:STATE}).catch(function(){
+    setTimeout(function(){
+      LOCALTS = Date.now();
+      Store.post({type:"state", state:STATE}).catch(function(){});
+    }, 400);
+  });
 }
 document.addEventListener("keydown", function(e){
   var h0=(location.hash||"").replace(/^#\/?/,"");
@@ -2327,9 +2359,8 @@ document.addEventListener("keydown", function(e){
     }
     else if(e.key===" "){ e.preventDefault();
       STATE.show = (STATE.show===undefined?1:STATE.show) ? 0 : 1;
-      if(adminOK()) Store.post({type:"state", state:STATE}).then(function(){ vScreen(); })
-                         .catch(function(){ vScreen(); });
-      else vScreen();
+      SIG = sigOf(); vScreen();
+      if(adminOK()) saveScreen();
     }
     else if(e.key==="q"||e.key==="Q"){ e.preventDefault(); QRSHOW = !QRSHOW; vScreen(); }
     else if(e.key==="Escape"){ if(QRSHOW){ QRSHOW = false; vScreen(); } }
@@ -2953,7 +2984,7 @@ function pull(){
 var ROUTES={"":vHome,"review":vReview,"d1":vD1,"d2":vD2,"d3":vD3,"results":vResults,"host":vHost};
 function route(){
   var h=(location.hash||"#/").replace(/^#\/?/,"").split("?")[0];
-  clearInterval(LIVE.timer); clearInterval(LIVE.poll); clearInterval(LIVE.rot);
+  clearInterval(LIVE.timer); clearInterval(LIVE.poll); clearInterval(LIVE.rot); clearInterval(LIVE.tick);
   if(h==="screen"){ pull().then(vScreen); return; }
   if(h.indexOf("live")===0){
     var w=h.split("/")[1];
