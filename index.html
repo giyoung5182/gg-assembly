@@ -909,6 +909,14 @@ var TOPICS = [
     "모니터링 등 외부 연계활동","사회공헌 활동의 지속 여부"]]
 ];
 function topicEtcVal(code){ return "기타 · " + code; }
+function areaOf(v){
+  v = String(v||"");
+  if(v.indexOf("기타 · ")===0) return v.slice(-1);
+  var code = null;
+  TOPICS.forEach(function(g){ if(g[2].indexOf(v) > -1) code = g[0]; });
+  return code;
+}
+var AREA_MAX = 2;   // 영역마다 고를 수 있는 개수
 function allTopicKeys(){
   var o=[]; TOPICS.forEach(function(g){ o=o.concat(g[2]); o.push(topicEtcVal(g[0])); }); return o;
 }
@@ -1631,10 +1639,10 @@ function vD3(){
   panel("d3",
     head("논의 3", "앞의 두 논의에<br>없던 이야기들",
       "분과 구성과 정책공감투표 외에 제기된 의견을 네 영역으로 나누어 정리했습니다.") +
-    issue('네 영역 가운데 <b>다음 기수가 먼저 다뤄야 할 것</b>이 무엇인지 정합니다. 오늘은 영역별로 가장 많이 선택된 <b>1~2개 항목만</b> 골라 논의합니다.') +
+    issue('네 영역 가운데 <b>다음 기수가 먼저 다뤄야 할 것</b>이 무엇인지 정합니다. 영역마다 최대 두 개씩 고르시면, 오늘은 영역별로 가장 많이 선택된 <b>1~2개 항목만</b> 골라 논의합니다.') +
     myCard("d3") +
     '<h2>다음 기수에서 다뤄야 할 항목</h2>' +
-    '<p class="hint">중요하다고 보시는 항목을 <b>최대 3개까지</b> 골라 주세요. 영역마다 기타를 골라 직접 적으실 수도 있습니다.</p>' +
+    '<p class="hint">네 영역 각각에서 중요하다고 보시는 항목을 <b>최대 2개까지</b> 골라 주세요. 관심 없는 영역은 비워두셔도 됩니다. 목록에 없으면 영역마다 기타로 직접 적으실 수 있습니다.</p>' +
     groups +
     '<h2>함께 이야기 나눠볼 질문</h2>' +
     '<div class="field"><label for="k1">활동 경험 · 관계·소통 측면</label>' +
@@ -1648,7 +1656,14 @@ function vD3(){
   bind(".opt", function(b){
     b.onclick = function(){
       var m=document.getElementById("msg"), k=b.dataset.opt;
-      if(!toggle(D3.topics,k,3)){ m.textContent="최대 3개까지 선택할 수 있습니다."; return; }
+      var code = areaOf(k);
+      var picked = D3.topics.filter(function(x){ return areaOf(x)===code; }).length;
+      if(D3.topics.indexOf(k) < 0 && picked >= AREA_MAX){
+        var nm = (TOPICS.filter(function(g){ return g[0]===code; })[0]||["",""])[1];
+        m.textContent = nm + "에서는 최대 " + AREA_MAX + "개까지 고르실 수 있습니다.";
+        return;
+      }
+      toggle(D3.topics, k);
       m.textContent="";
       var on = D3.topics.indexOf(k)>-1;
       b.setAttribute("aria-pressed", on?"true":"false");
@@ -2163,7 +2178,7 @@ function liveD3(){
 
     return '<div class="lcol" style="flex:1.45"><div class="lpanel fill">' +
       '<h3>'+esc(g[0]+". "+g[1])+'</h3>' +
-      '<p class="ps">'+tot+'건 선택 · 한 사람이 최대 3개' +
+      '<p class="ps">'+tot+'건 선택 · 한 사람이 이 영역에서 최대 2개' +
       (lead ? ' · 오늘 다룰 논제 <b style="color:var(--blue)">'+esc(lead)+'</b>' : '') + '</p>' +
       '<div class="lscroll">' + bars(sub, sorted, "lbar") + '</div></div></div>' +
       '<div class="lcol"><div class="lpanel fill"><h3>이 영역에 덧붙여 주신 의견</h3>' +
@@ -2647,7 +2662,7 @@ function vHost(){
         '<div class="panelbox"><h3>권역별을 유지한다면</h3><p class="sub">논의 1</p>'+bars(tally(r1,"fixR"),keysOf(FIX_REGION))+'</div>'+
         '<div class="panelbox"><h3>의제별로 바꾼다면</h3><p class="sub">논의 1</p>'+bars(tally(r1,"fixA"),keysOf(FIX_AGENDA))+'</div>'+
         '<div class="panelbox"><h3>보완 방식</h3><p class="sub">논의 2</p>'+bars(tally(r2,"ways"),keysOf(WAYS))+'</div>'+
-        '<div class="panelbox"><h3>영역별 항목</h3><p class="sub">논의 3 · 한 사람이 최대 3개</p>'+bars(tally(r3,"topics"),allTopicKeys())+'</div>'+
+        '<div class="panelbox"><h3>영역별 항목</h3><p class="sub">논의 3 · 영역마다 최대 2개</p>'+bars(tally(r3,"topics"),allTopicKeys())+'</div>'+
       '</div>'+
       '<div class="panelbox"><h3>남겨주신 의견</h3>'+
         '<p class="k" style="margin:14px 0 8px">지도에 묶은 이유</p>'+quotesOf(r1,"reason")+
@@ -2945,8 +2960,9 @@ function rehearsalRows(){
       stage: STAGES[i%5][0],
       ways: pick(WAYS.map(function(x){return x[0];}),2).join("|"),
       way: i%4?"":"제안자가 직접 설명하는 자리가 있으면 좋겠습니다"}, base));
+    var g1 = TOPICS[i%4], g2 = TOPICS[(i+2)%4];
     out.push(Object.assign({part:"d3",
-      topics: pick(TOPICS[i%4][2],2).join("|"),
+      topics: pick(g1[2],2).concat(pick(g2[2],1)).join("|"),
       keep: i%6?"":"정책 제안 활동은 그대로 이어갔으면 합니다",
       culture: i%7?"":"분과별 운영 편차를 줄일 기준이 필요합니다"}, base));
   }
