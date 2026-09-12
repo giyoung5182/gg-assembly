@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>제5기 경기도 청년참여기구 총회</title>
+<meta name="theme-color" content="#0D0D0D">
+<meta property="og:title" content="제5기 경기도 청년참여기구 총회">
+<meta property="og:description" content="2026. 9. 12.(토) · 차기 운영방향 논의">
+<style>
+
+/* ── 발표자료의 하늘색 배경 + 흰 패널 조합을 그대로 가져온다 ── */
+:root{
+  --sky1:#5CB8EC; --sky2:#3E9FDC; --sky-deep:#2E8BD5;
+  --blue:#0E5AA7; --blue-mid:#2E8BD5; --blue-pale:#E4EFFA; --blue-tint:#F5F9FC;
+  --ink:#15263A; --mid:#5A6B7D; --faint:#93A3B4;
+  --line:#E2EAF3; --line-soft:#EDF2F8;
+  --paper:#FFFFFF;
+  --warn:#C0552F; --warn-bg:#FAE7E1;
+  --r:16px; --pad:22px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;color:var(--ink);
+  background:var(--sky2);
+  background-image:radial-gradient(120% 60% at 12% 0%,rgba(255,255,255,.30),transparent 55%),
+                   linear-gradient(168deg,var(--sky1) 0%,var(--sky2) 62%,#348FCE 100%);
+  background-attachment:fixed;
+  font-family:"경기천년제목 Medium","경기천년제목","Pretendard",-apple-system,BlinkMacSystemFont,
+    "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:15.5px;line-height:1.62;letter-spacing:-.014em;-webkit-font-smoothing:antialiased;
+}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,h4{margin:0;font-family:"경기천년제목 Bold","경기천년제목",inherit;letter-spacing:-.035em}
+
+/* ── 하늘 영역 ── */
+.sky{max-width:620px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 20px) var(--pad) 16px;
+  color:#fff;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sky .brand{margin:0;font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.sky .when{margin:0;font-size:12.5px;opacity:.82}
+
+/* ── 흰 시트 ── */
+.app{max-width:620px;margin:0 auto;background:var(--paper);
+  border-radius:26px 26px 0 0;min-height:calc(100dvh - 70px);
+  box-shadow:0 -4px 40px rgba(9,55,102,.16)}
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);
+  backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line);
+  border-radius:26px 26px 0 0}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;padding:0 10px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;appearance:none;background:none;border:0;color:var(--faint);
+  font-size:14px;font-weight:600;padding:16px 13px;cursor:pointer;white-space:nowrap;
+  border-bottom:2.5px solid transparent;transition:color .15s,border-color .15s}
+.tab[aria-selected="true"]{color:var(--blue);border-bottom-color:var(--blue-mid)}
+.tab:focus-visible{outline:2px solid var(--blue-mid);outline-offset:-4px;border-radius:5px}
+.tab.admin{color:#B8C6D4;font-size:13px}
+.tab.admin::before{content:"";display:inline-block;width:1px;height:13px;background:var(--line);
+  margin-right:13px;vertical-align:-2px}
+.tab.admin[aria-selected="true"]{color:var(--blue)}
+.tab .dot{display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:var(--blue-mid);vertical-align:5px;margin-left:5px}
+
+main{padding:26px var(--pad) 8px;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ── 슬라이드 머리 ── */
+.badge{display:inline-block;background:var(--sky-deep);color:#fff;border-radius:999px;
+  padding:6px 16px;font-size:12.5px;font-weight:700;letter-spacing:-.01em;
+  font-family:"경기천년제목 Bold",inherit}
+.ptitle{margin:14px 0 0;font-size:27px;line-height:1.26;font-weight:800}
+.psub{margin:10px 0 24px;font-size:14.5px;color:var(--mid);line-height:1.62}
+h2{margin:32px 0 12px;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--blue-mid)}
+main>h2:first-child{margin-top:0}
+p.body{margin:0 0 14px;color:var(--mid);font-size:14.5px}
+.hint{margin:-4px 0 14px;font-size:13.5px;color:var(--mid);line-height:1.6}
+.note{font-size:12.5px;color:var(--faint);margin:14px 0 0;line-height:1.65}
+
+/* ── 카드 ── */
+.card{background:var(--blue-tint);border:1px solid var(--line);border-radius:var(--r);
+  padding:17px 18px;margin:0 0 10px}
+.card.on{background:var(--blue);border-color:var(--blue)}
+.card.on .k{color:rgba(255,255,255,.75)}
+.card.on .v{color:#fff}
+.card.on .meta,.card.on p{color:rgba(255,255,255,.88)}
+.k{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--blue-mid);margin:0 0 8px}
+.card .v{font-size:18px;font-weight:700;letter-spacing:-.025em;margin:0 0 5px;
+  font-family:"경기천년제목 Bold",inherit}
+.meta{font-size:13.5px;color:var(--mid);margin:0;line-height:1.6}
+.card p{margin:0;font-size:14px;color:var(--mid);line-height:1.6}
+
+/* ── 진행 순서 ── */
+.rail{position:relative;padding-left:68px}
+.rail::before{content:"";position:absolute;left:54px;top:9px;bottom:12px;width:1px;background:var(--line)}
+.step{position:relative;padding:0 0 20px}
+.step .t{position:absolute;left:-68px;top:-1px;width:46px;text-align:right;
+  font-size:13.5px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.step::before{content:"";position:absolute;left:-18px;top:7px;width:7px;height:7px;border-radius:50%;
+  background:var(--paper);box-shadow:0 0 0 1.5px var(--line)}
+.step.on .t{color:var(--blue)}
+.step.on::before{background:var(--blue-mid);box-shadow:0 0 0 1.5px var(--blue-mid)}
+.step.past .n{color:var(--faint);font-weight:500}
+.step .n{font-size:15.5px;font-weight:700;letter-spacing:-.025em;margin:0 0 3px}
+.step .d{font-size:13px;color:var(--mid);margin:0}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--blue-mid);
+  margin-right:7px;vertical-align:3px;animation:pulse 1.9s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── 통계 ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 9px}
+.stat{background:var(--blue-tint);border:1px solid var(--line);border-radius:13px;
+  padding:16px 8px;text-align:center}
+.stat b{display:block;font-size:24px;font-weight:800;letter-spacing:-.045em;color:var(--blue);
+  font-family:"경기천년제목 Bold",inherit;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:11.5px;color:var(--mid);margin-top:3px}
+
+/* ── 타임라인 ── */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:5px;top:9px;bottom:10px;width:1px;background:var(--line)}
+.ev{position:relative;padding:0 0 16px}
+.ev::before{content:"";position:absolute;left:-21px;top:7px;width:7px;height:7px;border-radius:50%;
+  background:var(--paper);box-shadow:0 0 0 1.5px var(--line)}
+.ev.key::before{background:var(--blue-mid);box-shadow:0 0 0 1.5px var(--blue-mid)}
+.ev b{display:block;font-size:14.5px;font-weight:600}
+.ev span{display:block;font-size:12.5px;color:var(--faint)}
+
+/* ── 표 ── */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 10px}
+table{width:100%;min-width:500px;border-collapse:collapse;font-size:13px;
+  border:1px solid var(--line);border-radius:13px;overflow:hidden}
+th,td{padding:9px 7px;text-align:center;border-bottom:1px solid var(--line-soft);
+  font-variant-numeric:tabular-nums}
+th{background:var(--blue-tint);font-weight:700;font-size:11.5px;color:var(--mid);letter-spacing:.02em}
+td:first-child,th:first-child{text-align:left;padding-left:14px;font-variant-numeric:normal}
+td{color:var(--mid)}
+tr:last-child td{border-bottom:0;background:var(--blue-tint);color:var(--ink);font-weight:700}
+
+/* ── 지도 ── */
+.mapbox{background:var(--blue-tint);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 10px 10px;margin:0 0 12px}
+svg.gg{display:block;width:100%;height:auto;touch-action:manipulation}
+svg.gg path{fill:#fff;stroke:#B9CDE1;stroke-width:1.4;cursor:pointer;transition:fill .13s,stroke .13s}
+svg.gg path.north{stroke-dasharray:8 5}
+svg.gg g:active path{fill:#DCEAF7}
+svg.gg text{font-size:30px;fill:#7089A2;text-anchor:middle;pointer-events:none;
+  font-weight:600;letter-spacing:-.05em}
+svg.gg text.on{fill:#fff}
+svg.gg g:focus-visible path{stroke:var(--ink);stroke-width:3.5}
+.grpbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:0 2px 12px}
+.gchip{appearance:none;display:inline-flex;align-items:center;gap:7px;background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;
+  font-weight:600;color:var(--mid);cursor:pointer;transition:all .13s}
+.gchip i{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.gchip b{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.gchip[aria-selected="true"]{border-color:var(--blue);color:var(--blue);
+  box-shadow:0 0 0 2px rgba(14,90,167,.1)}
+.gchip .x{margin-left:2px;color:var(--faint);font-weight:700;font-size:14px;line-height:1}
+.gadd{appearance:none;background:none;border:1px dashed #BCCDDE;border-radius:999px;
+  padding:7px 13px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer}
+.gadd:disabled{opacity:.4;cursor:default}
+.legend{display:flex;gap:16px;margin:11px 4px 0;font-size:11.5px;color:var(--faint)}
+.legend s{display:inline-block;width:11px;height:11px;border-radius:3px;
+  border:1px dashed #B9CDE1;vertical-align:-1px;margin-right:6px;text-decoration:none}
+.picked{margin:12px 3px 0;font-size:13.5px;line-height:1.6}
+.picked div{display:flex;gap:9px;align-items:flex-start;margin:0 0 7px;word-break:keep-all}
+.picked i{width:9px;height:9px;border-radius:50%;flex:0 0 auto;margin-top:7px}
+.picked b{font-weight:700;color:var(--ink)}
+.picked span{color:var(--mid)}
+.picked em{font-style:normal;color:var(--faint)}
+
+/* ── 입력 ── */
+.field{margin:0 0 16px}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;color:var(--blue-mid);margin:0 0 8px}
+input[type=text],textarea,select{width:100%;background:#fff;border:1px solid var(--line);
+  border-radius:11px;font-size:15.5px;padding:13px 14px;transition:border-color .13s,box-shadow .13s}
+textarea{resize:vertical;min-height:86px;line-height:1.6}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue-mid);
+  box-shadow:0 0 0 3px rgba(46,139,213,.14)}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--faint) 50%),
+  linear-gradient(135deg,var(--faint) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+
+/* ── 선택지 ── */
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{appearance:none;text-align:left;width:100%;background:#fff;border:1.5px solid var(--line);
+  border-radius:12px;padding:14px 15px;cursor:pointer;display:flex;gap:12px;align-items:flex-start;
+  transition:border-color .13s,background .13s}
+.opt .tick{flex:0 0 20px;height:20px;border-radius:6px;border:1.5px solid var(--line);margin-top:1px;
+  display:grid;place-items:center;font-size:11px;color:transparent;transition:all .13s}
+.opt[aria-pressed="true"]{border-color:var(--blue-mid);background:var(--blue-pale)}
+.opt[aria-pressed="true"] .tick{background:var(--blue-mid);border-color:var(--blue-mid);color:#fff}
+.opt .t{flex:1;min-width:0}
+.opt .t b{display:block;font-size:15px;font-weight:700;letter-spacing:-.025em;
+  font-family:"경기천년제목 Bold",inherit}
+.opt .t span{display:block;font-size:12.5px;color:var(--mid);margin-top:3px;line-height:1.5}
+.opt.round .tick{border-radius:50%}
+.opt:focus-visible{outline:2px solid var(--blue-mid);outline-offset:2px}
+.gname{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--blue);margin:24px 3px 10px}
+
+/* ── 버튼 ── */
+.btn{width:100%;appearance:none;border:0;border-radius:12px;background:var(--blue);color:#fff;
+  font-size:15.5px;font-weight:700;padding:16px;cursor:pointer;letter-spacing:-.025em;
+  font-family:"경기천년제목 Bold",inherit;transition:opacity .13s}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--mid)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn:active{opacity:.85}
+.msg{font-size:13px;text-align:center;margin:12px 0 0;color:var(--warn);min-height:18px}
+.msg.ok{color:var(--blue)}
+
+/* ── 알림 · 잠금 ── */
+.alert{background:var(--warn-bg);border:1px solid #EDCFC4;border-radius:var(--r);
+  padding:17px 18px;margin:0 0 11px}
+.alert .k{color:var(--warn)}
+.alert p{margin:0;font-size:14px;color:#7A3A28;line-height:1.62}
+.locked{background:var(--blue-tint);border:1px dashed #BCCDDE;border-radius:var(--r);
+  padding:42px 20px;text-align:center;color:var(--faint);font-size:14px;line-height:1.7}
+.reveal{background:linear-gradient(142deg,var(--sky-deep),var(--blue));border-radius:var(--r);
+  padding:28px 20px;text-align:center;margin:0 0 11px;color:#fff}
+.reveal .sm{font-size:11px;font-weight:700;letter-spacing:.15em;opacity:.82;margin:0}
+.reveal .bg{font-size:26px;font-weight:800;margin:10px 0 0;line-height:1.3;letter-spacing:-.03em;
+  font-family:"경기천년제목 Bold",inherit}
+
+/* ── 진행 표시 ── */
+.prog{display:flex;align-items:center;gap:8px;margin:14px 0 0}
+.prog i{flex:1;height:4px;border-radius:99px;background:rgba(255,255,255,.3)}
+.prog i.on{background:#fff}
+.prog span{font-size:12px;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
+
+/* ── 결과 ── */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.chip{appearance:none;background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:8px 14px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer}
+.chip[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.bar{display:flex;align-items:center;gap:10px;margin:0 0 9px;font-size:13.5px}
+.bar .lb{flex:0 0 116px;text-align:right;color:var(--mid);word-break:keep-all;line-height:1.4}
+.bar .tr{flex:1;height:20px;background:var(--blue-pale);border-radius:6px;overflow:hidden}
+.bar .tr i{display:block;height:100%;background:var(--blue-mid);border-radius:6px;
+  transition:width .6s cubic-bezier(.22,1,.36,1)}
+.bar.top .tr i{background:var(--blue)}
+.bar .vv{flex:0 0 32px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--mid)}
+.bar.top .vv{color:var(--blue)}
+.pairs div{display:flex;justify-content:space-between;padding:10px 0;
+  border-bottom:1px solid var(--line);font-size:14px;color:var(--mid)}
+.pairs div:last-child{border:0}
+.pairs span{color:var(--blue);font-weight:800;font-variant-numeric:tabular-nums}
+.q{border-left:2px solid var(--blue-mid);padding:2px 0 2px 13px;margin:0 0 14px;
+  font-size:14.5px;color:var(--ink);line-height:1.62}
+.q em{display:block;font-style:normal;font-size:11.5px;color:var(--faint);margin-top:5px}
+.rows{max-height:340px;overflow:auto}
+.prow{display:flex;align-items:center;gap:10px;padding:9px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
+.prow:last-child{border:0}
+.prow .pd{flex:0 0 72px;font-weight:700;color:var(--ink)}
+.prow .pn{flex:0 0 68px;color:var(--mid)}
+.prow .pt{flex:1;color:var(--blue-mid);font-weight:700;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.host h2{margin:30px 0 12px;font-size:11px;letter-spacing:.18em;color:var(--blue)}
+.host>h2:first-of-type{margin-top:22px}
+.cmt{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin:0 0 10px}
+.ch{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 9px}
+.ckind{font-size:11px;font-weight:700;border-radius:999px;padding:4px 10px;
+  background:var(--blue-pale);color:var(--blue)}
+.ckind.k1{background:#E4F3EC;color:#1B7A55}
+.ckind.k2{background:#FBEDDD;color:#9A5B12}
+.ckind.k3{background:#EFE7FA;color:#5B3D9E}
+.ctgt{font-size:11.5px;color:var(--faint)}
+.cwho{margin-left:auto;font-size:11.5px;color:var(--faint)}
+.cbody{margin:0;font-size:14.5px;color:var(--ink);line-height:1.62;word-break:keep-all}
+.clike{appearance:none;margin:11px 0 0;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--mid);cursor:pointer}
+.clike b{font-variant-numeric:tabular-nums;color:var(--ink)}
+.clike.on{background:var(--blue-pale);border-color:var(--blue-mid);color:var(--blue)}
+.clike.on b{color:var(--blue)}
+.clike:disabled{opacity:.5}
+.hostlink{color:var(--faint);font-size:12px;text-decoration:none;font-weight:600}
+.hostlink:hover{color:var(--blue)}
+.lnk{appearance:none;background:none;border:0;padding:0;color:var(--blue);font-size:13.5px;
+  font-weight:700;text-decoration:underline;cursor:pointer}
+.empty{color:var(--faint);font-size:14px;padding:30px 0;text-align:center}
+
+/* ── 진행자 ── */
+.host{max-width:1120px;margin:0 auto;background:var(--paper);border-radius:26px;
+  padding:28px 24px 70px;box-shadow:0 6px 40px rgba(9,55,102,.16)}
+.hostwrap{padding:22px 16px 40px}
+.hh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:22px}
+.hh h1{font-size:21px}
+.hh .n{font-size:13.5px;color:var(--mid);font-variant-numeric:tabular-nums}
+.g2{display:grid;grid-template-columns:1fr;gap:11px}
+@media(min-width:860px){.g2{grid-template-columns:1fr 1fr}}
+.panelbox{background:var(--blue-tint);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;margin:0 0 11px}
+.panelbox h3{margin:0 0 3px;font-size:15.5px;font-weight:700;letter-spacing:-.025em}
+.panelbox .sub{margin:0 0 14px;font-size:12.5px;color:var(--mid)}
+.panelbox h2{margin:14px 0 8px}
+.ctl{display:flex;gap:7px;flex-wrap:wrap}
+.ctl button{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 13px;
+  font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;transition:all .13s}
+.ctl button:hover{color:var(--blue);border-color:var(--blue-mid)}
+.ctl button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.demo{background:var(--warn-bg);border:1px solid #EDCFC4;border-radius:12px;
+  padding:13px 15px;font-size:13px;color:#7A3A28;margin:0 0 15px;line-height:1.6}
+.heat path{cursor:default!important}
+
+/* ── 현장 화면 : 발표자료와 같은 얼굴 ── */
+.live{position:fixed;inset:0;display:flex;flex-direction:column;
+  background:var(--sky2);
+  background-image:radial-gradient(110% 55% at 88% 0%,rgba(255,255,255,.28),transparent 58%),
+                   linear-gradient(160deg,var(--sky1) 0%,var(--sky2) 60%,#348FCE 100%);
+  padding:clamp(14px,1.6vw,26px);color:var(--ink)}
+.lsheet{flex:1;min-height:0;background:var(--paper);border-radius:clamp(18px,1.8vw,28px);
+  display:flex;flex-direction:column;padding:clamp(20px,2.2vw,34px) clamp(22px,2.6vw,40px)
+  clamp(14px,1.5vw,22px);box-shadow:0 8px 44px rgba(9,55,102,.2)}
+.lhead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.lbadge{background:var(--sky-deep);color:#fff;border-radius:999px;
+  padding:clamp(5px,.5vw,9px) clamp(13px,1.2vw,22px);
+  font-size:clamp(11px,.9vw,16px);font-weight:700;font-family:"경기천년제목 Bold",inherit}
+.lhead h1{font-size:clamp(22px,2.5vw,42px);letter-spacing:-.04em;color:var(--ink)}
+.lcnt{margin-left:auto;font-size:clamp(12px,.95vw,17px);color:var(--mid);font-variant-numeric:tabular-nums}
+.lcnt b{font-size:clamp(21px,2vw,34px);font-weight:800;margin-right:5px;color:var(--blue);
+  font-family:"경기천년제목 Bold",inherit}
+.lsub{padding:6px 0 0;font-size:clamp(12px,1vw,17px);color:var(--mid);margin:0}
+.lbody{flex:1;min-height:0;padding:clamp(14px,1.6vw,24px) 0 6px;display:flex;gap:clamp(12px,1.4vw,22px)}
+.lcol{flex:1;min-width:0;display:flex;flex-direction:column;gap:clamp(10px,1.2vw,18px)}
+.lpanel{background:var(--blue-tint);border:1px solid var(--line);border-radius:clamp(12px,1.3vw,20px);
+  padding:clamp(14px,1.5vw,24px) clamp(15px,1.7vw,26px);display:flex;flex-direction:column;min-height:0}
+.lpanel.fill{flex:1}
+.lpanel h3{margin:0 0 3px;font-size:clamp(14px,1.15vw,22px);font-weight:700;letter-spacing:-.025em}
+.lpanel .ps{margin:0 0 clamp(10px,1.1vw,18px);font-size:clamp(10px,.78vw,14px);color:var(--faint)}
+.lscroll{flex:1;min-height:0;overflow:hidden}
+.lbar{display:flex;align-items:center;gap:12px;margin:0 0 11px;font-size:clamp(12px,.98vw,18px)}
+.lbar .lb{flex:0 0 33%;text-align:right;color:var(--mid);word-break:keep-all;line-height:1.32}
+.lbar .tr{flex:1;height:clamp(14px,1.35vw,24px);background:var(--blue-pale);border-radius:99px;overflow:hidden}
+.lbar .tr i{display:block;height:100%;background:var(--blue-mid);border-radius:99px;
+  transition:width .8s cubic-bezier(.22,1,.36,1)}
+.lbar .vv{flex:0 0 46px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--mid);
+  font-size:clamp(15px,1.25vw,22px);font-family:"경기천년제목 Bold",inherit}
+.lbar.top .tr i{background:var(--blue)}
+.lbar.top .vv{color:var(--blue)}
+.lmap{flex:1;min-height:0;display:grid;place-items:center}
+.lmap svg{max-height:100%;width:auto;max-width:100%}
+.lmap svg path{fill:#fff;stroke:#B9CDE1;stroke-width:1.4;transition:fill .8s ease}
+.lmap svg text{font-size:27px;fill:#7089A2;font-weight:600;text-anchor:middle;letter-spacing:-.05em}
+.lmap svg text.on{fill:#fff}
+.lrank div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:clamp(6px,.7vw,11px) 0;border-bottom:1px solid var(--line);
+  font-size:clamp(12px,1vw,18px);color:var(--mid)}
+.lrank div:last-child{border:0}
+.lrank div b{color:var(--ink);font-weight:600}
+.lrank div span{font-weight:800;font-variant-numeric:tabular-nums;color:var(--blue-mid);
+  font-size:clamp(15px,1.25vw,23px);font-family:"경기천년제목 Bold",inherit}
+.lrank div:nth-child(-n+3) span{color:var(--blue)}
+.flow{flex:1;display:flex;align-items:stretch;gap:clamp(5px,.7vw,13px);min-height:0}
+.fstep{flex:1;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:clamp(12px,1.2vw,18px);padding:clamp(12px,1.3vw,19px) clamp(11px,1.1vw,17px);
+  min-width:0;transition:background .5s ease,border-color .5s ease}
+.fstep .no{font-size:clamp(10px,.72vw,13px);color:var(--faint);font-weight:700}
+.fstep .nm{font-size:clamp(12px,1.05vw,20px);font-weight:700;margin:4px 0 8px;
+  line-height:1.28;word-break:keep-all;letter-spacing:-.03em;font-family:"경기천년제목 Bold",inherit}
+.fstep .ds{font-size:clamp(9px,.72vw,13px);color:var(--mid);line-height:1.5;word-break:keep-all;flex:1}
+.fstep .meter{height:clamp(7px,.72vw,12px);background:var(--blue-pale);border-radius:99px;
+  overflow:hidden;margin:11px 0 8px}
+.fstep .meter i{display:block;height:100%;background:var(--blue-mid);border-radius:99px;
+  transition:width .8s cubic-bezier(.22,1,.36,1)}
+.fstep .num{font-size:clamp(19px,2vw,36px);font-weight:800;line-height:1;color:var(--blue);
+  font-variant-numeric:tabular-nums;font-family:"경기천년제목 Bold",inherit}
+.fstep .num em{font-style:normal;font-size:.4em;color:var(--faint);margin-left:5px;font-weight:600}
+.fstep.lead{background:var(--blue);border-color:var(--blue)}
+.fstep.lead .nm{color:#fff}
+.fstep.lead .no,.fstep.lead .ds{color:rgba(255,255,255,.78)}
+.fstep.lead .meter{background:rgba(255,255,255,.24)}
+.fstep.lead .meter i{background:#fff}
+.fstep.lead .num{color:#fff}
+.fstep.lead .num em{color:rgba(255,255,255,.72)}
+.arrow{align-self:center;color:#A9C0D6;font-size:clamp(14px,1.3vw,25px);flex:0 0 auto}
+.stream{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));
+  gap:clamp(9px,1vw,14px);align-content:start;overflow:hidden;flex:1;min-height:0}
+.scard{background:#fff;border:1px solid var(--line);border-radius:clamp(11px,1.1vw,16px);
+  padding:clamp(12px,1.2vw,18px) clamp(13px,1.3vw,20px);
+  font-size:clamp(11px,.92vw,17px);line-height:1.58;color:var(--ink);word-break:keep-all}
+.scard em{display:block;font-style:normal;font-size:.76em;color:var(--faint);margin-top:9px}
+.scard.fresh{animation:pop .55s cubic-bezier(.22,1,.36,1)}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.1vw,16px);flex:1;min-height:0}
+.area{background:#fff;border:1px solid var(--line);border-radius:clamp(12px,1.2vw,18px);
+  padding:clamp(13px,1.3vw,19px) clamp(14px,1.4vw,21px);min-width:0;overflow:hidden}
+.area h4{margin:0 0 10px;font-size:clamp(10px,.82vw,15px);font-weight:700;
+  letter-spacing:.1em;color:var(--blue)}
+.zonelist{display:flex;flex-direction:column;gap:clamp(6px,.7vw,11px)}
+.zonelist div{display:flex;gap:11px;align-items:flex-start;font-size:clamp(11px,.95vw,17px);
+  line-height:1.44;word-break:keep-all;color:var(--ink)}
+.zonelist i{width:12px;height:12px;border-radius:4px;flex:0 0 auto;margin-top:5px}
+.zonelist em{font-style:normal;color:var(--faint);font-size:.85em;margin-left:5px}
+.lfoot{display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);padding:clamp(8px,.9vw,14px) 0 0;
+  font-size:clamp(11px,.85vw,15px);color:var(--faint);flex-wrap:wrap}
+.lfoot .url{background:var(--blue);color:#fff;border-radius:9px;padding:7px 15px;font-weight:800;
+  font-size:clamp(12px,1vw,19px);letter-spacing:-.02em;font-family:"경기천년제목 Bold",inherit}
+.dots{margin-left:auto;display:flex;gap:7px;align-items:center}
+.dots i{width:8px;height:8px;border-radius:50%;background:#CBDCEA;cursor:pointer;
+  transition:width .3s,background .3s}
+.dots i.on{background:var(--blue);width:22px;border-radius:5px}
+.lsheet.idle{align-items:center;justify-content:center}
+.idlebox{text-align:center;max-width:900px}
+.idleurl{margin:clamp(18px,2vw,32px) 0 0;font-size:clamp(30px,5vw,84px);font-weight:800;
+  letter-spacing:-.04em;color:var(--blue);font-family:"경기천년제목 Bold",inherit;line-height:1.1;
+  word-break:break-all}
+.idlemsg{margin:clamp(14px,1.4vw,22px) 0 0;font-size:clamp(13px,1.2vw,22px);color:var(--mid)}
+.idlestat{display:flex;gap:clamp(14px,2vw,34px);justify-content:center;
+  margin:clamp(26px,3vw,52px) 0 0}
+.idlestat div{background:var(--blue-tint);border:1px solid var(--line);
+  border-radius:clamp(12px,1.2vw,18px);padding:clamp(14px,1.5vw,24px) clamp(24px,3vw,52px)}
+.idlestat b{display:block;font-size:clamp(26px,3.4vw,58px);font-weight:800;color:var(--blue);
+  font-family:"경기천년제목 Bold",inherit;line-height:1;font-variant-numeric:tabular-nums}
+.idlestat span{display:block;font-size:clamp(11px,.95vw,16px);color:var(--mid);margin-top:8px}
+.lempty{color:var(--faint);font-size:clamp(12px,.95vw,17px);padding:28px 0;text-align:center}
+
+footer{padding:32px var(--pad) calc(env(safe-area-inset-bottom) + 40px);
+  border-top:1px solid var(--line);margin-top:34px}
+footer p{font-size:12.5px;color:var(--faint);margin:0 0 6px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+/* ══════════ 1. 설정 ══════════ */
+/* Supabase 프로젝트를 만든 뒤 아래 두 줄만 채우면 실시간 공유가 시작됩니다.
+   비워 두면 이 브라우저 안에서만 도는 연습 모드로 동작합니다. */
+var SB_URL = "https://bvcukodlzyussyqzcilx.supabase.co";
+var SB_KEY = "sb_publishable_3nj6ymo2U22suYDxth4-9Q_q09vLNFt";
+
+/* ══════════ 2. 지도 ══════════ */
+var MAP = {"w":1000,"h":1189,"sgg":[{"n":"가평","north":1,"d":"M730.2 210.9L733.1 217.1L734.0 226.0L743.6 235.0L761.2 237.4L765.6 242.3L769.0 239.4L784.1 238.5L790.1 240.1L795.1 259.2L793.1 262.7L793.7 268.2L803.7 272.4L811.5 271.4L820.6 273.3L831.3 277.8L832.7 279.1L832.8 286.6L839.3 291.5L842.3 302.1L839.3 306.7L842.7 320.8L836.1 335.1L837.2 340.4L835.0 346.4L833.2 348.4L821.0 346.7L816.0 348.6L809.7 354.6L808.5 361.2L806.0 363.6L802.1 363.8L797.1 367.5L796.8 372.1L788.2 373.4L781.5 380.8L779.7 390.6L786.7 396.8L788.4 403.0L777.1 418.4L790.8 437.0L793.5 446.2L791.6 450.9L786.1 456.1L770.6 466.5L767.4 473.9L767.8 480.1L771.0 484.3L779.8 475.1L783.1 475.1L790.3 481.1L799.5 473.1L803.7 473.2L805.0 480.9L802.5 485.8L802.6 491.5L797.4 508.9L796.3 524.7L798.9 530.7L794.4 533.9L792.8 539.1L787.2 540.0L786.9 543.1L788.8 547.9L795.1 551.5L795.8 555.0L803.4 559.0L803.6 563.9L810.9 571.8L810.7 575.3L805.6 579.5L805.8 584.0L803.4 588.1L804.9 594.0L803.7 597.6L799.3 594.9L789.5 596.6L777.9 595.2L770.6 603.6L761.0 608.2L742.8 600.6L742.3 589.9L744.7 577.2L743.2 564.6L741.5 562.2L737.3 562.0L734.6 558.4L732.4 548.4L722.4 545.7L722.8 543.5L718.6 537.4L723.1 532.3L721.9 530.3L714.0 522.8L711.9 527.3L699.8 532.4L693.5 539.5L681.2 539.2L675.2 542.6L678.2 536.1L681.9 517.2L678.9 518.9L676.9 516.0L677.3 513.1L672.0 508.3L675.8 504.4L666.7 502.4L666.7 498.4L663.7 492.7L664.5 477.5L655.9 472.7L655.7 465.5L650.7 460.0L648.9 454.8L649.8 452.6L637.8 438.7L634.3 439.6L622.9 433.3L608.7 434.5L604.2 429.3L608.4 420.6L607.0 416.6L612.1 408.0L612.6 398.0L609.3 386.4L612.4 375.8L617.2 371.0L613.4 364.3L618.5 352.7L621.4 347.8L624.0 353.0L630.8 353.2L635.3 355.6L639.8 350.8L642.3 350.8L643.8 345.9L642.3 344.6L642.0 337.2L646.1 331.4L644.7 324.3L646.9 318.3L644.9 316.4L647.1 312.3L647.3 304.4L652.8 306.5L657.6 303.7L660.7 307.9L665.2 308.2L684.3 289.2L684.7 286.0L678.9 280.7L680.8 276.4L679.0 273.5L684.5 261.6L684.5 255.7L698.4 248.8L703.6 242.4L708.3 225.6L713.0 218.5L711.6 211.9L719.1 207.7L726.3 196.6L730.9 200.1L730.2 210.9Z","x":700.1,"y":400.5},{"n":"고양","north":1,"d":"M376.8 458.4L375.0 459.9L375.2 466.9L369.3 470.5L371.2 480.4L369.0 486.4L371.6 490.3L364.7 507.9L363.0 518.3L360.3 520.2L358.0 519.0L359.5 523.1L361.9 524.6L382.2 522.6L384.6 518.1L383.6 515.0L385.1 509.9L389.3 508.0L391.8 503.7L410.4 510.5L417.1 515.2L418.4 521.1L418.3 526.2L408.6 535.4L412.3 544.1L411.0 546.0L412.8 548.7L411.6 552.3L405.6 556.3L394.1 558.2L397.4 555.0L393.2 538.2L386.7 532.7L370.7 544.0L363.6 545.1L357.6 541.4L362.7 545.5L361.9 552.7L358.5 555.0L360.3 558.5L359.1 564.7L354.5 573.9L355.7 580.3L354.4 580.8L354.1 592.2L345.9 593.2L344.4 591.1L345.7 588.7L344.3 588.7L339.0 595.3L338.1 602.2L329.4 603.3L322.7 605.9L322.7 607.7L278.2 571.8L249.4 553.3L241.7 543.7L231.0 539.3L203.1 522.2L198.0 511.9L200.1 497.5L206.4 501.2L211.2 507.5L218.6 500.4L229.2 497.6L235.4 493.8L258.9 494.9L263.7 491.6L268.1 494.4L268.9 487.8L272.1 482.9L282.0 475.3L283.3 471.8L282.1 468.1L285.4 466.4L287.1 472.5L295.5 477.6L308.0 473.2L311.5 474.1L314.6 470.6L324.0 467.4L330.4 469.8L332.4 473.1L335.1 472.3L336.4 475.5L346.5 478.1L356.1 473.2L354.9 465.8L361.8 457.8L374.1 456.2L376.8 458.4Z","x":314.9,"y":529.5},{"n":"과천","north":0,"d":"M425.3 697.4L428.7 705.9L432.3 707.9L440.1 705.4L442.8 698.9L446.0 699.9L448.4 715.6L446.6 721.5L450.4 722.6L454.7 728.6L451.0 730.8L451.1 741.6L448.7 743.1L440.1 744.7L431.5 743.0L422.2 751.0L414.4 748.1L410.4 754.4L407.0 752.3L407.9 750.4L404.5 742.0L396.8 737.0L395.8 732.6L398.9 721.3L397.8 716.2L405.1 708.3L420.2 701.9L420.2 697.4L425.3 697.4Z","x":435.1,"y":721.6},{"n":"광명","north":0,"d":"M334.1 678.2L336.7 676.6L335.7 679.1L338.5 679.0L335.1 681.8L335.7 684.3L343.8 698.7L342.6 699.9L346.7 702.7L344.4 703.4L345.0 706.7L347.2 710.1L350.2 709.7L354.0 720.3L354.0 724.9L350.4 730.0L351.9 733.4L346.8 738.7L346.8 745.1L340.1 747.2L334.7 744.0L334.1 748.9L337.9 749.4L338.6 753.3L326.5 753.4L317.8 744.4L314.4 725.2L311.9 723.2L312.1 705.9L308.7 703.3L304.0 704.0L305.1 700.7L308.7 698.5L308.7 688.7L309.8 690.8L316.9 691.9L317.9 684.9L322.1 684.8L332.2 673.7L334.1 678.2Z","x":332.1,"y":715.2},{"n":"광주","north":0,"d":"M664.3 639.4L670.3 642.9L674.2 648.4L685.0 670.7L681.5 677.7L687.2 689.9L686.1 697.6L684.0 704.3L673.8 706.2L676.1 710.5L676.0 716.4L683.2 718.2L684.7 726.0L695.7 737.6L694.1 742.7L702.7 749.6L704.9 760.3L708.6 766.2L723.7 765.8L725.2 767.3L724.6 781.3L726.0 787.5L718.7 794.2L715.4 800.5L709.4 803.9L708.8 807.9L698.3 817.3L694.9 817.2L688.7 823.7L678.4 823.0L674.3 827.7L669.9 827.0L670.9 833.3L666.1 835.7L663.8 839.4L665.5 845.5L659.8 849.1L656.0 848.2L654.0 850.9L659.7 858.5L660.1 860.6L657.3 863.0L653.1 865.9L647.4 866.2L642.1 862.9L635.8 863.3L629.3 865.8L628.2 869.7L625.6 870.7L621.3 865.0L614.2 867.5L610.4 863.4L614.3 859.6L611.5 849.2L614.1 842.5L611.2 833.4L615.2 827.1L612.7 815.0L615.4 807.9L615.2 802.0L602.8 804.2L600.4 799.3L590.8 793.0L586.4 794.1L584.3 789.2L574.0 794.0L570.3 793.2L573.8 800.9L571.8 800.8L564.3 814.3L559.9 816.4L556.8 811.9L557.4 805.4L553.0 800.2L544.2 803.7L533.6 803.5L520.7 809.2L515.3 805.4L516.0 802.5L512.7 798.2L514.2 791.0L525.0 787.6L531.8 778.4L532.6 772.4L542.7 767.6L543.1 766.0L537.0 761.3L537.0 758.8L543.5 743.0L548.2 741.6L554.8 733.8L555.1 711.1L552.9 706.0L548.2 704.5L545.6 692.0L541.8 688.8L543.4 680.2L550.8 686.1L557.5 686.7L559.9 682.9L562.0 686.1L569.2 684.4L578.0 688.5L588.8 689.3L590.6 685.9L588.9 682.0L595.1 682.0L598.9 676.9L594.9 666.4L595.8 663.8L605.1 663.8L617.0 656.9L618.1 663.4L623.2 664.3L630.4 658.7L631.3 652.5L633.1 651.5L632.8 646.0L643.2 639.2L664.3 639.4Z","x":621.2,"y":754.2},{"n":"구리","north":1,"d":"M518.0 544.0L524.2 549.7L524.0 553.8L521.0 557.7L519.7 563.6L523.3 578.3L527.1 585.7L537.0 589.1L537.1 591.3L533.2 592.3L531.7 594.8L538.6 599.7L523.9 610.5L513.9 611.0L506.1 614.8L500.9 620.5L499.3 618.8L493.9 620.8L491.3 616.9L493.4 608.0L491.3 604.0L492.9 600.1L496.6 597.7L499.6 589.3L501.9 588.6L500.1 583.4L502.8 579.5L501.5 567.2L493.3 564.9L494.6 560.0L498.8 555.5L498.2 547.2L512.0 547.6L518.0 544.0Z","x":513.2,"y":581.5},{"n":"군포","north":0,"d":"M382.7 773.2L386.0 775.7L386.9 781.3L396.6 787.8L396.0 796.7L391.4 805.3L387.2 806.1L387.0 817.7L385.1 823.4L378.7 821.1L374.3 826.3L376.3 833.9L364.5 835.9L365.0 827.4L361.3 826.4L362.4 825.0L359.5 822.0L345.7 825.4L342.5 822.6L336.8 822.6L336.2 815.6L344.4 807.4L345.4 800.4L351.5 790.1L358.7 787.9L362.7 777.7L367.6 774.6L381.5 775.6L382.7 773.2Z","x":354.9,"y":796.8},{"n":"김포","north":0,"d":"M115.8 586.8L114.0 581.6L115.0 578.0L116.3 582.2L115.8 586.8ZM145.7 445.3L155.5 440.7L167.3 429.9L192.9 428.6L194.3 438.3L201.4 452.4L204.7 470.6L197.9 510.5L201.5 520.4L228.0 537.6L241.7 543.7L249.4 553.3L264.8 561.9L288.0 579.2L284.2 585.4L286.7 593.9L281.7 596.8L281.9 599.3L277.4 595.8L275.4 598.4L264.2 593.6L261.1 596.4L257.6 596.1L256.0 600.3L253.6 600.9L248.3 589.9L243.9 589.1L242.8 591.6L235.4 590.4L227.7 580.2L224.6 579.1L221.3 581.4L221.8 573.1L214.3 566.0L206.8 562.0L203.9 558.1L200.9 557.9L199.3 554.5L186.8 550.7L182.1 559.9L175.3 560.6L174.9 565.9L171.9 568.4L167.5 581.3L161.5 580.4L159.8 578.1L144.2 589.5L144.4 584.3L137.4 583.2L137.7 581.5L135.0 579.2L131.3 584.4L126.7 580.1L123.5 580.3L122.6 582.5L119.3 576.4L119.5 570.7L114.1 554.1L108.6 549.5L103.3 536.5L110.4 532.9L111.9 529.5L108.8 526.9L108.9 524.1L100.1 519.8L105.0 510.3L104.7 502.9L102.5 492.5L98.4 489.2L96.6 483.6L103.0 456.4L94.4 443.9L98.6 439.1L93.5 436.9L94.1 431.7L97.4 420.5L119.1 431.2L133.2 444.0L145.7 445.3Z","x":151.1,"y":515.2},{"n":"남양주","north":1,"d":"M608.6 434.4L622.9 433.3L640.7 441.1L649.8 452.6L648.9 454.8L650.7 460.0L655.7 465.5L655.9 472.7L664.5 477.5L663.7 492.7L666.7 498.4L666.7 502.4L675.8 504.4L672.0 508.3L677.3 513.1L676.9 516.0L678.9 518.9L681.9 517.2L675.3 543.5L660.9 562.4L651.5 599.9L633.8 634.6L631.1 645.0L631.3 656.6L628.2 661.8L621.7 664.5L618.1 663.4L616.3 651.2L614.0 647.7L584.6 629.6L580.6 617.9L572.7 612.5L572.1 606.0L567.8 603.4L560.1 592.8L547.3 590.6L538.6 599.7L532.2 596.0L532.1 593.3L537.4 589.9L525.0 583.5L519.7 564.2L521.0 557.7L524.0 553.8L524.2 549.7L522.2 546.3L518.0 544.0L508.7 548.0L497.3 547.1L495.0 544.6L486.8 545.3L484.5 533.5L488.1 523.7L485.0 516.0L488.1 510.1L487.8 507.1L480.4 506.0L477.0 498.2L496.3 490.7L498.4 483.0L505.0 478.8L508.1 474.2L506.6 464.4L510.0 456.5L519.6 456.7L522.2 455.0L522.4 449.7L535.4 457.2L540.1 454.8L539.9 448.3L544.3 444.0L548.6 442.4L556.4 444.9L560.1 441.8L562.1 443.5L565.6 438.2L567.6 439.7L567.4 445.0L574.0 448.2L575.7 451.9L585.1 443.7L599.4 439.2L600.0 434.3L603.4 428.7L608.6 434.4Z","x":597.6,"y":546.7},{"n":"동두천","north":1,"d":"M465.8 261.1L477.5 260.8L484.6 264.9L486.5 269.0L485.3 275.9L490.0 280.9L487.4 288.3L496.4 292.3L505.2 312.1L511.0 312.0L522.3 317.0L524.1 327.9L528.0 330.5L522.4 346.7L509.8 348.6L506.3 354.6L498.4 356.4L496.5 360.2L491.5 354.8L489.0 355.0L482.6 350.1L472.3 350.2L464.1 352.9L455.2 340.7L453.2 330.2L437.0 327.4L429.6 322.1L429.5 318.0L426.6 313.2L431.5 309.5L428.7 304.8L429.0 302.1L431.7 300.7L433.9 294.8L440.2 290.9L442.0 278.4L450.9 274.8L452.8 264.1L456.1 261.2L456.1 258.7L458.7 257.1L466.1 258.4L465.8 261.1Z","x":466.5,"y":307.2},{"n":"부천","north":0,"d":"M266.8 627.8L277.3 629.8L281.4 633.6L282.4 638.5L285.8 636.9L287.5 632.6L291.1 631.7L294.6 634.3L301.3 634.3L301.1 639.2L305.4 644.3L302.7 656.8L302.7 660.2L304.6 661.9L301.3 662.6L299.6 669.9L295.1 672.3L302.0 679.6L296.2 690.8L298.2 692.2L299.4 689.5L308.7 688.7L308.7 698.5L305.1 700.7L304.0 704.0L289.0 702.2L278.8 698.7L275.5 692.9L264.2 693.4L262.5 690.5L258.4 689.0L255.0 683.2L247.0 680.4L247.9 667.8L246.4 661.6L249.4 656.2L252.2 657.0L259.0 653.8L259.5 635.7L263.2 622.7L266.8 627.8Z","x":274.0,"y":665.2},{"n":"성남","north":0,"d":"M543.5 743.0L537.0 761.3L543.1 766.0L542.7 767.6L532.6 772.4L531.8 778.4L525.0 787.6L514.2 791.0L512.7 798.2L516.0 802.5L516.3 806.6L506.0 808.9L502.4 812.0L493.7 808.0L491.8 803.8L489.1 803.9L480.9 796.4L475.6 798.1L470.5 791.0L459.4 789.1L453.8 782.1L441.4 779.0L441.6 772.8L448.6 763.1L447.7 753.8L451.9 751.6L451.2 748.7L454.4 745.2L454.3 743.2L451.0 741.5L451.0 730.8L454.4 728.6L458.8 730.2L469.8 728.7L472.7 722.9L471.6 718.8L477.9 719.6L482.2 716.5L486.1 707.0L490.0 706.4L493.5 701.6L502.0 704.7L502.4 701.6L507.2 697.8L507.5 695.3L512.9 696.3L512.9 691.0L527.7 691.9L527.6 693.4L537.1 696.0L544.2 690.8L548.2 704.5L552.9 706.0L555.8 717.6L554.3 721.4L554.8 733.8L548.2 741.6L543.5 743.0Z","x":496.2,"y":750.2},{"n":"수원","north":0,"d":"M450.1 888.7L442.8 898.9L438.3 900.0L437.3 905.4L424.7 900.5L421.6 904.3L420.4 901.3L414.0 897.1L407.2 901.0L402.3 901.2L400.5 896.6L393.5 892.1L392.6 886.3L388.4 878.6L378.7 877.7L375.3 874.2L372.7 865.2L373.4 856.1L376.8 847.9L381.3 844.6L376.4 839.9L376.7 838.1L383.2 840.4L396.5 838.6L399.4 834.0L401.3 823.4L400.3 819.4L402.9 813.4L410.8 817.8L422.9 807.6L428.5 807.0L433.3 797.6L435.9 796.9L442.7 800.5L445.1 802.5L443.9 809.1L448.3 816.4L449.4 822.7L456.3 827.1L461.7 827.3L463.7 831.3L462.0 836.6L463.8 837.6L463.4 843.6L476.2 846.4L478.8 842.7L483.4 842.2L483.2 851.9L471.0 857.3L466.5 866.0L473.3 869.7L474.0 873.9L475.1 870.1L480.2 866.5L481.1 870.8L477.4 875.0L480.1 878.0L478.1 884.6L467.0 888.9L468.0 892.0L458.3 899.6L458.6 897.5L453.7 898.3L449.1 894.5L451.4 886.1L450.1 885.7L450.1 888.7ZM401.7 852.1L401.7 852.1L401.7 852.1L401.7 852.1ZM445.6 846.4L451.4 850.6L449.2 852.8L449.2 852.9L449.1 852.9L449.1 852.9L449.1 853.1L451.4 850.6L448.9 847.0L446.8 846.2L445.6 846.4ZM449.7 854.5L448.9 853.4L448.8 853.7L448.8 853.8L448.8 853.9L448.8 854.0L448.8 854.1L448.8 854.2L448.8 854.5L448.7 854.8L449.2 854.7L449.3 854.7L449.3 854.6L449.4 854.6L449.5 854.6L449.7 854.5ZM449.7 854.4L449.7 854.4L449.7 854.4L449.7 854.4ZM449.7 854.2L449.8 854.2L449.7 854.2L449.7 854.2ZM450.0 853.5L450.3 853.2L450.0 853.6L450.0 853.5ZM450.4 853.0L451.6 852.7L451.9 853.3L451.6 852.7L450.4 853.0ZM450.8 854.3L451.3 853.7L451.1 853.9L450.8 854.3ZM450.8 854.4L451.0 855.6L451.5 856.4L450.8 854.4ZM452.1 858.1L452.1 858.3L451.6 856.6L452.1 858.1ZM452.1 858.3L452.2 860.6L452.3 861.8L452.5 862.1L452.6 862.3L453.5 862.8L452.1 858.3ZM450.2 861.6L450.1 861.7L450.2 861.6L450.2 861.6ZM447.9 862.1L447.8 862.1L448.0 862.1L447.9 862.1ZM448.5 866.8L447.8 862.2L447.5 863.1L447.5 865.0L447.6 865.2L447.8 865.5L448.5 866.8ZM445.4 868.6L445.0 869.0L445.3 869.0L445.4 869.1L445.4 868.6ZM445.4 869.1L449.1 870.2L449.8 870.4L449.9 870.4L445.4 869.1ZM449.9 870.4L448.5 875.0L448.5 875.0L449.9 870.4ZM448.4 875.0L447.4 877.9L448.4 875.0L448.4 875.0ZM428.3 870.2L427.9 870.9L427.9 870.9L428.3 870.2ZM429.1 868.7L429.1 868.2L429.0 868.9L429.1 868.7ZM443.2 876.5L443.4 875.7L443.2 876.5L443.2 876.5ZM445.9 846.1L445.1 842.4L444.7 840.2L445.9 846.1ZM444.7 840.2L445.1 836.6L445.1 836.4L445.1 836.1L445.0 835.1L445.0 834.8L444.8 833.5L444.5 832.4L444.9 830.7L447.2 828.0L445.7 829.3L444.9 830.7L444.5 832.4L444.7 840.2ZM448.2 827.2L448.8 826.1L448.2 827.2L448.2 827.2ZM448.8 825.8L448.8 824.6L448.7 825.4L448.8 825.8ZM448.8 823.4L449.1 822.9L448.8 824.4L448.8 823.4ZM449.2 822.8L449.2 822.9L449.2 822.8L449.2 822.8Z","x":413.1,"y":851.3},{"n":"시흥","north":0,"d":"M272.0 760.2L275.5 762.1L279.0 758.8L280.4 760.8L278.6 751.7L280.7 750.4L278.4 751.3L277.8 753.1L277.4 749.0L276.6 752.5L278.4 754.1L278.7 758.1L275.4 761.7L272.7 759.0L263.4 759.3L261.6 755.5L252.5 754.4L251.5 751.7L255.8 743.4L254.4 735.5L258.9 732.3L265.2 731.4L266.2 729.0L264.9 717.9L266.9 712.7L271.9 711.2L272.4 698.5L271.1 694.3L275.5 692.9L278.8 698.7L288.4 702.1L302.0 704.9L308.7 703.3L311.5 705.0L313.0 713.8L311.9 723.2L314.4 725.2L317.8 744.4L325.3 753.0L338.6 753.3L338.7 763.5L341.8 775.6L330.5 787.6L324.2 789.7L319.1 785.1L308.3 787.4L302.7 784.2L294.0 793.0L284.0 794.9L283.1 793.5L279.6 797.6L281.0 803.6L276.3 808.1L267.4 803.7L259.5 805.5L251.9 811.9L250.5 819.4L244.3 815.2L230.0 833.6L221.9 831.4L212.8 824.5L202.0 823.4L198.5 815.8L163.0 828.3L159.8 828.3L212.2 810.0L212.1 807.0L208.4 805.4L210.3 798.9L220.3 796.7L218.6 793.7L239.2 766.5L246.7 769.9L245.9 766.1L241.2 764.3L248.0 756.3L260.4 757.2L261.9 760.0L270.6 761.9L272.0 760.2Z","x":290.6,"y":762.8},{"n":"안산","north":0,"d":"M55.3 1022.1L51.5 1020.0L53.5 1018.1L55.3 1022.1ZM47.5 1016.2L45.8 1013.0L47.0 1008.3L50.3 1014.5L47.5 1016.2ZM9.0 1000.3L10.5 1010.3L8.6 1012.8L0.0 1007.2L0.4 999.9L4.2 998.0L9.0 1000.3ZM110.8 921.5L107.9 927.7L104.9 927.2L108.9 920.4L110.8 921.5ZM137.8 850.6L139.2 854.0L142.5 849.1L156.6 858.4L142.6 849.3L139.9 853.4L142.2 853.3L148.9 859.9L158.0 864.2L166.5 871.5L167.1 868.3L175.0 864.3L179.2 867.2L176.7 871.1L178.2 872.7L177.0 871.0L179.6 868.4L179.0 865.3L171.2 857.0L179.0 864.8L179.9 869.3L178.8 872.3L175.6 876.8L175.2 880.9L179.0 891.1L186.1 901.9L187.7 913.1L185.9 926.6L181.7 933.7L179.1 930.0L178.3 922.7L181.4 920.4L181.9 917.0L177.8 913.4L169.9 910.7L167.7 924.3L169.7 910.5L167.9 910.0L165.9 903.5L166.5 896.3L165.1 895.4L162.8 901.1L157.4 897.3L157.0 901.2L151.7 900.3L150.2 902.2L144.5 897.5L142.0 897.8L156.7 908.8L160.3 918.3L158.4 919.2L153.3 915.8L152.6 918.1L149.6 925.1L146.8 927.8L153.3 915.8L150.9 908.0L150.2 911.3L143.6 914.8L140.9 908.7L133.6 908.6L132.3 915.6L128.4 922.5L129.2 927.1L124.6 932.4L120.6 924.7L112.3 921.3L111.9 913.6L118.3 914.0L120.8 911.1L117.3 906.2L110.2 905.3L109.7 901.6L112.1 901.2L112.1 897.7L129.1 894.7L123.4 890.2L124.8 879.0L121.8 869.1L116.0 862.9L114.8 857.8L108.8 855.7L108.4 852.6L104.2 850.1L115.9 855.2L119.8 854.8L121.1 857.2L118.8 858.0L120.3 860.7L123.9 860.1L134.5 849.1L130.7 842.6L134.9 846.6L153.5 832.8L154.2 829.9L161.0 828.9L135.0 846.8L140.3 848.4L137.8 850.6ZM171.6 938.2L172.4 936.1L173.3 936.3L171.6 938.2ZM162.2 905.8L159.9 904.9L161.3 903.2L162.2 905.8ZM170.2 858.1L173.7 860.6L174.0 862.1L170.2 858.1ZM158.5 859.0L169.6 854.3L170.5 857.4L167.4 855.5L158.5 859.0ZM341.6 774.3L347.9 776.0L351.8 789.7L345.4 800.4L344.4 807.4L336.2 815.6L336.1 820.9L339.3 823.9L342.5 822.6L345.7 825.4L359.5 822.0L362.4 825.0L361.3 826.4L365.0 827.4L364.5 835.9L374.9 834.5L376.4 839.9L381.3 844.6L376.8 847.9L372.9 858.8L364.0 848.6L354.9 848.0L347.4 856.1L339.8 853.4L336.3 858.0L329.3 856.5L329.2 863.8L322.2 864.4L316.1 868.5L312.8 865.4L311.9 860.9L305.3 858.2L303.6 852.0L297.3 845.7L297.6 842.4L289.8 841.1L284.6 845.0L264.2 847.1L245.7 839.9L244.9 841.7L240.3 840.0L239.6 837.7L230.0 833.6L244.3 815.2L250.5 819.4L251.9 811.9L259.5 805.5L267.4 803.7L276.3 808.1L281.0 803.6L279.6 797.6L283.1 793.5L284.0 794.9L294.0 793.0L302.7 784.2L308.3 787.4L319.1 785.1L324.2 789.7L330.5 787.6L341.6 774.3Z","x":288.1,"y":821.4},{"n":"안성","north":0,"d":"M605.8 967.0L605.5 971.7L608.7 975.1L607.5 977.0L608.7 982.6L618.5 985.0L627.4 1002.3L632.4 1007.4L645.2 995.3L656.3 1008.5L662.0 1011.8L666.9 1005.6L676.5 1007.1L679.1 1011.1L680.7 1007.8L688.1 1005.3L690.7 1007.1L694.1 1016.1L699.9 1017.5L705.3 1021.6L705.8 1015.5L711.2 1012.1L709.1 1006.7L711.3 1002.0L708.6 998.7L703.7 998.2L703.4 995.4L709.1 989.7L713.1 980.2L712.2 976.2L713.5 972.0L717.1 970.2L723.3 970.7L727.1 973.4L734.6 986.1L761.7 991.7L765.5 1004.0L768.6 1007.1L772.2 1007.3L773.6 1010.4L770.9 1013.5L773.1 1017.8L774.2 1027.9L771.8 1036.1L767.7 1038.2L768.4 1041.2L769.7 1040.9L767.0 1045.1L751.6 1051.9L741.3 1052.0L741.4 1054.7L733.6 1061.7L735.5 1065.2L733.6 1072.1L735.5 1076.4L734.6 1080.3L729.5 1081.3L726.9 1088.5L722.6 1087.5L719.7 1093.1L714.5 1096.0L709.3 1094.5L705.0 1097.9L690.1 1100.1L684.6 1111.9L692.6 1119.6L695.9 1125.6L693.1 1128.2L686.2 1128.3L684.5 1132.5L680.3 1134.0L678.3 1141.9L666.0 1142.7L663.5 1138.4L660.5 1138.3L654.4 1146.6L645.0 1152.8L637.8 1153.8L632.9 1158.4L623.8 1156.8L629.0 1169.5L624.9 1180.2L618.6 1188.9L612.6 1183.1L612.3 1178.2L608.6 1173.8L598.5 1170.0L594.8 1164.4L588.6 1168.5L584.3 1166.0L583.4 1163.3L577.9 1162.6L572.5 1157.5L565.7 1157.4L566.5 1151.2L562.9 1146.8L563.3 1144.0L561.1 1140.3L545.3 1135.0L543.8 1130.0L535.1 1130.7L528.2 1128.4L527.6 1126.8L530.8 1123.8L520.7 1122.6L510.7 1126.7L504.9 1125.0L504.3 1123.3L507.2 1117.7L518.5 1115.9L512.9 1108.4L516.3 1103.1L527.4 1099.7L525.5 1094.4L521.1 1089.9L520.8 1086.6L521.4 1083.4L526.2 1079.5L526.4 1074.0L520.4 1069.9L505.6 1067.7L502.0 1074.7L499.4 1074.8L494.4 1066.9L509.3 1052.4L511.1 1047.5L507.5 1042.4L503.4 1044.7L499.8 1042.1L494.6 1042.1L491.9 1039.0L493.0 1032.8L507.4 1031.0L508.5 1027.8L506.5 1019.7L514.3 1018.9L519.5 1022.6L521.1 1019.8L527.6 1019.6L535.5 1023.9L542.5 1022.7L549.0 1026.2L555.2 1021.3L557.5 1015.1L564.3 1008.4L564.3 1002.7L574.5 1001.1L583.5 994.0L593.2 992.3L595.3 979.6L593.1 973.2L596.3 968.2L602.3 964.4L605.8 967.0Z","x":630.7,"y":1078.0},{"n":"안양","north":0,"d":"M397.8 720.0L395.8 732.6L396.8 737.0L404.5 742.0L407.9 750.4L407.0 752.3L410.7 754.5L408.6 758.1L409.9 760.1L404.8 764.5L403.4 772.0L398.5 779.5L399.4 787.3L396.6 788.0L393.1 784.1L388.7 782.8L385.6 778.2L386.0 775.7L381.9 773.3L381.5 775.6L366.9 774.7L362.7 777.7L358.7 787.9L351.8 789.7L347.9 776.0L341.6 774.3L338.4 760.6L339.1 750.6L334.1 748.9L334.7 744.0L340.1 747.2L346.8 745.1L346.8 738.7L351.9 733.4L350.4 730.0L353.0 728.1L353.6 721.8L356.3 725.7L360.7 725.9L362.7 721.9L367.0 720.7L373.6 711.9L381.7 724.3L397.8 720.0ZM382.1 761.7L382.1 761.7L382.2 761.7L382.1 761.7ZM372.8 744.5L373.0 744.6L372.3 744.2L372.8 744.5ZM373.9 744.1L374.1 743.6L373.4 744.4L373.9 744.1ZM378.6 742.4L380.4 742.6L375.5 742.1L378.6 742.4ZM381.8 739.8L382.1 739.5L381.7 740.2L381.8 739.8ZM386.9 736.8L386.9 736.8L386.5 736.6L386.9 736.8ZM387.3 736.2L387.5 735.7L387.5 735.7L387.3 736.2ZM386.7 732.5L386.7 732.5L386.7 732.5L386.7 732.5Z","x":365.2,"y":745.5},{"n":"양주","north":1,"d":"M407.6 293.9L413.0 293.2L420.0 297.5L423.3 295.4L423.2 297.6L429.0 302.1L428.7 304.8L431.6 308.4L426.6 313.2L429.5 318.0L429.6 322.1L437.0 327.4L453.2 330.2L455.2 340.7L463.6 352.6L482.6 350.1L495.5 358.4L500.6 369.1L502.2 382.4L505.4 387.8L504.2 397.3L505.5 401.7L502.3 407.3L502.6 415.5L492.5 430.5L484.2 432.6L463.5 444.5L457.3 445.4L450.9 440.6L434.3 438.7L428.2 444.3L423.8 444.1L424.1 450.5L426.9 456.9L424.1 459.5L424.0 462.8L430.7 475.4L429.5 479.0L431.5 482.0L430.7 486.0L434.8 493.3L429.0 500.6L428.3 511.1L425.5 510.5L416.1 515.0L399.1 504.9L391.8 503.7L389.3 508.0L385.1 509.9L383.5 521.8L361.9 524.6L358.0 519.0L360.3 520.2L363.0 518.3L364.7 507.9L371.6 490.3L369.0 486.4L371.2 480.4L369.0 471.8L375.5 465.5L375.0 459.9L376.8 458.4L374.1 456.2L376.0 451.8L373.3 448.9L377.0 439.7L377.8 427.5L380.1 423.2L376.1 421.4L372.3 424.7L367.0 420.4L356.7 420.0L358.4 410.0L362.4 407.7L360.1 402.2L361.1 397.7L355.6 390.7L361.8 387.5L362.7 377.3L370.7 376.5L373.2 379.7L379.3 376.6L377.2 372.5L381.1 366.9L380.5 364.8L385.8 353.9L384.5 351.4L386.6 339.6L385.2 335.9L387.1 329.0L385.5 325.5L391.6 316.6L388.0 310.5L396.3 308.2L398.5 301.7L398.4 293.3L403.7 290.2L407.6 293.9Z","x":432.3,"y":407.5},{"n":"양평","north":0,"d":"M675.4 542.6L681.2 539.2L693.5 539.5L699.8 532.4L711.9 527.3L714.0 522.8L723.1 532.3L718.6 537.4L722.8 543.5L722.4 545.7L732.4 548.4L734.6 558.4L737.3 562.0L741.5 562.2L743.2 564.6L744.7 577.2L742.3 589.9L742.8 600.6L761.0 608.2L770.6 603.6L777.9 595.2L789.5 596.6L799.3 594.9L803.7 597.6L804.9 594.0L803.4 588.1L805.8 584.0L805.6 579.5L810.3 576.3L810.9 572.0L803.6 563.9L803.9 557.9L807.0 555.1L817.9 554.8L819.8 553.0L820.7 547.2L830.2 543.3L832.5 539.3L837.2 540.7L839.7 544.0L842.5 543.5L846.0 547.4L849.6 546.8L857.9 555.5L863.0 555.4L866.1 563.8L874.5 563.1L877.0 568.7L893.5 582.3L896.6 582.8L899.7 586.8L897.9 591.3L904.5 595.2L914.9 591.5L929.6 593.9L936.0 590.3L938.6 594.8L940.9 594.1L944.5 598.3L956.7 602.2L963.2 596.1L970.1 601.4L970.6 604.9L973.8 606.2L976.9 614.2L994.2 618.4L1000.0 624.4L995.9 635.9L973.8 636.8L971.5 639.3L971.7 642.5L964.8 644.7L964.4 648.5L957.4 657.8L954.4 658.0L948.0 664.8L939.9 666.4L940.0 675.3L950.0 676.3L951.0 679.0L953.8 678.9L956.9 687.5L967.9 694.9L964.7 700.9L966.8 710.6L966.2 718.4L970.0 730.2L963.6 734.1L955.2 761.4L956.4 764.5L951.4 769.2L950.8 773.0L952.9 780.0L942.0 780.7L937.8 783.2L934.7 781.1L930.3 781.6L919.5 775.3L916.8 778.7L910.3 780.6L900.6 778.1L899.3 772.7L901.3 771.5L901.8 762.5L909.3 754.9L908.8 750.7L904.7 746.1L888.2 756.5L890.9 744.8L887.9 742.7L877.9 744.5L870.7 740.5L866.7 748.1L862.3 750.9L855.1 743.4L848.9 743.8L844.6 746.6L843.1 743.1L831.9 736.9L826.8 737.6L824.5 735.9L822.4 736.8L823.1 740.1L820.5 743.0L819.5 740.4L811.9 744.9L801.3 740.6L797.1 745.2L792.4 746.5L787.9 744.9L781.9 728.6L767.6 720.3L760.8 727.3L754.1 726.5L749.2 734.3L744.7 735.8L741.1 732.3L710.4 721.1L705.0 727.4L699.8 729.1L694.2 736.3L684.2 725.1L682.9 717.9L676.0 716.4L676.1 710.5L673.8 706.2L684.9 703.5L687.2 690.3L681.5 677.7L685.0 670.7L670.3 643.0L660.5 638.5L644.7 638.6L632.8 646.0L632.9 652.0L631.3 652.5L630.8 650.5L633.8 634.6L645.8 613.4L655.0 590.0L657.6 572.3L660.9 562.4L666.3 554.1L672.6 548.7L675.4 542.6Z","x":818.1,"y":655.1},{"n":"여주","north":0,"d":"M780.2 726.8L784.3 732.7L787.9 744.9L792.4 746.5L797.1 745.2L801.3 740.6L811.9 744.9L819.5 740.4L820.5 743.0L823.1 740.1L822.4 736.8L824.5 735.9L826.8 737.6L831.9 736.9L843.1 743.1L844.6 746.6L848.9 743.8L855.1 743.4L862.3 750.9L866.7 748.1L870.7 740.5L877.9 744.5L887.9 742.7L890.9 744.8L888.2 756.5L904.7 746.1L908.8 750.7L909.3 754.9L901.8 762.5L901.3 771.5L899.3 772.7L900.6 778.1L910.3 780.6L916.8 778.7L919.5 775.3L930.3 781.6L939.7 783.2L940.5 795.5L938.6 800.9L941.9 811.2L939.3 813.9L945.7 834.9L943.8 839.4L941.5 838.8L933.1 843.1L933.2 847.6L936.2 851.2L940.3 863.9L938.4 876.5L931.1 892.1L932.5 910.7L923.2 919.5L917.1 941.4L910.7 940.6L903.8 951.8L902.1 962.7L895.7 968.7L896.1 977.5L891.4 981.7L878.9 981.2L871.9 977.9L862.9 968.3L851.4 965.7L850.3 964.7L853.5 959.0L851.8 956.2L842.0 957.8L839.8 949.2L830.5 940.9L828.1 935.1L822.6 937.5L816.1 935.5L813.2 937.4L812.3 939.7L815.9 946.7L811.2 952.0L808.4 947.0L803.2 942.9L802.3 945.8L798.9 947.5L781.9 949.7L778.7 943.2L774.6 941.5L784.1 927.4L784.4 919.4L780.7 902.7L780.3 892.7L787.4 887.7L788.4 881.6L785.0 877.1L782.6 862.9L787.0 849.7L791.8 845.6L794.4 839.5L794.2 831.1L782.1 826.0L780.0 820.1L782.0 817.0L777.1 815.1L772.4 807.1L764.3 807.9L755.9 804.1L752.9 798.0L742.8 787.8L728.0 795.6L723.8 790.6L726.1 786.8L724.6 781.3L725.2 767.3L723.7 765.8L708.6 766.2L704.9 760.3L702.4 749.2L693.6 741.5L699.8 729.1L705.0 727.4L710.4 721.1L741.1 732.3L744.7 735.8L749.2 734.3L754.1 726.5L760.8 727.3L767.6 720.3L780.2 726.8Z","x":861.2,"y":850.5},{"n":"연천","north":1,"d":"M474.0 2.2L493.0 0.0L491.5 5.9L497.8 8.2L496.0 10.4L496.0 19.1L498.4 28.5L497.3 33.2L499.8 37.5L506.2 41.0L511.7 41.0L523.8 32.8L533.6 36.1L531.2 52.3L539.0 57.5L541.7 64.4L538.0 71.1L545.4 81.0L541.3 85.9L539.9 94.9L543.0 109.8L540.2 119.5L541.8 130.4L539.1 136.1L545.4 139.1L546.7 141.9L547.8 162.0L553.2 169.1L551.0 185.2L540.1 183.7L535.7 187.7L529.2 186.3L523.8 191.0L522.1 188.5L522.9 181.0L519.4 178.0L516.7 180.4L516.5 183.6L509.8 188.9L501.2 188.9L498.6 196.7L502.8 203.2L500.8 206.9L516.0 207.9L514.5 215.2L517.4 222.5L522.3 228.1L521.5 241.0L522.7 243.3L520.6 247.3L514.3 249.5L504.3 258.6L502.4 253.2L498.8 250.2L491.1 249.8L488.4 253.2L483.6 254.9L485.6 262.4L484.5 264.9L477.5 260.8L467.4 261.8L465.8 261.1L466.1 258.4L458.7 257.1L453.0 263.6L450.9 274.8L442.0 278.4L440.2 290.9L433.9 294.8L431.7 300.7L429.0 302.1L423.2 297.6L423.0 295.1L418.4 297.2L413.0 293.2L407.6 293.9L403.7 290.2L406.3 288.1L406.9 282.1L414.6 277.9L416.2 268.3L423.6 267.7L424.3 263.3L429.6 261.7L430.6 255.5L434.1 251.7L432.5 246.8L422.7 243.6L415.0 233.9L415.2 231.5L403.5 234.1L391.9 249.5L380.3 257.0L360.9 250.6L360.9 248.1L357.0 245.4L351.3 244.9L349.1 247.5L349.0 253.7L351.2 266.5L345.4 269.5L336.5 266.1L322.2 252.6L318.3 252.5L313.5 258.6L310.6 274.7L310.6 271.6L308.5 271.4L300.3 277.0L297.7 274.0L299.0 271.3L297.3 269.0L291.0 265.0L293.5 262.7L288.1 255.4L286.7 247.6L283.7 246.0L277.2 250.8L277.2 245.9L279.4 241.5L293.8 241.0L299.7 236.2L302.0 233.0L300.4 230.6L301.5 227.6L304.0 225.3L303.0 223.2L303.9 219.8L306.2 219.8L303.7 223.6L305.1 223.8L313.9 212.3L323.9 213.0L321.9 210.5L323.5 205.9L322.1 203.6L322.0 195.0L325.9 194.3L325.8 187.6L331.1 182.2L333.6 173.9L327.2 166.9L326.4 161.8L329.3 159.6L324.4 155.1L328.7 147.7L342.5 141.2L346.8 130.1L355.7 125.6L357.5 122.3L365.9 123.3L373.3 131.4L375.6 131.0L376.3 127.7L381.7 125.7L393.5 125.1L395.7 123.9L395.7 120.8L399.5 122.8L401.6 117.6L400.6 114.1L389.1 105.0L388.0 101.4L390.4 98.9L389.7 101.4L391.1 101.4L399.0 93.9L398.7 88.9L401.3 84.6L398.5 78.8L399.6 70.0L405.3 69.6L405.0 65.2L408.5 64.7L411.3 60.0L408.0 50.1L410.0 45.6L415.0 47.3L416.7 43.8L425.6 50.6L426.5 47.3L429.4 45.6L431.9 37.4L438.4 33.4L436.3 29.8L441.6 30.5L447.3 26.4L450.9 18.4L459.7 18.7L463.5 15.0L467.5 14.5L474.5 7.2L474.0 2.2Z","x":436.9,"y":151.4},{"n":"오산","north":0,"d":"M441.3 925.9L456.5 929.8L466.3 927.2L467.9 934.0L467.0 939.0L471.3 940.8L471.0 953.6L474.0 958.4L486.3 961.4L489.2 964.4L492.6 974.5L488.9 980.6L482.2 982.3L484.5 985.4L483.0 988.2L476.9 989.9L476.3 988.0L472.1 990.4L469.3 988.1L467.9 989.2L467.7 985.4L460.3 983.3L452.7 989.6L444.3 977.2L441.3 966.8L442.9 962.0L439.6 956.6L426.4 953.1L419.0 947.6L421.9 943.0L422.5 945.8L425.6 943.1L424.1 941.2L429.1 937.2L428.1 932.2L441.3 925.9Z","x":456.8,"y":957.5},{"n":"용인","north":0,"d":"M584.3 789.2L587.4 794.7L590.8 793.0L600.0 799.0L602.8 804.2L615.2 802.0L615.4 807.9L612.7 815.0L615.2 827.1L611.2 833.4L614.1 842.7L611.5 849.2L614.3 859.6L610.3 862.7L612.6 866.6L621.3 865.0L625.6 870.7L628.2 869.7L629.5 865.7L639.6 862.5L647.1 866.1L653.3 866.0L654.6 870.8L651.2 877.0L652.7 881.6L648.8 885.1L647.8 889.4L650.5 893.2L647.4 908.9L652.3 912.0L655.2 919.2L660.6 923.3L668.4 926.2L674.3 922.7L680.2 930.5L676.1 935.3L675.9 938.6L695.9 943.6L701.2 940.3L702.8 941.6L703.8 949.6L701.4 956.9L703.0 965.0L706.2 968.0L711.3 967.9L713.7 972.3L711.1 985.4L703.4 995.4L703.7 998.2L708.6 998.7L711.3 1002.0L709.1 1006.7L711.2 1012.1L705.8 1015.5L705.3 1021.6L699.9 1017.5L694.1 1016.1L690.7 1007.1L688.1 1005.3L680.7 1007.8L679.1 1011.1L676.5 1007.1L666.9 1005.6L662.0 1011.8L656.3 1008.5L645.2 995.3L633.9 1007.6L632.1 1007.2L627.4 1002.3L618.5 985.0L608.7 982.6L607.5 977.0L608.7 975.1L605.5 971.7L605.5 965.6L602.3 964.4L596.3 968.2L593.1 973.2L595.3 979.6L593.2 992.3L583.5 994.0L574.5 1001.1L564.3 1002.7L564.3 1008.4L557.5 1015.1L555.2 1021.3L549.0 1026.2L542.5 1022.7L535.5 1023.9L527.6 1019.6L521.1 1019.8L519.5 1022.6L514.3 1018.9L506.2 1020.3L496.8 992.2L500.7 986.6L504.6 986.7L504.9 976.5L509.8 972.4L510.9 968.3L509.8 959.8L513.7 956.3L513.0 953.0L523.7 952.2L531.8 943.7L532.0 934.7L525.9 927.1L529.5 920.1L525.6 914.1L525.0 909.3L515.5 913.1L502.5 909.2L482.5 912.2L475.8 907.0L473.2 902.3L469.3 900.8L467.0 888.9L478.0 884.6L480.1 878.0L477.4 875.0L481.1 870.8L480.2 866.5L475.1 870.1L474.0 873.9L473.3 869.7L466.5 866.0L471.0 857.3L483.2 851.9L483.4 842.2L478.8 842.7L476.2 846.4L463.4 843.6L463.8 837.6L462.0 836.6L463.7 831.3L461.7 827.3L456.3 827.1L449.4 822.7L448.3 816.4L443.9 809.1L445.1 802.5L434.8 797.0L433.7 791.2L438.8 785.6L441.4 779.0L452.5 781.7L458.3 786.0L459.4 789.1L470.5 791.0L475.6 798.1L480.9 796.4L489.1 803.9L491.8 803.8L493.7 808.0L502.0 812.1L506.0 808.9L514.9 806.7L520.7 809.2L533.6 803.5L544.2 803.7L553.0 800.2L557.4 805.4L556.8 811.9L559.9 816.4L564.3 814.3L571.8 800.8L573.8 800.9L570.3 793.2L574.0 794.0L584.3 789.2Z","x":561.4,"y":904.6},{"n":"의왕","north":0,"d":"M451.1 741.6L454.4 745.2L451.2 748.7L451.9 751.6L447.7 753.8L448.6 763.1L441.6 772.8L441.4 781.2L434.5 789.5L434.8 797.0L432.1 798.3L428.5 807.0L422.9 807.6L410.8 817.8L402.9 813.4L400.3 819.4L401.3 823.4L399.4 834.0L396.5 838.6L383.2 840.4L375.7 837.3L374.9 834.5L376.7 833.5L374.3 826.3L378.7 821.1L385.1 823.4L387.0 817.7L387.2 806.1L393.6 802.6L396.0 796.7L396.6 788.0L399.4 787.3L398.6 779.4L403.4 772.0L404.8 764.5L409.9 760.1L408.6 758.1L412.7 749.2L415.6 747.9L422.2 751.0L431.5 743.0L441.4 744.7L451.1 741.6Z","x":433.4,"y":807.1},{"n":"의정부","north":1,"d":"M501.4 433.9L509.2 436.5L510.3 440.2L508.1 443.2L513.5 444.5L517.5 442.9L522.7 453.2L519.0 456.8L515.3 455.3L510.0 456.5L506.6 464.4L508.1 474.2L505.0 478.8L498.4 483.0L496.2 490.7L487.1 495.4L479.6 496.1L477.0 498.2L477.6 501.1L471.9 503.1L465.1 502.3L457.7 509.9L455.5 502.8L453.1 504.3L450.4 501.8L444.5 504.7L441.3 496.9L432.9 496.5L434.8 493.3L430.7 486.0L431.5 482.0L429.5 479.0L430.7 475.4L424.0 462.8L424.1 459.5L426.9 456.9L424.1 450.5L423.8 444.1L428.2 444.3L434.3 438.7L450.9 440.6L457.3 445.4L463.5 444.5L479.9 434.7L494.4 428.9L500.8 431.7L501.4 433.9Z","x":467.4,"y":469.3},{"n":"이천","north":0,"d":"M742.8 787.8L752.9 798.0L755.9 804.1L764.3 807.9L772.4 807.1L777.1 815.1L782.0 817.0L780.0 820.1L782.1 826.0L794.3 831.5L794.4 839.5L791.8 845.6L787.0 849.7L782.6 862.9L785.0 877.1L788.4 881.6L787.4 887.7L780.3 892.7L780.7 902.7L784.4 919.4L784.1 927.4L774.6 941.5L778.7 943.2L781.9 949.7L798.9 947.5L802.3 945.8L803.2 942.9L808.4 947.0L811.2 952.0L815.9 946.7L812.3 939.7L813.2 937.4L816.1 935.5L822.6 937.5L828.1 935.1L830.5 940.9L839.8 949.2L841.4 957.3L844.3 958.8L850.3 955.6L853.5 959.0L849.6 967.3L856.8 976.8L853.6 994.9L855.7 1000.2L854.4 1013.0L839.2 1023.1L827.7 1022.4L830.7 1024.3L834.4 1032.6L834.3 1038.9L828.5 1034.7L816.0 1033.3L807.2 1045.9L810.3 1056.6L801.7 1062.5L790.9 1054.4L775.4 1047.8L771.5 1049.6L769.0 1055.5L766.1 1056.6L760.7 1056.6L754.9 1052.1L754.9 1050.4L767.0 1045.1L769.7 1040.9L768.4 1041.2L767.7 1038.2L771.8 1036.1L774.2 1027.9L773.1 1017.8L770.9 1013.5L773.5 1009.6L765.5 1004.0L762.2 992.3L734.6 986.1L727.1 973.4L723.6 970.8L716.9 970.2L713.5 972.0L711.3 967.9L704.7 967.4L701.7 959.9L703.8 949.6L702.2 940.8L695.9 943.6L675.9 938.6L676.1 935.3L680.2 930.5L674.3 922.7L668.4 926.2L660.6 923.3L655.2 919.2L652.3 912.0L647.4 908.9L650.5 893.2L647.8 889.4L648.8 885.1L652.7 881.6L651.7 874.0L654.6 870.8L653.1 865.8L660.2 860.4L654.0 850.9L656.0 848.2L659.8 849.1L665.5 845.5L663.8 839.4L666.1 835.7L670.9 833.3L669.9 827.0L674.3 827.7L678.4 823.0L688.7 823.7L694.9 817.2L698.3 817.3L723.8 790.6L728.6 795.6L742.8 787.8Z","x":730.0,"y":924.8},{"n":"파주","north":1,"d":"M415.6 234.5L425.1 245.5L433.0 247.1L434.0 252.0L430.6 255.5L429.6 261.7L425.2 262.0L423.6 267.7L416.2 268.3L414.6 277.9L406.9 282.1L406.3 288.1L398.4 293.3L398.5 301.7L396.3 308.2L388.0 310.5L391.6 316.6L385.5 325.5L387.1 329.0L385.2 335.9L386.6 339.6L384.5 351.4L385.8 353.9L380.5 364.8L381.1 366.9L377.2 372.5L379.3 376.6L373.2 379.7L370.7 376.5L362.7 377.3L361.8 387.5L355.6 390.7L361.1 397.7L360.1 402.2L362.4 407.7L358.4 410.0L356.7 420.0L367.0 420.4L372.3 424.7L376.1 421.4L380.1 423.2L377.8 427.5L377.0 439.7L373.3 448.9L376.0 451.8L374.1 456.2L361.8 457.8L354.9 465.8L356.1 473.2L346.5 478.1L336.4 475.5L335.1 472.3L332.4 473.1L330.4 469.8L324.0 467.4L314.6 470.6L311.5 474.1L308.0 473.2L295.5 477.6L287.1 472.5L285.4 466.4L282.1 468.1L283.3 471.8L282.0 475.3L272.1 482.9L268.9 487.8L268.1 494.4L263.7 491.6L258.9 494.9L235.4 493.8L229.2 497.6L218.6 500.4L211.2 507.5L206.4 501.2L200.3 497.5L204.7 470.6L201.4 452.4L194.3 438.3L192.6 428.5L198.6 382.2L190.4 377.5L191.5 374.6L204.2 372.6L204.4 367.7L212.7 353.3L206.8 348.5L204.5 351.7L199.4 351.9L201.2 348.2L199.0 345.1L205.9 343.6L203.6 342.1L204.3 339.4L199.4 341.5L200.7 338.3L197.7 336.6L202.7 328.2L202.3 319.7L206.4 315.3L205.8 313.6L199.3 314.1L194.9 309.9L195.8 297.0L199.1 292.3L197.1 290.5L199.0 284.9L198.3 279.0L202.0 280.2L205.3 276.5L209.4 277.2L212.8 269.6L217.9 266.7L220.6 262.1L224.1 261.9L224.5 265.8L226.5 267.8L229.4 267.2L231.3 270.6L237.0 267.4L243.2 269.7L245.4 263.8L248.5 263.0L253.3 257.2L260.6 253.7L267.9 259.1L269.4 257.3L267.4 254.4L275.0 256.2L283.7 246.0L286.7 247.6L288.1 255.4L293.5 262.7L291.0 265.0L297.3 269.0L299.0 271.3L297.7 274.0L300.3 277.0L308.5 271.4L310.6 271.6L310.6 274.7L313.5 258.6L319.6 252.0L325.6 255.3L336.5 266.1L345.4 269.5L351.2 266.5L349.0 253.7L349.1 247.5L351.3 244.9L357.0 245.4L360.9 248.1L360.9 250.6L380.3 257.0L391.9 249.5L403.5 234.1L415.2 231.5L415.6 234.5Z","x":291.6,"y":370.1},{"n":"평택","north":0,"d":"M311.8 1141.8L313.8 1146.1L308.1 1148.0L306.0 1142.8L311.8 1141.8ZM506.1 975.1L504.5 978.0L504.6 986.7L500.7 986.6L496.8 992.2L508.5 1027.8L504.7 1032.4L493.0 1032.8L491.9 1039.0L494.6 1042.1L499.8 1042.1L503.4 1044.7L507.5 1042.4L511.1 1047.5L509.3 1052.4L497.2 1062.8L494.3 1067.7L499.4 1074.8L502.0 1074.7L505.6 1067.7L520.4 1069.9L526.2 1073.5L526.2 1079.5L521.4 1083.4L520.8 1086.6L521.1 1089.9L525.5 1094.4L527.4 1099.7L520.9 1100.3L516.3 1103.1L512.9 1108.4L518.5 1115.9L507.2 1117.7L504.3 1123.3L498.4 1122.5L488.6 1132.1L488.1 1135.9L492.6 1138.1L488.5 1142.5L487.6 1147.3L481.1 1142.7L472.9 1150.5L467.0 1147.7L443.5 1159.5L440.0 1159.0L433.0 1153.3L422.9 1154.8L419.1 1153.3L404.5 1161.4L381.3 1168.7L360.9 1182.2L359.2 1173.0L356.7 1170.4L356.8 1162.4L353.8 1158.0L345.5 1152.5L332.1 1155.1L328.8 1141.8L326.3 1140.1L322.9 1142.2L326.3 1147.5L322.9 1142.2L320.0 1143.8L317.0 1138.5L317.9 1136.6L315.1 1134.6L303.1 1113.0L305.4 1112.4L303.9 1109.9L300.4 1110.9L295.0 1108.7L300.2 1110.3L302.1 1105.4L294.4 1102.2L292.8 1107.8L289.0 1106.2L292.5 1101.4L289.0 1099.9L282.6 1100.0L281.4 1102.6L279.1 1102.4L271.8 1091.6L277.4 1086.8L309.6 1086.4L321.0 1082.1L338.9 1052.7L343.2 1040.4L352.3 1039.1L357.4 1035.0L358.1 1038.3L364.5 1041.6L373.7 1039.5L375.8 1044.2L381.6 1045.8L386.9 1044.9L387.7 1038.9L398.3 1039.7L401.4 1035.1L405.8 1037.3L419.8 1038.1L420.3 1036.0L415.9 1032.0L419.9 1030.4L415.9 1022.9L422.5 1024.3L419.3 1020.8L421.3 1017.2L421.2 1006.6L419.2 1004.3L422.6 1002.9L419.3 1002.2L418.5 999.7L421.5 999.6L419.1 998.2L421.6 995.2L420.7 990.4L423.4 988.1L433.9 986.5L446.7 980.9L453.1 989.8L453.3 987.6L457.9 986.5L460.3 983.3L467.7 985.4L467.9 989.2L481.3 989.3L484.5 985.4L482.2 982.3L488.9 980.6L490.6 975.6L506.1 975.1Z","x":425.1,"y":1077.2},{"n":"포천","north":1,"d":"M551.3 79.2L549.0 91.5L551.3 102.3L560.6 109.0L573.6 122.7L574.8 114.5L582.1 114.4L585.4 106.3L596.9 100.7L598.7 95.2L602.5 93.3L603.9 85.9L615.5 83.8L618.7 88.9L625.2 89.4L624.1 92.7L619.2 95.3L617.9 102.2L615.9 103.8L617.5 109.7L616.0 114.7L609.6 123.3L610.3 134.1L613.6 133.0L617.4 142.3L630.1 141.4L633.2 139.2L638.2 156.2L640.8 159.4L646.3 159.6L651.9 163.6L653.8 153.7L659.5 150.7L671.6 148.9L680.3 139.0L683.8 141.8L697.2 143.7L698.6 152.3L704.0 153.1L710.2 149.0L715.9 141.7L717.6 145.4L722.4 147.3L725.6 157.0L726.9 171.3L725.1 176.4L726.7 179.5L725.1 190.6L726.7 194.1L721.3 205.2L711.6 211.9L713.0 218.5L708.3 225.6L703.6 242.4L698.4 248.8L684.5 255.7L684.5 261.6L679.0 273.5L680.8 276.4L678.9 280.7L684.7 286.0L684.3 289.2L665.2 308.2L660.7 307.9L657.6 303.7L652.8 306.5L647.3 304.4L647.1 312.3L644.9 316.4L646.9 318.3L644.7 324.3L646.1 331.4L642.0 337.2L642.3 344.6L643.8 345.9L642.3 350.8L639.8 350.8L635.3 355.6L630.8 353.2L624.0 353.0L621.4 347.8L618.5 352.7L613.4 364.3L617.2 371.0L612.4 375.8L609.3 386.4L612.6 398.0L612.1 408.0L607.0 416.6L608.4 420.6L605.0 425.4L605.1 427.8L601.0 432.0L599.4 439.2L585.1 443.7L575.7 451.9L574.0 448.2L567.4 445.0L566.5 438.3L564.0 440.0L563.5 443.0L559.8 441.8L556.4 444.9L546.9 442.5L539.9 448.3L540.1 454.8L534.0 457.5L523.4 449.6L520.7 449.7L517.5 442.9L513.5 444.5L508.1 443.2L510.3 440.2L509.2 436.5L501.4 433.9L500.8 431.7L494.4 428.9L494.6 426.4L499.2 422.2L502.6 415.5L502.3 407.3L505.5 401.7L504.2 397.3L505.4 387.8L502.2 382.4L500.6 369.1L496.5 360.2L498.4 356.4L506.3 354.6L509.8 348.6L522.4 346.7L528.0 330.1L524.1 327.9L521.5 316.0L511.0 312.0L505.2 312.1L496.4 292.3L487.4 288.3L490.0 280.9L485.3 275.9L486.5 269.0L484.5 264.9L485.6 262.4L483.6 254.9L488.4 253.2L491.1 249.8L498.3 250.1L502.4 253.2L504.3 258.6L514.3 249.5L520.6 247.3L522.7 243.3L521.5 241.0L522.3 228.1L517.4 222.5L514.5 215.2L516.0 207.9L500.5 206.4L502.8 203.2L498.6 196.7L501.2 188.9L509.8 188.9L516.5 183.6L516.7 180.4L519.4 178.0L522.9 181.0L522.1 188.5L523.8 191.0L529.2 186.3L535.7 187.7L540.1 183.7L551.0 185.2L553.2 169.1L547.8 162.0L546.7 141.9L545.4 139.1L539.1 136.1L541.8 130.4L540.2 119.5L543.0 109.8L539.9 94.9L541.3 85.9L545.4 81.0L551.3 79.2Z","x":583.8,"y":266.9},{"n":"하남","north":0,"d":"M548.6 590.6L560.1 592.8L567.8 603.4L572.1 606.0L572.7 612.5L580.6 617.9L586.5 631.6L614.0 647.7L616.1 650.7L617.0 656.9L609.4 662.0L595.8 663.8L594.9 666.4L598.9 676.9L595.1 682.0L588.9 682.0L590.6 685.9L589.0 689.2L578.0 688.5L569.2 684.4L562.0 686.1L559.9 682.9L557.5 686.7L550.8 686.1L543.4 680.2L541.8 688.5L544.1 690.8L538.6 695.4L520.2 691.6L520.7 688.6L522.6 688.7L523.7 682.9L529.6 678.6L532.4 669.2L529.8 666.5L521.5 666.4L518.5 664.5L517.9 660.8L519.2 656.6L521.5 655.4L521.7 650.4L533.5 630.6L547.4 630.5L546.4 616.9L542.1 605.0L543.1 599.6L537.3 601.5L548.6 590.6Z","x":564.2,"y":639.6},{"n":"화성","north":0,"d":"M119.8 1046.6L118.2 1048.2L115.7 1052.6L119.5 1044.5L122.9 1044.7L119.8 1046.6ZM119.0 1039.3L118.1 1036.0L118.5 1035.5L119.5 1037.0L119.0 1039.3ZM107.9 1003.1L106.1 999.7L109.9 1002.9L110.4 1009.0L108.7 1013.3L107.9 1003.1ZM172.9 994.2L185.5 998.3L183.9 999.7L180.2 996.6L179.7 999.4L177.5 999.2L168.2 995.4L157.2 996.9L160.1 990.5L163.2 993.4L172.9 994.2ZM188.6 967.4L185.3 972.4L180.1 976.5L188.6 967.4ZM168.3 947.6L171.2 948.0L162.9 962.5L161.4 948.0L165.0 943.9L168.3 947.6ZM241.5 1065.1L242.8 1064.2L245.0 1064.0L247.0 1065.2L241.5 1065.1ZM235.9 1059.5L239.1 1058.2L239.7 1058.6L235.9 1059.5ZM248.9 1065.3L251.7 1055.8L256.7 1050.3L207.2 1001.7L205.1 997.3L200.5 997.4L207.7 995.7L206.1 988.3L201.5 979.3L204.2 975.1L195.0 975.8L191.0 979.6L195.0 975.7L205.0 974.2L208.3 969.2L215.5 968.4L212.1 963.1L206.1 960.3L197.5 964.1L183.9 965.3L191.6 958.1L186.5 942.7L188.8 943.6L187.7 943.8L188.8 946.8L190.9 946.6L197.6 935.6L195.2 933.7L190.8 934.3L186.0 941.0L183.8 940.5L187.3 934.6L184.4 934.0L191.4 908.5L190.4 901.5L182.6 888.7L183.2 883.0L181.6 876.6L186.0 870.7L186.6 866.9L172.3 851.8L181.6 859.1L189.2 855.4L191.8 848.1L182.6 847.0L172.6 850.2L170.0 853.6L172.4 850.0L183.1 846.7L192.0 847.1L192.0 859.6L197.0 861.0L201.1 856.4L207.3 857.0L204.5 862.2L199.0 863.7L204.3 877.4L209.3 873.7L215.6 873.9L228.8 879.1L235.4 878.1L241.3 884.1L249.0 879.2L257.1 880.2L257.4 884.5L261.5 884.3L262.4 887.7L264.0 885.1L268.4 885.1L269.8 887.1L270.1 895.1L274.6 900.9L277.1 898.2L271.4 892.7L271.4 887.1L279.1 888.6L278.2 879.1L281.7 875.6L279.8 868.9L283.7 865.8L292.2 869.5L293.8 868.4L289.0 860.5L289.4 846.1L299.3 848.8L304.9 860.1L310.4 860.8L313.5 867.3L316.8 869.1L315.5 870.7L317.1 875.1L320.0 877.5L319.4 873.5L321.2 871.3L320.1 869.8L325.3 864.1L330.3 864.3L337.0 861.4L337.5 860.4L329.7 864.0L329.2 856.6L336.3 858.0L339.8 853.4L347.4 856.1L354.9 848.0L364.0 848.6L373.7 860.6L372.7 865.2L375.3 874.2L378.7 877.7L388.4 878.6L392.6 886.3L393.5 892.1L400.5 896.6L402.9 901.5L414.0 897.1L420.4 901.3L421.6 904.3L424.7 900.5L437.3 905.4L438.3 900.0L442.8 898.9L446.0 895.1L450.4 885.7L449.1 894.5L450.6 896.0L453.7 898.3L457.6 897.0L458.3 899.6L468.0 892.0L469.3 900.8L473.2 902.3L475.8 907.0L482.5 912.2L502.5 909.2L515.5 913.1L525.0 909.3L525.6 914.1L529.5 920.1L525.9 927.1L532.0 934.7L531.8 943.7L523.7 952.2L513.0 953.0L513.7 956.3L509.8 959.8L510.9 968.3L509.4 973.2L493.5 976.4L487.0 961.9L474.0 958.4L471.0 953.6L471.3 940.8L467.0 939.0L467.9 934.0L466.3 927.2L454.1 929.8L441.3 925.9L427.8 932.4L429.1 937.3L424.1 941.2L425.9 942.5L424.1 945.0L421.7 945.5L421.9 943.0L419.0 947.6L426.4 953.1L439.6 956.6L442.8 961.7L441.3 966.8L446.7 980.9L420.7 990.4L421.6 995.2L419.1 998.2L421.5 999.5L418.5 999.8L419.3 1002.2L422.6 1003.3L419.2 1004.3L421.2 1006.6L421.3 1017.2L419.2 1020.6L422.6 1024.1L421.6 1025.4L419.6 1022.9L415.9 1023.2L419.8 1029.8L415.9 1032.0L420.4 1036.2L419.6 1038.2L401.4 1035.1L398.3 1039.7L387.7 1038.9L386.9 1044.9L381.8 1045.8L375.8 1044.2L373.7 1039.5L364.5 1041.6L358.1 1038.3L357.9 1034.9L352.3 1039.1L343.2 1040.4L338.9 1052.7L323.5 1079.3L314.9 1085.6L309.6 1086.4L284.6 1086.4L282.9 1075.9L279.1 1072.5L252.5 1072.4L251.3 1067.7L247.2 1065.3L248.9 1065.3ZM266.4 1042.7L261.1 1043.8L260.1 1039.5L262.0 1038.9L261.3 1030.0L266.3 1010.8L257.8 1002.3L259.2 996.8L270.2 984.5L274.4 982.2L277.5 986.8L282.8 987.5L283.5 982.7L287.1 979.3L294.2 978.6L297.5 975.0L291.7 973.7L289.3 967.2L286.3 965.9L280.1 969.4L273.8 967.3L282.5 962.9L284.7 958.7L282.8 950.7L280.9 949.4L283.5 945.0L284.3 935.6L286.6 929.7L284.7 932.6L282.6 942.2L275.2 952.4L272.6 952.3L270.9 956.2L250.2 954.2L250.0 959.3L246.4 966.7L239.1 969.8L239.7 972.5L236.4 978.9L227.9 986.0L222.3 984.9L219.0 988.8L221.4 992.3L216.8 995.4L216.6 992.9L213.6 993.1L211.3 998.4L207.2 999.6L256.4 1049.6L265.8 1046.4L266.4 1042.7ZM260.8 874.0L262.7 873.4L263.3 875.6L262.5 875.5L260.8 874.0ZM241.9 854.0L246.6 849.0L246.4 851.6L248.6 852.2L247.9 854.9L241.9 854.0Z","x":364.3,"y":966.3}]};
+
+/* ══════════ 3. 데이터 ══════════ */
+var CUES = [
+  ["14:05","총회 진행방식 안내",""],
+  ["14:10","활동 성과 회고","제5기 1년을 함께 돌아봅니다"],
+  ["14:20","논의 1 · 분과 운영방식","권역별과 의제별, 무엇을 보완할지 정합니다"],
+  ["14:40","논의 2 · 정책공감투표","제안부터 선정까지의 과정을 살펴봅니다"],
+  ["14:58","논의 3 · 참여기구 활성화","앞의 두 논의에 없던 이야기를 다룹니다"],
+  ["15:15","청년참여기구 명칭 공모 결과",""],
+  ["15:25","주민참여예산 청년참여형 선정결과 및 포상",""],
+  ["15:40","수료증 수여",""],
+  ["15:55","폐회",""]
+];
+var TIMELINE = [
+  ["2025. 9. 20.","제5기 발대식",1],["2025. 10. 18.~19.","워크숍",0],
+  ["2025. 11. 8.","사회공헌활동",0],["2025. 11. 20.","제1차 정책토론회",0],
+  ["2025. 12. 6.","제2차 정책토론회",0],["2025. 12. 20.","역량강화교육",0],
+  ["2026. 2. 21.","제1차 자문간담회",0],["2026. 3. 21.","제2차 자문간담회",0],
+  ["2026. 4. 27.~5. 13.","온라인 공론장 및 공감투표",1],["2026. 6. 11.","제3차 자문간담회",0],
+  ["2026. 6. 27.","청년정책 모니터링 워크숍",0],["2026. 7. 15.","모니터링 청년정책 설명회",0],
+  ["2026. 9. 12.","성과공유회 및 총회",1]
+];
+var MEETING = [12,12,12,12,5,12,12,12,12,12,11,11];
+var ATTEND  = [165,111,142,107,57,111,143,119,132,108,95,108];
+var PROPOSAL= [9,29,10,11,6,3,9,16,3,37,17,15];
+var BYTOPIC = [["일자리",25],["교육·직업훈련",20],["주거",13],["금융·복지·문화",67],
+               ["참여·권리",17],["기술혁신",8],["기후환경",17]];
+var DIVISIONS = ["1분과","2분과","3분과","4분과","5분과","6분과","7분과","8분과",
+                 "9분과","10분과","11분과","12분과","기타"];
+
+var FIX_REGION = [
+  ["권역 재편","이동시간을 기준으로 권역 단위를 다시 조정합니다"],
+  ["의제 소그룹","권역 안에서 관심 의제별 소그룹을 편성합니다"],
+  ["합동 회의","같은 의제를 다루는 권역끼리 합동 회차를 엽니다"],
+  ["공간 확보","시·군 청년센터 등 회의공간을 미리 확보합니다"]
+];
+var FIX_AGENDA = [
+  ["온라인 병행","비대면 회의를 정규 회차로 인정합니다"],
+  ["지역 균형","의제별로 나누되 권역 구성의 균형을 맞춥니다"],
+  ["개최지 순환","남·북부 순환 개최 원칙을 명문화합니다"],
+  ["준비 기간","제안 마감 전 관계 형성 기간을 확보합니다"]
+];
+var STAGES = [
+  ["제안 발굴·작성","제안 건수가 많아 전수 검토가 어렵습니다"],
+  ["분과 내 검토·보완","1차 선별 절차가 없고, 분과원 간 피드백의 실효도 제한적입니다"],
+  ["온라인 공론·숙의","제안자 설명 절차가 없고 댓글 숙의도 늦게 활성화됩니다"],
+  ["정책공감투표","공동제안 기저표와 득표 노출, 온라인 단독 운영이 지적되었습니다"],
+  ["선정과 사후 처리","선정 기준과 외부 검토, 미선정 제안의 사후 경로가 불분명합니다"]
+];
+var WAYS = [
+  ["분과 내 1차 선별","분과 안에서 먼저 몇 건으로 추린 뒤 상정합니다"],
+  ["단계별 압축","토너먼트·단계별 투표로 후보를 좁힙니다"],
+  ["제안자 발표","제안자가 발표·PT 등으로 직접 설명할 자리를 만듭니다"],
+  ["오프라인 공론장","현장에서 설명을 듣고 숙의하는 자리를 병행합니다"],
+  ["이해관계 보완","소속 분과 정책에 대한 투표를 제한합니다"],
+  ["투표 화면 개선","득표 수를 가리고 공감과 투표 기능을 구분합니다"],
+  ["온·오프 병행","공식행사와 연계한 현장투표를 함께 운영합니다"],
+  ["전문가 검토 반영","위원 투표에 전문가·실무자 검토를 더합니다"],
+  ["청년 투표 비중 확대","선정에서 위원 투표가 차지하는 비중을 높입니다"]
+];
+var TOPICS = [
+  ["A","활동 경험 측면",["이동 시간·거리, 개인 일정 조율 부담","평일·주말 참여 곤란",
+    "남·북부 순환 등 개최지 균형","기대한 활동내용과 실제 활동의 차이",
+    "활동 중 동기 저하, 실질 보상 유지"]],
+  ["B","관계·소통 측면",["신규 위원의 초기 진입과 관계 형성","단체대화방 운영 및 토론 문화 기준",
+    "부적절 언행의 관리·조정 기준","이전 기수 경험과 논의 맥락의 인계"]],
+  ["C","운영·지원 측면",["회의 진행이 분과장 역량에 의존","회차별 목표·산출물 등 가이드 부재",
+    "역량강화 교육 및 전문가 자문","시·군 청년센터 등 공간 확보",
+    "활동 개시부터 제안 마감까지의 기간"]],
+  ["D","대외·확장 측면",["타 시·도 청년참여기구와의 교류","시·군 청년센터와의 네트워킹",
+    "모니터링 등 외부 연계활동","사회공헌 활동의 지속 여부"]]
+];
+function topicEtcVal(code){ return "기타 · " + code; }
+function allTopicKeys(){
+  var o=[]; TOPICS.forEach(function(g){ o=o.concat(g[2]); o.push(topicEtcVal(g[0])); }); return o;
+}
+var ETC = ["기타","목록에 없다면 직접 적어 주세요"];
+var CKIND = [["개선 제안","이렇게 바꾸면 좋겠다"],["동의","같은 생각이다"],
+             ["다른 의견","다르게 본다"],["질문","확인하고 싶다"]];
+var CTARGET = [["논의 1","분과 운영방식"],["논의 2","정책공감투표"],["논의 3","참여기구 활성화"],["전체","총회 전반"]];
+var SCREENS = [
+  ["대기 화면", [["idle",0,"참여 안내"]]],
+  ["논의 1", [["d1",0,"선택된 시·군"],["d1",1,"권역안"],["d1",2,"개선 방향"],["d1",3,"묶은 이유"]]],
+  ["논의 2", [["d2",0,"흐름 단계"],["d2",1,"방식과 의견"]]],
+  ["논의 3", [["d3",0,"영역별 항목"],["d3",1,"상위 항목과 의견"]]],
+  ["의견 나누기", [["talk",0,"공감 많은 의견"]]]
+];
+var GC = ["#0E5AA7","#0E7C74","#6B4FBF","#B5761A","#A93C5E"];
+var ZC = ["#0E5AA7","#0E7C74","#6B4FBF","#B5761A","#A93C5E","#2E8BD5","#4B7A2B","#8A4B8F"];
+
+/* ══════════ 4. 저장 ══════════ */
+/* 새로 들어온 응답만 받아오므로, 사람이 많아도 요청 하나가 작습니다. */
+var MEM = [], MEMSTATE = {cue:0, open:{d1:1,d2:1,d3:1}, reveal:{name:0,award:0}, notice:"",
+  screen:{v:"idle",p:0}, follow:0, show:1, reset:"", pin:"", roster:[]};
+var CACHE = [], LASTID = 0, NETFAIL = 0;
+
+function sbHead(extra){
+  var h = {"apikey":SB_KEY, "Authorization":"Bearer "+SB_KEY, "Content-Type":"application/json"};
+  for(var k in (extra||{})) h[k] = extra[k];
+  return h;
+}
+var Store = {
+  live:function(){ return !!(SB_URL && SB_KEY); },
+
+  post:function(body){
+    if (body.type === "state") return Store.saveState(body.state);
+    if (body.type === "rows")  return Store.postMany(body.recs);
+    return Store.postMany([body.rec]);
+  },
+
+  postMany:function(recs){
+    if(!Store.live()){ recs.forEach(function(r){ MEM.push(r); }); return Promise.resolve(true); }
+    if(typeof fetch !== "function") return Promise.reject(new Error("브라우저가 지원하지 않습니다"));
+    return fetch(SB_URL+"/rest/v1/gg_rows", {
+      method:"POST", headers:sbHead({"Prefer":"return=minimal"}),
+      body:JSON.stringify(recs.map(function(r){ return {d:r}; }))
+    }).then(function(r){ if(!r.ok) throw new Error("저장 실패 "+r.status); return true; });
+  },
+
+  saveState:function(st){
+    if(!Store.live()){ MEMSTATE = st; return Promise.resolve(true); }
+    if(typeof fetch !== "function") return Promise.reject(new Error("브라우저가 지원하지 않습니다"));
+    return fetch(SB_URL+"/rest/v1/gg_state?id=eq.1", {
+      method:"PATCH", headers:sbHead({"Prefer":"return=minimal"}),
+      body:JSON.stringify({d:st})
+    }).then(function(r){ if(!r.ok) throw new Error("저장 실패 "+r.status); return true; });
+  },
+
+  fetchAll:function(){
+    if(!Store.live()) return Promise.resolve({rows:MEM.slice(), state:MEMSTATE});
+    if(typeof fetch !== "function"){ NETFAIL++; return Promise.resolve({rows:CACHE.slice(), state:STATE}); }
+    try{
+    var rowsUrl = SB_URL+"/rest/v1/gg_rows?select=id,d&order=id.asc&limit=2000"
+                + (LASTID ? "&id=gt."+LASTID : "");
+    return Promise.all([
+      fetch(rowsUrl, {headers:sbHead()}).then(function(r){
+        if(!r.ok) throw new Error("조회 실패 "+r.status); return r.json(); }),
+      fetch(SB_URL+"/rest/v1/gg_state?select=d&id=eq.1", {headers:sbHead()}).then(function(r){
+        if(!r.ok) throw new Error("조회 실패 "+r.status); return r.json(); })
+    ]).then(function(res){
+      (res[0]||[]).forEach(function(x){
+        if(x.id > LASTID) LASTID = x.id;
+        CACHE.push(x.d);
+      });
+      NETFAIL = 0;
+      var st = (res[1] && res[1][0] && res[1][0].d) || {};
+      return {rows:CACHE.slice(), state:Object.assign({}, MEMSTATE, st)};
+    }).catch(function(){
+      NETFAIL++;
+      return {rows:CACHE.slice(), state:STATE};   // 끊겨도 마지막 화면은 유지
+    });
+    }catch(e){
+      NETFAIL++;
+      return Promise.resolve({rows:CACHE.slice(), state:STATE});
+    }
+  }
+};
+
+/* ══════════ 5. 상태 ══════════ */
+var me = {name:"", div:"", tail:""};
+try{ var sv=JSON.parse(localStorage.getItem("gg5")||"{}");
+  me.name=sv.name||""; me.div=sv.div||""; me.tail=sv.tail||""; }catch(e){}
+function saveMe(){ try{ localStorage.setItem("gg5", JSON.stringify(me)); }catch(e){} }
+function ready(){ return !!(me.name && me.div && /^\d{4}$/.test(me.tail)); }
+function mask(n){
+  n = String(n||"").trim();
+  if(n.length<=1) return n;
+  if(n.length===2) return n[0]+"*";
+  return n[0]+Array(n.length-1).join("*")+n[n.length-1];
+}
+function who(){ return me.div + " " + mask(me.name); }
+var UID = "";
+try{
+  UID = localStorage.getItem("gg5uid")||"";
+  if(!UID){ UID = "u"+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+    localStorage.setItem("gg5uid", UID); }
+}catch(e){ UID = "u"+Math.random().toString(36).slice(2,9); }
+var sent = {d1:false,d2:false,d3:false};
+try{ sent = Object.assign(sent, JSON.parse(localStorage.getItem("gg5sent")||"{}")); }catch(e){}
+function saveSent(){ try{ localStorage.setItem("gg5sent", JSON.stringify(sent)); }catch(e){} }
+
+var D1 = {groups:[[]], g:0, reason:"", fixR:[], fixA:[], cond:"", fixRetc:"", fixAetc:""};
+var D2 = {stage:null, ways:[], way:"", stageEtc:"", waysEtc:""};
+var D3 = {topics:[], keep:"", culture:"", tetc:{A:"",B:"",C:"",D:""}};
+try{
+  var dr=JSON.parse(localStorage.getItem("gg5draft")||"{}");
+  if(dr.D1) D1=Object.assign(D1,dr.D1);
+  if(dr.D2) D2=Object.assign(D2,dr.D2);
+  if(dr.D3) D3=Object.assign(D3,dr.D3);
+  if(!D1.groups||!D1.groups.length) D1.groups=[[]];
+}catch(e){}
+function saveDraft(){
+  try{ localStorage.setItem("gg5draft", JSON.stringify({D1:D1,D2:D2,D3:D3})); }catch(e){}
+}
+var STATE = MEMSTATE, ROWS = [];
+
+var root = document.getElementById("root");
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function sum(a){ return a.reduce(function(x,y){return x+y;},0); }
+function bind(sel,fn){ Array.prototype.forEach.call(document.querySelectorAll(sel),fn); }
+function toggle(arr,v,max){ var i=arr.indexOf(v);
+  if(i>-1){arr.splice(i,1);return true;} if(max&&arr.length>=max) return false; arr.push(v); return true; }
+function d1flat(){ var o=[]; D1.groups.forEach(function(g){g.forEach(function(n){ if(o.indexOf(n)<0)o.push(n); });}); return o; }
+function d1color(n){ for(var i=0;i<D1.groups.length;i++) if(D1.groups[i].indexOf(n)>-1) return GC[i]; return null; }
+
+/* ══════════ 6. 지도 ══════════ */
+function mapSVG(o){
+  o = o || {};
+  if (o.deco) return '<svg viewBox="0 0 '+MAP.w+' '+MAP.h+'" xmlns="http://www.w3.org/2000/svg">' +
+    MAP.sgg.map(function(s){ return '<path d="'+s.d+'"/>'; }).join("") + '</svg>';
+  var heat=o.heat, max=o.max||1, colorOf=o.colorOf;
+  var body = MAP.sgg.map(function(s){
+    var style="", white=false, lab=s.n, pressed=false;
+    if (colorOf){
+      var c = colorOf(s.n);
+      if (c){ style=' style="fill:'+c+';stroke:'+c+'"'; white=true; pressed=true; }
+    } else if (heat){
+      var a=(heat[s.n]||0)/max;
+      style=' style="fill:rgba(14,90,167,'+(0.07+a*0.93).toFixed(3)+')"';
+      lab = s.n+" "+(heat[s.n]||0); white = a > 0.42;
+    }
+    return '<g'+(heat||o.deco?'':' tabindex="0" role="button" aria-label="'+esc(s.n)+'"')+
+      ' data-sgg="'+esc(s.n)+'"><path d="'+s.d+'" class="'+(s.north?"north":"")+'" aria-pressed="'+
+      (pressed?"true":"false")+'"'+style+'></path><text x="'+s.x+'" y="'+(s.y+8)+'"'+
+      (white?' class="on"':'')+'>'+esc(lab)+'</text></g>';
+  }).join("");
+  return '<svg class="gg'+(heat?" heat":"")+'" viewBox="0 0 '+MAP.w+' '+MAP.h+
+    '" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="경기도 시·군 지도">'+body+'</svg>';
+}
+
+/* ══════════ 7. 뼈대 ══════════ */
+var TABS = [["","홈"],["review","활동 기록"],["d1","논의 1"],["d2","논의 2"],["d3","논의 3"],
+            ["results","모인 의견"],["host","진행자"]];
+function shell(){
+  root.innerHTML =
+    '<div class="sky"><p class="brand">경기도 청년참여기구 제5기</p>' +
+    '<p class="when">2026. 9. 12.(토) 성과공유회 및 총회</p></div>' +
+    '<div class="app">' +
+      '<nav><div class="tabs" role="tablist" aria-label="총회 항목">' +
+      TABS.map(function(t){
+        return '<button class="tab'+(t[0]==="host"?" admin":"")+'" role="tab" data-h="'+t[0]+
+          '" aria-selected="false">'+t[1]+'<span class="mk"></span></button>';
+      }).join("") + '</div></nav>' +
+      '<main id="panel"></main>' +
+      '<footer><p>제5기 경기도 청년참여기구 총회 · 2026. 9. 12.(토)</p>' +
+      '<p>남겨주신 의견은 다음 기수 운영방안을 정하는 자료로 쓰입니다.</p>' +
+      '</footer>' +
+    '</div>';
+  bind(".tab", function(b){
+    b.onclick = function(){ location.hash = "#/" + b.dataset.h; };
+    b.onkeydown = function(e){
+      var d = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+      if(!d) return; e.preventDefault();
+      var list = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+      var n = (list.indexOf(b)+d+list.length)%list.length;
+      list[n].focus(); location.hash = "#/" + list[n].dataset.h;
+    };
+  });
+}
+function markTabs(active){
+  bind(".tab", function(b){
+    var on = b.dataset.h === active;
+    b.setAttribute("aria-selected", on ? "true" : "false");
+    var k = b.dataset.h, done = (k==="d1"&&sent.d1)||(k==="d2"&&sent.d2)||(k==="d3"&&sent.d3);
+    b.querySelector(".mk").innerHTML = done ? '<i class="dot"></i>' : "";
+    if (on && b.scrollIntoView) b.scrollIntoView({block:"nearest", inline:"nearest", behavior:"smooth"});
+  });
+}
+var QUIET = false;
+function panel(active, html){
+  if (!document.querySelector("nav")) shell();
+  var el = document.getElementById("panel");
+  var y = window.scrollY || window.pageYOffset || 0;
+  el.innerHTML = html;
+  if (QUIET){
+    el.style.animation = "none";          // 저절로 바뀔 때는 깜빡이지 않는다
+    window.scrollTo(0, y);                // 보던 자리를 그대로 둔다
+  } else {
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+    window.scrollTo({top:0});
+  }
+  markTabs(active);
+}
+function typing(){
+  var a = document.activeElement;
+  return !!(a && (a.tagName === "INPUT" || a.tagName === "TEXTAREA" || a.tagName === "SELECT"));
+}
+var SIG = "";
+function sigOf(){
+  var maxts = "", n = ROWS.length;
+  for (var i = 0; i < n; i++){ var t = String(ROWS[i].ts || ""); if (t > maxts) maxts = t; }
+  return n + "|" + maxts + "|" + JSON.stringify(STATE);
+}
+function quiet(fn){ QUIET = true; try{ fn(); } finally { QUIET = false; } }
+
+/* ══════════ 8. 조각 ══════════ */
+function issue(text){
+  return '<div class="card"><p class="k">오늘의 쟁점</p><p>'+text+'</p></div>';
+}
+function head(badge, title, sub){
+  return '<span class="badge">'+esc(badge)+'</span><h1 class="ptitle">'+title+'</h1>' +
+    (sub ? '<p class="psub">'+sub+'</p>' : '');
+}
+function optList(items, chosen, multi, grp){
+  return '<div class="opts" data-grp="'+esc(grp||"")+'">' + items.map(function(it){
+    var on = chosen.indexOf(it[0]) > -1, lab = it[2] || it[0];
+    return '<button type="button" class="opt'+(multi?"":" round")+'" data-opt="'+esc(it[0])+
+      '" aria-pressed="'+(on?"true":"false")+'"><span class="tick">✓</span><span class="t"><b>'+
+      esc(lab)+'</b>'+(it[1]?'<span>'+esc(it[1])+'</span>':'')+'</span></button>';
+  }).join("") + '</div>';
+}
+function withEtc(l){ return l.concat([ETC]); }
+function keysOf(l){ return l.map(function(x){return x[0];}).concat(["기타"]); }
+function etcField(id, show, val, ph){
+  return '<div class="field" id="w-'+id+'" style="margin:10px 0 0;'+(show?"":"display:none")+'">' +
+    '<input id="'+id+'" type="text" maxlength="90" placeholder="'+esc(ph)+'" value="'+esc(val||"")+'"></div>';
+}
+function showEtc(id,on){ var w=document.getElementById("w-"+id); if(w) w.style.display=on?"":"none";
+  if(on){ var f=document.getElementById(id); if(f) f.focus(); } }
+function valOf(id){ var f=document.getElementById(id); return f?String(f.value||"").trim():""; }
+function idBlock(){
+  return '<div class="card"><p class="k">참여 정보</p>' +
+    '<p class="meta" style="margin-bottom:16px">지도에 표시한 권역이 어느 분과의 의견인지 구분하고, 다른 사람이 대신 응답하는 일을 막기 위해 필요합니다. 화면에는 <b>' +
+    (me.div||"○분과") + ' ' + (me.name?esc(mask(me.name)):"이*영") + '</b> 처럼만 표시됩니다.</p>' +
+    '<div class="field"><label for="dv">소속 분과 (필수)</label><select id="dv">' +
+    '<option value="">선택해 주세요</option>' + DIVISIONS.map(function(d){
+      return '<option'+(me.div===d?" selected":"")+'>'+d+'</option>'; }).join("") +
+    '</select></div>' +
+    '<div class="field"><label for="nm">이름 (필수)</label>' +
+    '<input id="nm" type="text" maxlength="12" placeholder="홍길동" value="'+esc(me.name)+'"></div>' +
+    '<div class="field" style="margin:0"><label for="tl">휴대폰 뒷 4자리 (필수)</label>' +
+    '<input id="tl" type="text" inputmode="numeric" maxlength="4" placeholder="1234" value="'+esc(me.tail)+'">' +
+    '<p class="note" style="margin-top:8px">동명이인 구분과 본인 확인에만 쓰이고, 화면에는 나오지 않습니다.</p></div>' +
+    '<button class="btn" id="idsave" style="margin-top:18px">저장하고 시작하기</button>' +
+    '<p class="msg" id="idmsg"></p></div>';
+}
+function readMe(){
+  var n=document.getElementById("nm"), d=document.getElementById("dv"), t=document.getElementById("tl");
+  if(n) me.name=n.value.trim();
+  if(d) me.div=d.value;
+  if(t) me.tail=t.value.replace(/\D/g,"").slice(0,4);
+  saveMe(); return ready();
+}
+var GATEKEY = {"홈":"", "논의 1":"d1", "논의 2":"d2", "논의 3":"d3", "모인 의견":"results"};
+function gate(badge, title){
+  panel(GATEKEY[badge] || "", head(badge, title, "먼저 참여 정보를 입력해 주세요.") + idBlock());
+  hookId();
+}
+function hookId(){
+  var b=document.getElementById("idsave");
+  if(!b) return;
+  b.onclick=function(){
+    var m=document.getElementById("idmsg");
+    var d=document.getElementById("dv").value,
+        n=document.getElementById("nm").value.trim(),
+        t=document.getElementById("tl").value.replace(/\D/g,"");
+    if(!d){ m.textContent="소속 분과를 선택해 주세요."; return; }
+    if(n.length<2){ m.textContent="이름을 두 글자 이상 입력해 주세요."; return; }
+    if(!/^\d{4}$/.test(t)){ m.textContent="휴대폰 뒷 4자리를 숫자로 입력해 주세요."; return; }
+    me.div=d; me.name=n; me.tail=t; saveMe(); route();
+  };
+}
+function submit(btn,msgEl,rec,key){
+  saveDraft();
+  btn.disabled=true; var lb=btn.textContent; btn.textContent="제출하는 중";
+  msgEl.className="msg"; msgEl.textContent="";
+  Store.post({type:"row",rec:rec}).then(function(){
+    sent[key]=true; saveSent(); markTabs(key);
+    msgEl.className="msg ok"; msgEl.textContent="제출되었습니다. 감사합니다.";
+    btn.textContent="수정해서 다시 제출"; btn.disabled=false;
+  }).catch(function(){
+    btn.disabled=false; btn.textContent=lb;
+    msgEl.textContent="제출하지 못했습니다. 잠시 후 다시 시도해 주세요.";
+  });
+}
+
+/* ══════════ 9. 홈 ══════════ */
+function vHome(){
+  var cur = STATE.cue||0;
+  var steps = CUES.map(function(c,i){
+    var cls = i===cur ? "step on" : (i<cur ? "step past" : "step");
+    return '<div class="'+cls+'"><span class="t">'+c[0]+'</span><p class="n">'+
+      (i===cur?'<span class="live-dot"></span>':'')+esc(c[1])+'</p>'+
+      (c[2]?'<p class="d">'+esc(c[2])+'</p>':'')+'</div>';
+  }).join("");
+  var todo = [];
+  if(!sent.d1) todo.push("논의 1"); if(!sent.d2) todo.push("논의 2"); if(!sent.d3) todo.push("논의 3");
+
+  panel("",
+    head("홈", "오늘 논의에<br>함께해 주세요",
+      "세 가지 논의가 준비되어 있습니다. 위 탭에서 논의를 골라 의견을 남겨 주세요. 남겨주신 내용은 앞 화면에 바로 반영됩니다.") +
+    (STATE.notice ? '<div class="alert"><p class="k">안내</p><p>'+esc(STATE.notice)+'</p></div>' : "") +
+    (STATE.reveal&&STATE.reveal.name ? '<div class="reveal"><p class="sm">청년참여기구 명칭 공모 결과</p>'+
+      '<p class="bg">'+esc(STATE.nameResult||"곧 발표됩니다")+'</p></div>' : "") +
+    (STATE.reveal&&STATE.reveal.award ? '<div class="reveal"><p class="sm">주민참여예산 청년참여형 선정결과</p>'+
+      '<p class="bg">'+esc(STATE.awardResult||"곧 발표됩니다")+'</p></div>' : "") +
+    (ready()
+      ? '<div class="card on"><p class="k">내 참여</p><p class="v">'+esc(who())+
+        '</p><p class="meta">'+
+        (todo.length ? "아직 "+todo.join(", ")+" 참여가 남았습니다." : "세 논의에 모두 참여해 주셨습니다. 감사합니다.")+
+        '</p><div class="prog">'+["d1","d2","d3"].map(function(k){
+          return '<i class="'+(sent[k]?"on":"")+'"></i>'; }).join("")+
+        '<span>'+(3-todo.length)+' / 3</span></div>' +
+        '<p style="margin:14px 0 0"><button class="lnk" id="fixid" style="color:#fff">참여 정보 수정</button></p></div>'
+      : idBlock()) +
+    '<h2>진행 순서</h2><div class="rail">'+steps+'</div>' +
+    '<h2>도움이 필요하시면</h2>' +
+    '<div class="card"><p class="meta">화면이 잘 열리지 않거나 궁금한 점이 있으면 공동대표 또는 사무국에 말씀해 주세요.</p></div>');
+  hookId();
+  var fx=document.getElementById("fixid");
+  if(fx) fx.onclick=function(){ gate("홈","참여 정보 수정"); };
+}
+
+/* ══════════ 10. 활동 기록 ══════════ */
+function vReview(){
+  var maxT = Math.max.apply(null, BYTOPIC.map(function(b){return b[1];}));
+  panel("review",
+    head("활동 기록", "제5기가<br>지나온 1년", "지난 1년 동안 남은 숫자와 일정입니다.") +
+    '<div class="stats">' +
+      '<div class="stat"><b>'+sum(MEETING)+'</b><span>분과 회의</span></div>' +
+      '<div class="stat"><b>'+sum(ATTEND).toLocaleString()+'</b><span>연 참석</span></div>' +
+      '<div class="stat"><b>167</b><span>정책 제안</span></div></div>' +
+    '<div class="stats">' +
+      '<div class="stat"><b>394</b><span>공론장 댓글</span></div>' +
+      '<div class="stat"><b>13</b><span>공식 일정</span></div>' +
+      '<div class="stat"><b>12</b><span>분과</span></div></div>' +
+    '<h2>의제별 정책 제안</h2>' +
+    BYTOPIC.map(function(b){
+      return '<div class="bar'+(b[1]===maxT?" top":"")+'"><span class="lb">'+esc(b[0])+
+        '</span><span class="tr"><i style="width:'+Math.round(b[1]/maxT*100)+'%"></i></span>'+
+        '<span class="vv">'+b[1]+'</span></div>'; }).join("") +
+    '<h2>분과별 활동</h2><div class="scroll"><table><thead><tr><th>구분</th><th>회의</th>' +
+      '<th>참석 인원</th><th>제안</th></tr></thead><tbody>' +
+      MEETING.map(function(m,i){ return '<tr><td>'+(i+1)+'분과</td><td>'+m+'</td><td>'+
+        ATTEND[i]+'</td><td>'+PROPOSAL[i]+'</td></tr>'; }).join("") +
+      '<tr><td>합계</td><td>'+sum(MEETING)+'</td><td>'+sum(ATTEND).toLocaleString()+
+      '</td><td>'+sum(PROPOSAL)+'</td></tr></tbody></table></div>' +
+    '<p class="note">위 표의 분과별 제안에 합동 제안 2건을 더하면 모두 167건입니다.</p>' +
+    '<h2>지나온 일정</h2><div class="tl">' + TIMELINE.map(function(t){
+      return '<div class="ev'+(t[2]?" key":"")+'"><b>'+esc(t[1])+'</b><span>'+esc(t[0])+'</span></div>';
+    }).join("") + '</div>' +
+    '<h2>교류 활동</h2>' +
+    '<div class="card"><p class="k">네트워킹데이</p><p>1회차 7월 18일 12명, 2회차 7월 25일 9명. 두 차례 모두 용산청년지음에서 열렸습니다.</p></div>' +
+    '<div class="card"><p class="k">인천·경기 청년교류회</p><p>8월 8일 서울광역청년센터에서 인천청년정책네트워크와 함께 진행했습니다.</p></div>' +
+    '<div class="card"><p class="k">외부 연계 활동</p><p>3·1절 33인 도민대표 미니다큐 촬영, 경기도 연차별 시행계획 이행점검 모니터링에 참여했습니다.</p></div>');
+}
+
+/* ══════════ 11. 논의 1 ══════════ */
+function vD1(){
+  if (!ready()) return gate("논의 1","분과를 어떻게 나눌 것인가");
+  if (STATE.open && !STATE.open.d1){
+    panel("d1", head("논의 1", "분과 운영방식") +
+      '<div class="locked">아직 열리지 않은 논의입니다.<br>진행 순서가 되면 참여하실 수 있습니다.</div>');
+    return;
+  }
+  panel("d1",
+    head("논의 1", "분과를<br>어떻게 나눌 것인가",
+      "제5기는 거주·활동지역에 따라 권역별로 나누어 운영했습니다.") +
+    issue('사는 곳으로 묶을 것인가, 관심 의제로 묶을 것인가. 의견수렴 조사에서 <b>권역별 61% · 의제별 39%</b>로 갈렸고 양쪽 모두 한계가 확인되었습니다. 오늘은 찬반을 다시 묻지 않고, <b>두 방식을 실제로 운영한다고 가정했을 때 어떤 부분이 더 보완되면 좋을지</b>를 정합니다.') +
+    '<h2>두 방식에서 보완할 점</h2>' +
+    '<p class="hint">두 방식을 실제로 운영한다고 가정했을 때, 어떤 부분이 더 보완되면 좋을지 골라 주세요. 여러 개 선택할 수 있습니다.</p>' +
+    '<p class="gname">권역별 분과를 유지한다면</p>' + optList(withEtc(FIX_REGION), D1.fixR, true, "R") +
+    etcField("etcR", D1.fixR.indexOf("기타")>-1, D1.fixRetc, "권역별을 유지할 때 더 필요한 것") +
+    '<p class="gname">의제별 분과로 바꾼다면</p>' + optList(withEtc(FIX_AGENDA), D1.fixA, true, "A") +
+    etcField("etcA", D1.fixA.indexOf("기타")>-1, D1.fixAetc, "의제별로 바꿀 때 더 필요한 것") +
+    '<h2>그 밖에 필요한 조건</h2>' +
+    '<p class="hint">위 항목 외에 각 방식이 제대로 굴러가기 위해 필요한 조건이 있다면 적어 주세요.</p>' +
+    '<div class="field"><textarea id="cd" maxlength="300" placeholder="자유롭게 적어 주세요">'+esc(D1.cond)+'</textarea></div>' +
+    '<h2>권역을 다시 그린다면</h2>' +
+    '<p class="hint">권역별을 유지할 경우 권역을 어떻게 나누는 것이 좋을지 지도에 표시해 주세요. 가장 가까운 곳만 고르기보다, 정기 회의와 활동을 함께하기에 무리가 없는 범위가 어디까지인지 이동 여건을 전체적으로 살펴 골라 주세요.</p>' +
+    '<div class="card" style="padding:13px 16px;margin-bottom:12px"><p class="meta">' +
+    '<b style="color:var(--ink)">'+esc(me.div)+' '+esc(mask(me.name))+'</b> 으로 참여 중입니다. ' +
+    '<button class="lnk" id="fixid">분과 수정</button></p></div>' +
+    '<div class="mapbox"><div class="grpbar" id="gb"></div>' + mapSVG({colorOf:d1color}) +
+    '<p class="legend"><span><s></s>경기 북부</span><span>같은 색끼리 한 분과입니다</span></p></div>' +
+    '<div class="picked" id="pk"></div>' +
+    '<div class="field" style="margin-top:18px"><label for="rs">이렇게 묶은 이유</label>' +
+    '<textarea id="rs" maxlength="300" placeholder="대중교통 연결, 이동시간, 생활권, 모임 장소 접근성 등">'+esc(D1.reason)+'</textarea></div>' +
+    '<button class="btn" id="send">'+(sent.d1?"수정해서 다시 제출":"논의 1 제출하기")+'</button>' +
+    '<p class="msg" id="msg"></p>');
+  document.getElementById("fixid").onclick=function(){ gate("논의 1","참여 정보 수정"); };
+
+  function repaint(){
+    bind("svg.gg g", function(g){
+      var c = d1color(g.dataset.sgg), p = g.querySelector("path"), t = g.querySelector("text");
+      if (c){ p.setAttribute("style","fill:"+c+";stroke:"+c); t.setAttribute("class","on"); }
+      else { p.removeAttribute("style"); t.removeAttribute("class"); }
+      p.setAttribute("aria-pressed", c?"true":"false");
+    });
+  }
+  function chips(){
+    document.getElementById("gb").innerHTML = D1.groups.map(function(g,i){
+      return '<button type="button" class="gchip" data-g="'+i+'" aria-selected="'+
+        (D1.g===i?"true":"false")+'"><i style="background:'+GC[i]+'"></i>'+
+        (i===0?("내 분과 · "+me.div):(i+1)+"번 묶음")+(g.length?' <b>'+g.length+'</b>':'')+
+        (i>0&&D1.g===i?' <span class="x" data-del="'+i+'">×</span>':'')+'</button>';
+    }).join("") + '<button type="button" class="gadd" id="gadd"'+
+      (D1.groups.length>=5?" disabled":"")+'>묶음 추가</button>';
+    bind(".gchip", function(b){ b.onclick=function(e){
+      var del = e.target.closest("[data-del]");
+      if(del){ D1.groups.splice(+del.dataset.del,1); D1.g=0; chips(); paint(); repaint(); return; }
+      D1.g = +b.dataset.g; chips(); paint();
+    };});
+    document.getElementById("gadd").onclick = function(){
+      if(D1.groups.length>=5) return;
+      D1.groups.push([]); D1.g=D1.groups.length-1; chips(); paint();
+    };
+  }
+  function paint(){
+    var any = D1.groups.some(function(g){return g.length;});
+    document.getElementById("pk").innerHTML = any
+      ? D1.groups.map(function(g,i){
+          if(!g.length) return "";
+          return '<div><i style="background:'+GC[i]+'"></i><span><b>'+
+            (i===0?("내 분과 "+esc(me.div)):(i+1)+"번 묶음")+'</b> · '+esc(g.join(" · "))+
+            ' <em>'+g.length+'곳</em></span></div>';
+        }).join("")
+      : '<div style="color:var(--faint)">지도에서 시·군을 눌러 주세요</div>';
+  }
+  chips(); paint();
+  bind("svg.gg g", function(g){
+    function hit(){
+      var n=g.dataset.sgg, cur=D1.groups[D1.g], i=cur.indexOf(n);
+      if(i>-1) cur.splice(i,1);
+      else { D1.groups.forEach(function(x){ var j=x.indexOf(n); if(j>-1) x.splice(j,1); }); cur.push(n); }
+      chips(); paint(); repaint();
+    }
+    g.onclick=hit;
+    g.onkeydown=function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); hit(); } };
+  });
+  bind(".opt", function(b){
+    b.onclick = function(){
+      var grp=b.closest(".opts").dataset.grp, arr=grp==="R"?D1.fixR:D1.fixA, k=b.dataset.opt;
+      toggle(arr,k);
+      var on = arr.indexOf(k)>-1;
+      b.setAttribute("aria-pressed", on?"true":"false");
+      if(k==="기타") showEtc(grp==="R"?"etcR":"etcA", on);
+    };
+  });
+  document.getElementById("send").onclick = function(){
+    D1.reason=valOf("rs"); D1.cond=valOf("cd");
+    D1.fixRetc=valOf("etcR"); D1.fixAetc=valOf("etcA");
+    var m=document.getElementById("msg");
+    if(!readMe()){ m.textContent="소속 분과를 선택해 주세요."; return; }
+    if(D1.groups[0].length<2){ m.textContent="내 분과 묶음에 시·군을 두 곳 이상 선택해 주세요."; return; }
+    if(D1.fixR.indexOf("기타")>-1 && !D1.fixRetc){ m.textContent="권역별 항목의 기타 내용을 적어 주세요."; return; }
+    if(D1.fixA.indexOf("기타")>-1 && !D1.fixAetc){ m.textContent="의제별 항목의 기타 내용을 적어 주세요."; return; }
+    submit(this,m,{part:"d1",ts:new Date().toISOString(),name:me.name,div:me.div,
+      uid:UID, regions:d1flat().join("|"),
+      groups:D1.groups.filter(function(g){return g.length>1;}).map(function(g){return g.join("|");}).join(";"),
+      reason:D1.reason, fixR:D1.fixR.join("|"), fixA:D1.fixA.join("|"),
+      cond:D1.cond, fixRetc:D1.fixRetc, fixAetc:D1.fixAetc},"d1");
+  };
+}
+
+/* ══════════ 12. 논의 2 ══════════ */
+function vD2(){
+  if (!ready()) return gate("논의 2","정책제안이 선정되기까지의 과정");
+  if (STATE.open && !STATE.open.d2){
+    panel("d2", head("논의 2", "정책공감투표") +
+      '<div class="locked">아직 열리지 않은 논의입니다.<br>진행 순서가 되면 참여하실 수 있습니다.</div>');
+    return;
+  }
+  panel("d2",
+    head("논의 2", "정책제안이<br>선정되기까지의 과정",
+      "제안 발굴부터 최종 선정까지를 다섯 단계로 나누어 살펴봅니다.") +
+    issue('제5기 정책 제안은 <b>167건</b>이었고, 정책공감투표에 대한 평가는 세 문항 중 가장 낮았습니다. 문제는 투표 방식 하나가 아니라 <b>제안부터 선정까지의 과정 전체에 흩어져</b> 있습니다. 오늘은 <b>어느 단계를 가장 먼저 보완할 것인지</b>와 그 방식을 정합니다.') +
+    '<h2>가장 먼저 보완이 필요한 단계</h2>' +
+    '<p class="hint">제안 발굴부터 선정까지의 과정 가운데 한 곳을 골라 주세요.</p>' +
+    optList(withEtc(STAGES), D2.stage?[D2.stage]:[], false, "S") +
+    etcField("etcS", D2.stage==="기타", D2.stageEtc, "보완이 필요한 다른 단계") +
+    '<div class="alert" style="margin-top:22px"><p class="k">아직 보완안이 없는 지점</p>' +
+    '<p>선정과 사후 처리 단계의 <b style="color:var(--w)">미선정 제안의 사후 경로</b>는 조사에서 제안된 보완이 나오지 않았습니다. 이 부분에 대한 의견이 있으시면 아래에 남겨 주세요.</p></div>' +
+    '<h2>그 단계에 적절한 방식</h2>' +
+    '<p class="hint">조사에서 제안된 보완입니다. 여러 개 선택할 수 있습니다.</p>' +
+    optList(withEtc(WAYS), D2.ways, true, "W") +
+    etcField("etcW", D2.ways.indexOf("기타")>-1, D2.waysEtc, "목록에 없는 방식") +
+    '<div class="field" style="margin-top:22px"><label for="wy">덧붙이고 싶은 의견</label>' +
+    '<textarea id="wy" maxlength="300" placeholder="어떤 방식이 적절할지 구체적으로 적어 주세요">'+esc(D2.way)+'</textarea></div>' +
+    '<button class="btn" id="send">'+(sent.d2?"수정해서 다시 제출":"논의 2 제출하기")+'</button>' +
+    '<p class="msg" id="msg"></p>');
+  hookId();
+  bind(".opt", function(b){
+    b.onclick = function(){
+      var grp=b.closest(".opts").dataset.grp, k=b.dataset.opt;
+      if(grp==="S"){
+        D2.stage = (D2.stage===k)?null:k;
+        bind(".opt.round", function(o){ o.setAttribute("aria-pressed", o.dataset.opt===D2.stage?"true":"false"); });
+        showEtc("etcS", D2.stage==="기타");
+      } else {
+        toggle(D2.ways,k);
+        var on = D2.ways.indexOf(k)>-1;
+        b.setAttribute("aria-pressed", on?"true":"false");
+        if(k==="기타") showEtc("etcW", on);
+      }
+    };
+  });
+  document.getElementById("send").onclick = function(){
+    D2.way=valOf("wy"); D2.stageEtc=valOf("etcS"); D2.waysEtc=valOf("etcW");
+    var m=document.getElementById("msg");
+    if(!readMe()){ m.textContent="소속 분과를 선택해 주세요."; return; }
+    if(!D2.stage){ m.textContent="단계를 하나 선택해 주세요."; return; }
+    if(D2.stage==="기타" && !D2.stageEtc){ m.textContent="기타로 선택하신 단계를 적어 주세요."; return; }
+    if(D2.ways.indexOf("기타")>-1 && !D2.waysEtc){ m.textContent="기타 방식의 내용을 적어 주세요."; return; }
+    submit(this,m,{part:"d2",ts:new Date().toISOString(),name:me.name,div:me.div,
+      uid:UID, stage:D2.stage, ways:D2.ways.join("|"), way:D2.way,
+      stageEtc:D2.stageEtc, waysEtc:D2.waysEtc},"d2");
+  };
+}
+
+/* ══════════ 13. 논의 3 ══════════ */
+function vD3(){
+  if (!ready()) return gate("논의 3","앞의 두 논의에 없던 이야기들");
+  if (STATE.open && !STATE.open.d3){
+    panel("d3", head("논의 3", "참여기구 활성화") +
+      '<div class="locked">아직 열리지 않은 논의입니다.<br>진행 순서가 되면 참여하실 수 있습니다.</div>');
+    return;
+  }
+  var groups = TOPICS.map(function(g){
+    var ev = topicEtcVal(g[0]);
+    return '<p class="gname">'+esc(g[0]+". "+g[1])+'</p>' +
+      optList(g[2].map(function(t){return [t,""];}).concat([[ev,"이 영역에서 목록에 없는 항목","기타"]]),
+              D3.topics, true, "T"+g[0]) +
+      etcField("etcT"+g[0], D3.topics.indexOf(ev)>-1, D3.tetc[g[0]],
+               g[1]+"에서 추가할 항목");
+  }).join("");
+
+  panel("d3",
+    head("논의 3", "앞의 두 논의에<br>없던 이야기들",
+      "분과 구성과 정책공감투표 외에 제기된 의견을 네 영역으로 나누어 정리했습니다.") +
+    issue('네 영역 가운데 <b>다음 기수가 먼저 다뤄야 할 것</b>이 무엇인지 정합니다. 오늘은 영역별로 가장 많이 선택된 <b>1~2개 항목만</b> 골라 논의합니다.') +
+    '<h2>다음 기수에서 다뤄야 할 항목</h2>' +
+    '<p class="hint">중요하다고 보시는 항목을 <b>최대 3개까지</b> 골라 주세요. 영역마다 기타를 골라 직접 적으실 수도 있습니다.</p>' +
+    groups +
+    '<h2>함께 이야기 나눠볼 질문</h2>' +
+    '<div class="field"><label for="k1">활동 경험 · 관계·소통 측면</label>' +
+    '<textarea id="k1" maxlength="300" placeholder="A·B 영역에서 유지·강화할 부분과 보완이 필요한 부분을 적어 주세요">'+esc(D3.keep)+'</textarea></div>' +
+    '<div class="field"><label for="k2">운영·지원 · 대외·확장 측면</label>' +
+    '<textarea id="k2" maxlength="300" placeholder="C·D 영역에서 유지·강화할 부분과 보완이 필요한 부분을 적어 주세요">'+esc(D3.culture)+'</textarea></div>' +
+    '<button class="btn" id="send">'+(sent.d3?"수정해서 다시 제출":"논의 3 제출하기")+'</button>' +
+    '<p class="msg" id="msg"></p>');
+  hookId();
+  bind(".opt", function(b){
+    b.onclick = function(){
+      var m=document.getElementById("msg"), k=b.dataset.opt;
+      if(!toggle(D3.topics,k,3)){ m.textContent="최대 3개까지 선택할 수 있습니다."; return; }
+      m.textContent="";
+      var on = D3.topics.indexOf(k)>-1;
+      b.setAttribute("aria-pressed", on?"true":"false");
+      if(k.indexOf("기타 · ")===0) showEtc("etcT"+k.slice(-1), on);
+    };
+  });
+  document.getElementById("send").onclick = function(){
+    D3.keep=valOf("k1"); D3.culture=valOf("k2");
+    TOPICS.forEach(function(g){ D3.tetc[g[0]] = valOf("etcT"+g[0]); });
+    var m=document.getElementById("msg");
+    if(!D3.topics.length){ m.textContent="항목을 하나 이상 선택해 주세요."; return; }
+    var bad=null;
+    TOPICS.forEach(function(g){
+      if(D3.topics.indexOf(topicEtcVal(g[0]))>-1 && !D3.tetc[g[0]]) bad=bad||g[1];
+    });
+    if(bad){ m.textContent=bad+"의 기타 내용을 적어 주세요."; return; }
+    submit(this,m,{part:"d3",ts:new Date().toISOString(),name:me.name,div:me.div,uid:UID,
+      topics:D3.topics.join("|"), keep:D3.keep, culture:D3.culture,
+      tetcA:D3.tetc.A, tetcB:D3.tetc.B, tetcC:D3.tetc.C, tetcD:D3.tetc.D},"d3");
+  };
+}
+
+/* ══════════ 14. 집계 ══════════ */
+function tally(rows,key){
+  var c={}; rows.forEach(function(r){ String(r[key]||"").split("|").filter(Boolean)
+    .forEach(function(v){ c[v]=(c[v]||0)+1; }); }); return c;
+}
+function groupsOf(r){
+  var raw=String(r.groups||"").trim();
+  if(raw) return raw.split(";").map(function(g){return g.split("|").filter(Boolean);})
+    .filter(function(g){return g.length>1;});
+  var one=String(r.regions||"").split("|").filter(Boolean);
+  return one.length>1?[one]:[];
+}
+function pairsOf(rows){
+  var p={};
+  rows.forEach(function(r){ groupsOf(r).forEach(function(g0){
+    var g=g0.slice().sort();
+    for(var i=0;i<g.length;i++) for(var j=i+1;j<g.length;j++){
+      var k=g[i]+" · "+g[j]; p[k]=(p[k]||0)+1; }
+  });});
+  return p;
+}
+function zonesOf(rows){
+  var pr=pairsOf(rows), keys=Object.keys(pr);
+  if(!keys.length) return null;
+  var maxN=0; keys.forEach(function(k){ if(pr[k]>maxN) maxN=pr[k]; });
+  var thr=Math.max(2,Math.ceil(maxN*0.34)), parent={};
+  function find(a){ while(parent[a]&&parent[a]!==a) a=parent[a]=parent[parent[a]]; return a; }
+  function join(a,b){ parent[a]=parent[a]||a; parent[b]=parent[b]||b;
+    var x=find(a),y=find(b); if(x!==y) parent[x]=y; }
+  var used={};
+  keys.forEach(function(k){ if(pr[k]<thr) return;
+    var p=k.split(" · "); join(p[0],p[1]); used[p[0]]=1; used[p[1]]=1; });
+  var bag={};
+  Object.keys(used).forEach(function(n){ var r=find(n); (bag[r]=bag[r]||[]).push(n); });
+  var zones=Object.keys(bag).map(function(r){return bag[r].sort();})
+    .filter(function(z){return z.length>1;}).sort(function(a,b){return b.length-a.length;});
+  if(!zones.length) return null;
+  var idx={}; zones.forEach(function(z,i){ z.forEach(function(n){ idx[n]=i; }); });
+  return {zones:zones, idx:idx, thr:thr};
+}
+function bars(counts, order, cls){
+  var max=0; for(var k in counts) if(counts[k]>max) max=counts[k];
+  var keys=order||Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];});
+  if(!keys.some(function(k){return counts[k];})) return '<p class="empty">아직 응답이 없습니다.</p>';
+  return keys.map(function(k){
+    var v=counts[k]||0;
+    return '<div class="'+(cls||"bar")+(v&&v===max?" top":"")+'"><span class="lb">'+esc(k)+
+      '</span><span class="tr"><i style="width:'+(max?Math.round(v/max*100):0)+'%"></i></span>'+
+      '<span class="vv">'+v+'</span></div>';
+  }).join("");
+}
+function commentsOf(rows){
+  var likes = {};
+  rows.filter(function(r){return r.part==="like";})
+      .sort(function(a,b){ return String(a.ts||"")<String(b.ts||"")?-1:1; })
+      .forEach(function(r){
+    var k=r.cmt; likes[k]=likes[k]||{};
+    likes[k][r.uid] = String(r.v)==="1" ? 1 : 0;   // 같은 사람이 여러 번 눌러도 마지막만 반영
+  });
+  return rows.filter(function(r){return r.part==="cmt" && String(r.text||"").trim();})
+    .map(function(r){
+      var m = likes[r.cid]||{}, n=0, mineOn=0;
+      for(var u in m){ if(m[u]){ n++; if(u===UID) mineOn=1; } }
+      return {cid:r.cid, kind:r.kind||"", target:r.target||"", text:r.text,
+              who:r.who||"", ts:r.ts||"", n:n, mine:mineOn};
+    });
+}
+function quotesOf(rows,key,quiet){
+  var l=rows.filter(function(r){return String(r[key]||"").trim();});
+  if(!l.length) return quiet?"":'<p class="empty">아직 올라온 의견이 없습니다.</p>';
+  return l.slice().reverse().map(function(r){
+    return '<div class="q">'+esc(r[key])+'<em>'+esc(r.div||"")+'</em></div>'; }).join("");
+}
+
+/* ══════════ 15. 모인 의견 ══════════ */
+var RTAB="map";
+var CSORT="like", CKIND_SEL=CKIND[0][0], CTGT_SEL=CTARGET[0][0], LASTSYNC=null;
+function vResults(){
+  if (STATE.show === 0){
+    panel("results", head("모인 의견","잠시 후<br>함께 확인합니다",
+      "진행자가 결과를 공개하면 이 화면에 바로 나타납니다.") +
+      '<div class="locked">지금은 응답을 모으는 중입니다.<br>아직 참여하지 않으셨다면 위 탭에서 남겨 주세요.</div>' +
+      '<button class="btn ghost" id="rf" style="margin-top:20px">새로고침</button>');
+    document.getElementById("rf").onclick=function(){ pull().then(vResults); };
+    return;
+  }
+  var r1=ROWS.filter(function(r){return r.part==="d1";}),
+      r2=ROWS.filter(function(r){return r.part==="d2";}),
+      r3=ROWS.filter(function(r){return r.part==="d3";});
+  var heat=tally(r1,"regions"), mx=1;
+  for(var k in heat) if(heat[k]>mx) mx=heat[k];
+  var pr=pairsOf(r1), top=Object.keys(pr).sort(function(a,b){return pr[b]-pr[a];}).slice(0,12);
+  var chips=[["map","지도"],["fix","개선 방향"],["stage","흐름 단계"],["topic","영역별 항목"],
+             ["voice","적어주신 의견"],["talk","의견 나누기"]];
+  var body = head("모인 의견", "지금까지<br>모인 의견",
+      "논의 1에 "+r1.length+"명, 논의 2에 "+r2.length+"명, 논의 3에 "+r3.length+"명이 참여했습니다.") +
+    '<div class="chips">'+chips.map(function(c){
+      return '<button class="chip" data-r="'+c[0]+'" aria-selected="'+(RTAB===c[0])+'">'+c[1]+'</button>';
+    }).join("")+'</div>';
+
+  if(RTAB==="map"){
+    var z=zonesOf(r1);
+    body += '<h2>선택된 시·군</h2><p class="hint">진하게 표시될수록 많이 선택된 곳입니다.</p>' +
+      '<div class="mapbox">'+mapSVG({heat:heat,max:mx})+'</div>' +
+      '<h2>함께 묶인 시·군</h2><p class="hint">두 지역이 같은 분과로 함께 선택된 횟수입니다.</p>' +
+      '<div class="card pairs">'+(top.length?top.map(function(p){
+        return '<div>'+esc(p)+'<span>'+pr[p]+'</span></div>';}).join("")
+        :'<p class="empty">아직 응답이 없습니다.</p>')+'</div>' +
+      (z ? '<h2>모인 응답으로 그려본 권역안</h2>' +
+        '<p class="hint">같은 분과로 '+z.thr+'번 이상 함께 선택된 지역끼리 이었습니다. '+z.zones.length+'개 권역으로 나뉩니다.</p>' +
+        '<div class="mapbox">'+mapSVG({colorOf:function(n){
+          return z.idx[n]!=null?ZC[z.idx[n]%ZC.length]:null; }})+'</div>' +
+        '<div class="picked" style="margin-top:14px">'+z.zones.map(function(zz,i){
+          return '<div><i style="background:'+ZC[i%ZC.length]+'"></i><span><b>'+esc(zz.join(" · "))+
+            '</b> <em>'+zz.length+'개</em></span></div>'; }).join("")+'</div>'
+        : '<h2>모인 응답으로 그려본 권역안</h2><p class="hint">응답이 더 모이면 권역이 그려집니다.</p>');
+  } else if(RTAB==="fix"){
+    body += '<h2>권역별을 유지한다면</h2>'+bars(tally(r1,"fixR"), keysOf(FIX_REGION)) +
+      '<h2>의제별로 바꾼다면</h2>'+bars(tally(r1,"fixA"), keysOf(FIX_AGENDA));
+  } else if(RTAB==="stage"){
+    var sc={}; r2.forEach(function(r){ if(r.stage) sc[r.stage]=(sc[r.stage]||0)+1; });
+    body += '<h2>가장 먼저 보완이 필요한 단계</h2>'+bars(sc, keysOf(STAGES)) +
+      '<h2>적절하다고 본 방식</h2>'+bars(tally(r2,"ways"), keysOf(WAYS));
+  } else if(RTAB==="topic"){
+    var tc = tally(r3,"topics");
+    body += '<h2>오늘 논의할 논제</h2>' +
+      '<p class="hint">영역마다 가장 많이 선택된 항목입니다. 논제당 5분씩 다룹니다.</p>';
+    var picks = [];
+    TOPICS.forEach(function(g){
+      var keys = g[2].concat([topicEtcVal(g[0])]);
+      var srt = keys.slice().sort(function(a,b){ return (tc[b]||0)-(tc[a]||0); });
+      var t1 = srt[0], t2 = srt[1];
+      if(!(tc[t1]||0)) return;
+      picks.push([g[0]+". "+g[1], t1, tc[t1]||0, (tc[t2]||0)?t2:null, tc[t2]||0]);
+    });
+    body += picks.length
+      ? picks.map(function(p){
+          return '<div class="card"><p class="k">'+esc(p[0])+'</p>' +
+            '<p class="v">'+esc(p[1])+' <span style="font-size:14px;color:var(--blue-mid)">'+p[2]+'명</span></p>' +
+            (p[3] ? '<p class="meta">다음 순위 · '+esc(p[3])+' '+p[4]+'명</p>' : '') + '</div>';
+        }).join("")
+      : '<p class="empty">아직 응답이 없습니다.</p>';
+    body += TOPICS.map(function(g){
+      var sub={}; g[2].concat([topicEtcVal(g[0])]).forEach(function(t){ sub[t]=tc[t]||0; });
+      var tot=0; for(var k in sub) tot+=sub[k];
+      return '<h2>'+esc(g[0]+". "+g[1])+' · '+tot+'건</h2>' + bars(sub);
+    }).join("");
+    var etcTexts = ["A","B","C","D"].map(function(cd){
+      return quotesOf(r3,"tetc"+cd,1); }).join("");
+    if(etcTexts) body += '<h2>영역별 기타 의견</h2>' + etcTexts;
+  } else if(RTAB==="talk"){
+    body += talkBoard();
+  } else {
+    body += '<h2>지도에 묶은 이유</h2>'+quotesOf(r1,"reason") +
+      '<h2>추가로 필요한 조건</h2>'+quotesOf(r1,"cond")+quotesOf(r1,"fixRetc",1)+quotesOf(r1,"fixAetc",1) +
+      '<h2>투표 흐름 관련 의견</h2>'+quotesOf(r2,"way")+quotesOf(r2,"stageEtc",1)+quotesOf(r2,"waysEtc",1) +
+      '<h2>활동 경험 · 관계·소통</h2>'+quotesOf(r3,"keep") +
+      '<h2>운영·지원 · 대외·확장</h2>'+quotesOf(r3,"culture")+quotesOf(r3,"topicsEtc",1);
+  }
+  body += '<p class="note" style="text-align:center"><span class="live-dot"></span>' +
+    '새 응답이 들어올 때만 조용히 갱신됩니다' + (LASTSYNC?' · 마지막 갱신 '+LASTSYNC:'') + '</p>' +
+    '<button class="btn ghost" id="rf" style="margin-top:10px">지금 새로고침</button>';
+  panel("results", body);
+  bind(".chip", function(b){ b.onclick=function(){ RTAB=b.dataset.r; vResults(); }; });
+  document.getElementById("rf").onclick = function(){
+    var b=this; b.disabled=true; b.textContent="불러오는 중";
+    pull().then(function(){ SIG=sigOf(); quiet(vResults); });
+  };
+  if(RTAB==="talk") hookTalk();
+}
+
+function talkBoard(){
+  var list = commentsOf(ROWS);
+  if(CSORT==="like") list.sort(function(a,b){ return b.n-a.n || (a.ts<b.ts?1:-1); });
+  else list.sort(function(a,b){ return a.ts<b.ts?1:-1; });
+
+  var form = ready()
+    ? '<div class="card" style="background:#fff"><p class="k">의견 남기기</p>' +
+      '<p class="gname" style="margin:14px 3px 8px">어떤 의견인가요</p>' +
+      optList(CKIND, [CKIND_SEL], false, "CK") +
+      '<p class="gname">어느 논의에 대한 의견인가요</p>' +
+      optList(CTARGET, [CTGT_SEL], false, "CT") +
+      '<div class="field" style="margin:16px 0 0"><label for="ctext">내용</label>' +
+      '<textarea id="ctext" maxlength="200" placeholder="한 가지만 짧게 적어 주세요. 다른 분이 읽고 바로 이해할 수 있게요."></textarea>' +
+      '<p class="note" style="margin-top:8px">' + esc(who()) + ' 으로 표시됩니다.</p></div>' +
+      '<button class="btn" id="csend" style="margin-top:6px">올리기</button>' +
+      '<p class="msg" id="cmsg"></p></div>'
+    : '<div class="locked">참여 정보를 입력하면 의견을 남기실 수 있습니다.</div>';
+
+  return '<h2>의견 나누기</h2>' +
+    '<p class="hint">다른 분의 의견에 공감을 누르거나, 개선 제안을 덧붙여 주세요. 공감이 많은 의견부터 현장에서 다룹니다.</p>' +
+    form +
+    '<div class="chips" style="margin:22px 0 14px">' +
+      '<button class="chip" data-cs="like" aria-selected="'+(CSORT==="like")+'">공감순</button>' +
+      '<button class="chip" data-cs="new" aria-selected="'+(CSORT==="new")+'">최신순</button>' +
+      '<span style="align-self:center;font-size:12.5px;color:var(--faint);margin-left:6px">'+list.length+'건</span>' +
+    '</div>' +
+    (list.length
+      ? list.map(function(c){
+          return '<div class="cmt"><div class="ch">' +
+            '<span class="ckind k'+(CKIND.map(function(x){return x[0];}).indexOf(c.kind))+'">'+esc(c.kind)+'</span>' +
+            '<span class="ctgt">'+esc(c.target)+'</span>' +
+            '<span class="cwho">'+esc(c.who)+'</span></div>' +
+            '<p class="cbody">'+esc(c.text)+'</p>' +
+            '<button class="clike'+(c.mine?" on":"")+'" data-like="'+esc(c.cid)+'" data-v="'+(c.mine?0:1)+'">' +
+            (c.mine?"♥":"♡")+' 공감 <b>'+c.n+'</b></button></div>';
+        }).join("")
+      : '<p class="empty">아직 올라온 의견이 없습니다.</p>');
+}
+function hookTalk(){
+  bind(".chip[data-cs]", function(b){ b.onclick=function(){ CSORT=b.dataset.cs; vResults(); }; });
+  bind(".opts[data-grp='CK'] .opt", function(b){ b.onclick=function(){
+    CKIND_SEL=b.dataset.opt;
+    bind(".opts[data-grp='CK'] .opt", function(o){
+      o.setAttribute("aria-pressed", o.dataset.opt===CKIND_SEL?"true":"false"); });
+  };});
+  bind(".opts[data-grp='CT'] .opt", function(b){ b.onclick=function(){
+    CTGT_SEL=b.dataset.opt;
+    bind(".opts[data-grp='CT'] .opt", function(o){
+      o.setAttribute("aria-pressed", o.dataset.opt===CTGT_SEL?"true":"false"); });
+  };});
+  bind("[data-like]", function(b){ b.onclick=function(){
+    b.disabled=true;
+    Store.post({type:"row", rec:{part:"like", ts:new Date().toISOString(),
+      cmt:b.dataset.like, uid:UID, v:b.dataset.v}})
+      .then(function(){ return pull(); }).then(vResults)
+      .catch(function(){ b.disabled=false; });
+  };});
+  var cs=document.getElementById("csend");
+  if(cs) cs.onclick=function(){
+    var t=valOf("ctext"), m=document.getElementById("cmsg");
+    if(t.length<5){ m.className="msg"; m.textContent="다섯 글자 이상 적어 주세요."; return; }
+    var btn=this; btn.disabled=true; btn.textContent="올리는 중";
+    Store.post({type:"row", rec:{part:"cmt", ts:new Date().toISOString(),
+      cid:"c"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+      uid:UID, who:who(), div:me.div, kind:CKIND_SEL, target:CTGT_SEL, text:t}})
+      .then(function(){ return pull(); })
+      .then(function(){ vResults(); })
+      .catch(function(){ btn.disabled=false; btn.textContent="올리기";
+        m.className="msg"; m.textContent="올리지 못했습니다. 잠시 후 다시 시도해 주세요."; });
+  };
+}
+
+/* ══════════ 16. 현장 화면 ══════════ */
+var LIVE={pane:0, auto:true, timer:null, poll:null, seen:{}};
+function lbars(c,o,n){ return bars(c,o,"lbar"); }
+function lrank(pairs,n){
+  var keys=Object.keys(pairs).sort(function(a,b){return pairs[b]-pairs[a];}).slice(0,n||10);
+  if(!keys.length) return '<p class="lempty">아직 응답이 없습니다</p>';
+  return '<div class="lrank">'+keys.map(function(k){
+    return '<div><b>'+esc(k)+'</b><span>'+pairs[k]+'</span></div>'; }).join("")+'</div>';
+}
+function lstream(rows,keys,limit){
+  var items=[];
+  rows.slice().reverse().forEach(function(r){ keys.forEach(function(k){
+    var t=String(r[k]||"").trim();
+    if(t) items.push({t:t, who:r.div||"", id:(r.ts||"")+k});   // 분과만 표시 · 이름은 내보내지 않음
+  });});
+  if(!items.length) return '<p class="lempty">의견이 올라오면 이곳에 표시됩니다</p>';
+  return '<div class="stream">'+items.slice(0,limit||12).map(function(it){
+    var fresh=!LIVE.seen[it.id]; LIVE.seen[it.id]=1;
+    return '<div class="scard'+(fresh?" fresh":"")+'">'+esc(it.t)+'<em>'+esc(it.who)+'</em></div>';
+  }).join("")+'</div>';
+}
+function liveShell(badge,title,sub,count,panes,idx,screenMode){
+  var url = location.host ? (location.host+location.pathname).replace(/index\.html$/,"").replace(/\/$/,"") : "";
+  return '<div class="live"><div class="lsheet">'+
+    '<div class="lhead"><span class="lbadge">'+esc(badge)+'</span>'+
+    '<h1>'+esc(title)+'</h1><span class="lcnt"><b>'+count+'</b>명 참여</span></div>'+
+    (sub?'<p class="lsub">'+esc(sub)+'</p>':'')+
+    '<div class="lbody">'+panes[idx]+'</div>'+
+    '<div class="lfoot"><span>휴대폰으로 참여하기</span><span class="url">'+
+    esc(url||"주소는 배포 후 표시됩니다")+'</span>'+
+    '<span>'+(screenMode?'진행자가 화면을 넘깁니다 · 3초마다 갱신':'5초마다 자동으로 새로고침됩니다 · ← → 로 화면 전환')+'</span>'+
+    '<span class="dots">'+panes.map(function(_,i){
+      return '<i class="'+(i===idx?"on":"")+'"'+(screenMode?'':' data-pane="'+i+'"')+'></i>'; }).join("")+
+    '</span></div></div></div>';
+}
+function liveD1(){
+  var rows=ROWS.filter(function(r){return r.part==="d1";});
+  var heat=tally(rows,"regions"), mx=1;
+  for(var k in heat) if(heat[k]>mx) mx=heat[k];
+  var pr=pairsOf(rows), z=zonesOf(rows);
+  var p0='<div class="lcol" style="flex:1.35"><div class="lpanel fill"><h3>하나의 분과로 함께 활동하기 적절한 시·군</h3>'+
+    '<p class="ps">진하게 표시될수록 많이 선택된 곳입니다</p><div class="lmap">'+
+    mapSVG({heat:heat,max:mx})+'</div></div></div>'+
+    '<div class="lcol"><div class="lpanel fill"><h3>함께 묶인 시·군</h3>'+
+    '<p class="ps">두 지역이 같은 분과로 함께 선택된 횟수</p><div class="lscroll">'+lrank(pr,11)+'</div></div></div>';
+  var pz='<div class="lcol" style="flex:1.35"><div class="lpanel fill"><h3>모인 응답으로 그려본 권역안</h3>'+
+    '<p class="ps">'+(z?'같은 분과로 '+z.thr+'번 이상 함께 선택된 지역끼리 이었습니다':'응답이 더 모이면 권역이 그려집니다')+
+    '</p><div class="lmap">'+mapSVG(z?{colorOf:function(n){
+      return z.idx[n]!=null?ZC[z.idx[n]%ZC.length]:null; }}:{heat:{},max:1})+'</div></div></div>'+
+    '<div class="lcol"><div class="lpanel fill"><h3>권역 구성</h3><p class="ps">'+
+    (z?z.zones.length+'개 권역으로 나뉩니다':'아직 계산할 응답이 없습니다')+'</p><div class="lscroll">'+
+    (z?'<div class="zonelist">'+z.zones.map(function(zz,i){
+      return '<div><i style="background:'+ZC[i%ZC.length]+'"></i><span>'+esc(zz.join(" · "))+
+        '<em>'+zz.length+'개</em></span></div>'; }).join("")+'</div>'
+      :'<p class="lempty">아직 응답이 없습니다</p>')+'</div></div></div>';
+  var p1='<div class="lcol"><div class="lpanel fill"><h3>권역별을 유지한다면</h3>'+
+    '<p class="ps">함께 갖춰야 한다고 선택한 항목</p><div class="lscroll">'+
+    lbars(tally(rows,"fixR"), keysOf(FIX_REGION))+'</div></div></div>'+
+    '<div class="lcol"><div class="lpanel fill"><h3>의제별로 바꾼다면</h3>'+
+    '<p class="ps">함께 갖춰야 한다고 선택한 항목</p><div class="lscroll">'+
+    lbars(tally(rows,"fixA"), keysOf(FIX_AGENDA))+'</div></div></div>';
+  var p2='<div class="lcol"><div class="lpanel fill"><h3>이렇게 묶은 이유</h3>'+
+    '<p class="ps">지도에 표시하며 남겨주신 의견</p>'+
+    lstream(rows,["reason","cond","fixRetc","fixAetc"],12)+'</div></div>';
+  return [p0,pz,p1,p2];
+}
+function liveD2(){
+  var rows=ROWS.filter(function(r){return r.part==="d2";});
+  var sc={}; rows.forEach(function(r){ if(r.stage) sc[r.stage]=(sc[r.stage]||0)+1; });
+  var mx=0; STAGES.forEach(function(s){ if((sc[s[0]]||0)>mx) mx=sc[s[0]]||0; });
+  var tot=rows.length||1;
+  var flow=STAGES.map(function(s,i){
+    var v=sc[s[0]]||0, lead=(v>0&&v===mx);
+    return (i?'<span class="arrow">›</span>':'')+
+      '<div class="fstep'+(lead?" lead":"")+'"><span class="no">'+(i+1)+'단계</span>'+
+      '<div class="nm">'+esc(s[0])+'</div><div class="ds">'+esc(s[1])+'</div>'+
+      '<div class="meter"><i style="width:'+(mx?Math.round(v/mx*100):0)+'%"></i></div>'+
+      '<div class="num">'+v+'<em>명 · '+Math.round(v/tot*100)+'%</em></div></div>';
+  }).join("");
+  var etcN=sc["기타"]||0;
+  var p0='<div class="lcol"><div class="lpanel fill"><h3>가장 먼저 보완이 필요한 단계</h3>'+
+    '<p class="ps">제안 발굴부터 선정까지의 과정 · ⑤단계의 미선정 제안 경로에는 아직 제안된 보완이 없습니다'+
+    (etcN?' · 그 밖의 단계 '+etcN+'명':'')+'</p><div class="flow">'+flow+'</div></div></div>';
+  var p1='<div class="lcol"><div class="lpanel fill"><h3>적절하다고 본 방식</h3>'+
+    '<p class="ps">한 사람이 여러 개를 선택할 수 있습니다</p><div class="lscroll">'+
+    lbars(tally(rows,"ways"), keysOf(WAYS))+'</div></div></div>'+
+    '<div class="lcol"><div class="lpanel fill"><h3>덧붙여 주신 의견</h3>'+
+    '<p class="ps">현장에서 올라온 의견</p>'+lstream(rows,["way","stageEtc","waysEtc"],8)+'</div></div>';
+  return [p0,p1];
+}
+function liveD3(){
+  var rows=ROWS.filter(function(r){return r.part==="d3";});
+  var c=tally(rows,"topics");
+  var areas=TOPICS.map(function(g){
+    var keys=g[2].concat([topicEtcVal(g[0])]), sub={};
+    keys.forEach(function(t){ sub[t]=c[t]||0; });
+    var tot=0; for(var k in sub) tot+=sub[k];
+    return '<div class="area"><h4>'+esc(g[0]+". "+g[1])+' · '+tot+'건</h4>'+
+      lbars(sub, keys.slice().sort(function(a,b){return (c[b]||0)-(c[a]||0);}))+'</div>';
+  }).join("");
+  var p0='<div class="lcol"><div class="lpanel fill"><h3>다음 기수에서 다뤄야 할 항목</h3>'+
+    '<p class="ps">한 사람이 최대 3개 · 앞의 두 논의에 없던 항목들</p>'+
+    '<div class="areas">'+areas+'</div></div></div>';
+  var top=Object.keys(c).sort(function(a,b){return c[b]-c[a];}).slice(0,8), tc={};
+  top.forEach(function(k){ tc[k]=c[k]; });
+  var p1='<div class="lcol"><div class="lpanel fill"><h3>가장 많이 선택된 항목</h3>'+
+    '<p class="ps">영역을 가리지 않고 상위 8개</p><div class="lscroll">'+lbars(tc)+'</div></div></div>'+
+    '<div class="lcol"><div class="lpanel fill"><h3>유지할 부분과 보완할 부분</h3>'+
+    '<p class="ps">네 영역에 대해 남겨주신 의견</p>'+lstream(rows,["keep","culture","topicsEtc"],8)+'</div></div>';
+  return [p0,p1];
+}
+var LIVEDEF={
+  d1:["논의 1","분과 운영방식","권역별과 의제별, 어느 쪽이든 무엇을 보완해야 할지 함께 정합니다",liveD1,"d1"],
+  d2:["논의 2","정책공감투표","제안부터 선정까지, 어느 단계를 먼저 보완해야 할까요",liveD2,"d2"],
+  d3:["논의 3","참여기구 활성화","앞의 두 논의에서 다루지 않은 이야기들",liveD3,"d3"]
+};
+function vLive(which){
+  var def=LIVEDEF[which];
+  if(!def) return vLiveHub();
+  var panes=def[3]();
+  if(LIVE.pane>=panes.length) LIVE.pane=0;
+  var n=ROWS.filter(function(r){return r.part===def[4];}).length;
+  root.innerHTML = liveShell(def[0],def[1],def[2],n,panes,LIVE.pane);
+  bind(".dots i", function(d){ d.onclick=function(e){ e.stopPropagation();
+    LIVE.pane=+d.dataset.pane; LIVE.auto=false; vLive(which); }; });
+  document.querySelector(".live").onclick=function(e){
+    if(e.target.closest(".dots")) return;
+    LIVE.pane=(LIVE.pane+1)%panes.length; LIVE.auto=false; vLive(which);
+  };
+  clearInterval(LIVE.timer);
+  if(LIVE.auto) LIVE.timer=setInterval(function(){
+    LIVE.pane=(LIVE.pane+1)%panes.length; vLive(which); },20000);
+  clearInterval(LIVE.poll);
+  LIVE.poll=setInterval(function(){
+    if(document.hidden) return;
+    pull().then(function(){
+      var sg = sigOf();
+      if (sg === SIG) return;
+      SIG = sg;
+      if((location.hash||"").indexOf("live/"+which)>-1) vLive(which);
+    });
+  },5000);
+}
+function vScreen(){
+  var sc = STATE.screen || {v:"idle", p:0};
+  var url = location.host ? (location.host+location.pathname).replace(/index\.html$/,"").replace(/\/$/,"") : "";
+  if (sc.v === "idle" || !LIVEDEF[sc.v]){
+    var n1=ROWS.filter(function(r){return r.part==="d1";}).length,
+        n2=ROWS.filter(function(r){return r.part==="d2";}).length,
+        n3=ROWS.filter(function(r){return r.part==="d3";}).length;
+    root.innerHTML = '<div class="live"><div class="lsheet idle">' +
+      '<div class="idlebox"><span class="lbadge">지금 참여하기</span>' +
+      '<p class="idleurl">'+esc(url||"주소는 배포 후 표시됩니다")+'</p>' +
+      '<p class="idlemsg">휴대폰 브라우저에 위 주소를 입력하시면 오늘 논의에 참여하실 수 있습니다.</p>' +
+      '<div class="idlestat">' +
+        '<div><b>'+n1+'</b><span>논의 1</span></div>' +
+        '<div><b>'+n2+'</b><span>논의 2</span></div>' +
+        '<div><b>'+n3+'</b><span>논의 3</span></div>' +
+      '</div></div></div></div>';
+  } else if (STATE.show === 0){
+    var lab = {d1:"논의 1 · 분과 운영방식", d2:"논의 2 · 정책공감투표",
+               d3:"논의 3 · 참여기구 활성화", talk:"의견 나누기"}[sc.v] || "";
+    var tot = ROWS.filter(function(r){ return r.part===sc.v || (sc.v==="talk"&&r.part==="cmt"); }).length;
+    root.innerHTML = '<div class="live"><div class="lsheet idle">' +
+      '<div class="idlebox"><span class="lbadge">'+esc(lab)+'</span>' +
+      '<p class="idleurl" style="font-size:clamp(26px,3.6vw,58px)">응답을 모으는 중입니다</p>' +
+      '<p class="idlemsg">잠시 후 결과를 함께 확인합니다. 아직 참여하지 않으셨다면 지금 남겨 주세요.</p>' +
+      '<div class="idlestat"><div><b>'+tot+'</b><span>지금까지 참여</span></div>' +
+      '<div style="background:#fff"><b style="font-size:clamp(18px,2vw,34px)">'+esc(url||"주소 확인")+
+      '</b><span>참여 주소</span></div></div></div></div></div>';
+  } else if (sc.v === "talk"){
+    var list = commentsOf(ROWS).sort(function(a,b){ return b.n-a.n || (a.ts<b.ts?1:-1); }).slice(0,9);
+    root.innerHTML = '<div class="live"><div class="lsheet">' +
+      '<div class="lhead"><span class="lbadge">의견 나누기</span><h1>공감이 많은 의견</h1>' +
+      '<span class="lcnt"><b>'+commentsOf(ROWS).length+'</b>건</span></div>' +
+      '<p class="lsub">참여자들이 서로의 의견에 공감을 누른 결과입니다</p>' +
+      '<div class="lbody"><div class="lcol"><div class="lpanel fill">' +
+      (list.length
+        ? '<div class="stream">' + list.map(function(c){
+            return '<div class="scard"><div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">' +
+              '<span class="ckind k'+(CKIND.map(function(x){return x[0];}).indexOf(c.kind))+'">'+esc(c.kind)+'</span>' +
+              '<span style="font-size:.78em;color:var(--faint)">'+esc(c.target)+'</span>' +
+              '<span style="margin-left:auto;font-weight:800;color:var(--blue)">♥ '+c.n+'</span></div>' +
+              esc(c.text)+'<em>'+esc(c.who)+'</em></div>';
+          }).join("") + '</div>'
+        : '<p class="lempty">의견이 올라오면 이곳에 표시됩니다</p>') +
+      '</div></div></div>' +
+      '<div class="lfoot"><span>휴대폰으로 참여하기</span><span class="url">'+
+      esc(url||"주소는 배포 후 표시됩니다")+'</span>' +
+      '<span>진행자가 화면을 넘깁니다 · 3초마다 갱신</span></div></div></div>';
+  } else {
+    var def = LIVEDEF[sc.v], panes = def[3]();
+    var idx = Math.min(sc.p||0, panes.length-1);
+    var n = ROWS.filter(function(r){ return r.part===def[4]; }).length;
+    root.innerHTML = liveShell(def[0], def[1], def[2], n, panes, idx, true);
+  }
+  clearInterval(LIVE.poll);
+  LIVE.poll = setInterval(function(){
+    if (document.hidden) return;
+    pull().then(function(){
+      var sg = sigOf();
+      if (sg === SIG) return;             // 새 응답이 없으면 그대로 둔다
+      SIG = sg;
+      if((location.hash||"").indexOf("screen")>-1) vScreen();
+    });
+  }, 3000);
+}
+
+function vLiveHub(){
+  root.innerHTML='<div class="sky"><p class="brand">경기도 청년참여기구 제5기</p>'+
+    '<p class="when">현장 화면</p></div><div class="app"><main>'+
+    head("빔프로젝터용","논의별<br>실시간 화면")+
+    '<p class="body">참여자가 제출하면 5초 안에 반영됩니다. 화면을 누르거나 좌우 방향키로 장을 넘길 수 있고, 20초마다 자동으로 넘어갑니다. F키를 누르면 전체화면이 됩니다.</p>'+
+    Object.keys(LIVEDEF).map(function(k){
+      var d=LIVEDEF[k];
+      return '<a href="#/live/'+k+'" style="text-decoration:none;color:inherit"><div class="card">'+
+        '<p class="k">'+d[0]+'</p><p class="v">'+esc(d[1])+'</p><p class="meta">'+esc(d[2])+'</p></div></a>';
+    }).join("")+
+    '<a href="#/host" style="text-decoration:none;color:inherit"><div class="card">'+
+    '<p class="k">진행자</p><p class="v">진행자 콘솔</p>'+
+    '<p class="meta">순서 이동, 논의 열고 닫기, 결과 발표, 자료 내려받기</p></div></a>'+
+    '</main></div>';
+}
+document.addEventListener("keydown", function(e){
+  var h=(location.hash||"").replace(/^#\/?/,"");
+  if(h.indexOf("live/")!==0) return;
+  var which=h.split("/")[1];
+  var n=LIVEDEF[which]?LIVEDEF[which][3]().length:1;
+  if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+    e.preventDefault(); LIVE.auto=false;
+    LIVE.pane=(LIVE.pane+(e.key==="ArrowRight"?1:n-1))%n; vLive(which);
+  } else if(e.key==="a"||e.key==="A"){ LIVE.auto=!LIVE.auto; vLive(which); }
+  else if(e.key==="f"||e.key==="F"){
+    if(document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+  }
+});
+
+/* ══════════ 17. 진행자 콘솔 ══════════ */
+function vHost(){
+  if (!adminOK()) return vAdminGate();
+  var r1=ROWS.filter(function(r){return r.part==="d1";}),
+      r2=ROWS.filter(function(r){return r.part==="d2";}),
+      r3=ROWS.filter(function(r){return r.part==="d3";});
+  var heat=tally(r1,"regions"), mx=1;
+  for(var k in heat) if(heat[k]>mx) mx=heat[k];
+  var pr=pairsOf(r1), top=Object.keys(pr).sort(function(a,b){return pr[b]-pr[a];}).slice(0,14);
+  var sc={}; r2.forEach(function(r){ if(r.stage) sc[r.stage]=(sc[r.stage]||0)+1; });
+  var z=zonesOf(r1);
+  var cms=commentsOf(ROWS);
+  var showOn = STATE.show === undefined ? 1 : STATE.show;
+
+  // 참여 현황
+  var people = {};
+  ROWS.forEach(function(r){
+    if(["d1","d2","d3"].indexOf(r.part)<0) return;
+    var key = r.uid || (r.div+"/"+r.name);
+    var p = people[key] = people[key] || {div:r.div||"", name:r.name||"", uid:r.uid||"", d1:0,d2:0,d3:0};
+    p[r.part]=1;
+  });
+  var plist = Object.keys(people).map(function(k){return people[k];})
+    .sort(function(a,b){ return (parseInt(a.div)||99)-(parseInt(b.div)||99); });
+  var divDone = {}; plist.forEach(function(p){ divDone[p.div]=1; });
+  var missing = DIVISIONS.slice(0,12).filter(function(d){ return !divDone[d]; });
+
+  root.innerHTML='<div class="hostwrap"><div class="host">'+
+    '<p style="margin:0 0 16px"><a href="#/" class="hostlink">‹ 참여자 화면으로</a>'+
+    '<span style="color:var(--line);margin:0 10px">|</span>'+
+    '<a href="#/screen" class="hostlink" target="_blank">현장 스크린 열기</a></p>'+
+    '<div class="hh"><h1>진행자 콘솔</h1><span class="n">참여 '+plist.length+'명 · 논의1 '+r1.length+
+      ' · 논의2 '+r2.length+' · 논의3 '+r3.length+' · 의견 '+cms.length+
+      (Store.live()?'':' · 연습 모드')+(LASTSYNC?' · '+LASTSYNC:'')+'</span></div>'+
+    (Store.live()?'':'<div class="demo">아직 서버 주소가 연결되지 않아 이 브라우저 안에서만 동작합니다. 맨 아래 “예시 응답으로 미리보기”로 화면 구성을 확인하실 수 있습니다.</div>')+
+
+    /* 1. 진행 제어 */
+    '<h2>진행 제어</h2>'+
+    '<div class="panelbox"><h3>현재 순서</h3><p class="sub">참여자 홈 화면에 표시됩니다</p>'+
+    '<div class="ctl">'+CUES.map(function(c,i){
+      return '<button data-cue="'+i+'" class="'+(STATE.cue===i?"on":"")+'">'+c[0]+' '+esc(c[1])+'</button>';
+    }).join("")+'</div></div>'+
+    '<div class="panelbox"><h3>논의 열고 닫기</h3><p class="sub">닫아 두면 참여자 화면에서 입력이 잠깁니다</p>'+
+    '<div class="ctl">'+["d1","d2","d3"].map(function(d,i){
+      var on=STATE.open&&STATE.open[d];
+      return '<button data-open="'+d+'" class="'+(on?"on":"")+'">논의 '+(i+1)+' '+(on?"열림":"잠김")+'</button>';
+    }).join("")+
+    '<button data-follow="1" class="'+(STATE.follow?"on":"")+'">참여자 화면 동행 '+
+    (STATE.follow?"켬":"끔")+'</button></div></div>'+
+
+    /* 2. 스크린 */
+    '<h2>스크린</h2>'+
+    '<div class="panelbox"><h3>결과 공개</h3>'+
+    '<p class="sub">감추면 스크린과 참여자 화면에서 숫자가 가려집니다. 응답은 계속 쌓입니다</p>'+
+    '<div class="ctl"><button id="openscreen">스크린 열기 (새 탭)</button>'+
+    '<button data-show="1" class="'+(showOn?"on":"")+'">'+(showOn?"▶ 공개 중":"⏸ 감추는 중")+'</button></div></div>'+
+    '<div class="panelbox"><h3>화면 선택</h3>'+
+    '<p class="sub">▶ 를 누르면 스크린이 즉시 그 항목으로 바뀝니다</p>'+
+    SCREENS.map(function(g){
+      return '<p class="k" style="margin:16px 0 8px">'+esc(g[0])+'</p><div class="ctl">'+
+        g[1].map(function(x){
+          var on=(STATE.screen||{}).v===x[0] && ((STATE.screen||{}).p||0)===x[1];
+          return '<button data-screen="'+x[0]+':'+x[1]+'" class="'+(on?"on":"")+'">'+
+            (on?"▣ ":"▶ ")+esc(x[2])+'</button>';
+        }).join("")+'</div>';
+    }).join("")+'</div>'+
+
+    /* 3. 발표·공지 */
+    '<h2>발표와 공지</h2>'+
+    '<div class="panelbox"><h3>결과 발표</h3><p class="sub">명칭 공모와 포상 결과를 참여자 홈에 띄웁니다</p>'+
+    '<div class="field" style="margin:12px 0"><label>명칭 공모 결과</label>'+
+    '<input id="nmres" type="text" maxlength="60" value="'+esc(STATE.nameResult||"")+'"></div>'+
+    '<div class="field" style="margin:0 0 12px"><label>포상 안내 문구</label>'+
+    '<input id="awres" type="text" maxlength="80" value="'+esc(STATE.awardResult||"")+'"></div>'+
+    '<div class="ctl"><button data-rev="name" class="'+(STATE.reveal&&STATE.reveal.name?"on":"")+'">명칭 공개</button>'+
+    '<button data-rev="award" class="'+(STATE.reveal&&STATE.reveal.award?"on":"")+'">포상 공개</button>'+
+    '<button id="savetext">문구 저장</button></div></div>'+
+    '<div class="panelbox"><h3>공지</h3><p class="sub">참여자 홈 맨 위에 표시됩니다</p>'+
+    '<div class="field" style="margin:0 0 12px"><input id="notice" type="text" maxlength="100" value="'+
+      esc(STATE.notice||"")+'" placeholder="예: 잠시 후 논의 2를 시작합니다"></div>'+
+    '<div class="ctl"><button id="savenotice">공지 저장</button><button id="clearnotice">지우기</button></div></div>'+
+
+    /* 4. 참여 현황 */
+    '<h2>참여 현황</h2>'+
+    '<div class="panelbox"><h3>분과별 참여</h3>'+
+    '<p class="sub">'+(missing.length?'아직 참여가 없는 분과 '+missing.length+'개 · '+missing.join(", "):'12개 분과 모두 참여했습니다')+'</p>'+
+    '<div class="ctl">'+DIVISIONS.slice(0,12).map(function(d){
+      return '<button class="'+(divDone[d]?"on":"")+'" style="cursor:default">'+d+'</button>'; }).join("")+'</div></div>'+
+    (function(){
+      var rs = rosterStat();
+      var head = '<div class="panelbox"><h3>미참여자 명단</h3>';
+      if(!rs.total) return head +
+        '<p class="sub">위원 명단을 붙여넣으면 분과별로 누가 아직 참여하지 않았는지 보여드립니다. 한 줄에 한 명씩, <b>7분과 이기영</b> 형식이면 됩니다</p>' +
+        '<div class="field" style="margin:0 0 12px"><textarea id="rost" rows="6" placeholder="1분과 임다빈&#10;1분과 홍길동&#10;2분과 김철수"></textarea></div>' +
+        '<div class="ctl"><button id="rostsave">명단 등록</button></div></div>';
+      var body = Object.keys(rs.by).sort(function(a,b){return (parseInt(a)||99)-(parseInt(b)||99);})
+        .map(function(d){
+          var o = rs.by[d];
+          return '<div class="prow" style="align-items:flex-start"><span class="pd">'+esc(d)+'</span>'+
+            '<span style="flex:1;line-height:1.6">'+
+            (o.no.length
+              ? '<span style="color:var(--warn);font-weight:700">미참여 '+o.no.length+'명</span> · '+
+                '<b style="color:var(--warn)">'+o.no.map(esc).join(" · ")+'</b>'
+              : '<span style="color:var(--blue-mid);font-weight:700">전원 참여</span>') +
+            '<br><span style="color:var(--faint);font-size:12.5px">참여 '+o.yes.length+'명 / 등록 '+
+            (o.yes.length+o.no.length)+'명</span>' +
+            '</span></div>';
+        }).join("");
+      return head + '<p class="sub">등록 '+rs.total+'명 중 '+rs.yes+'명 참여 · 미참여 '+(rs.total-rs.yes)+'명</p>'+
+        '<div class="rows">'+body+'</div>'+
+        '<div class="ctl" style="margin-top:12px"><button id="rostedit">명단 다시 등록</button></div></div>';
+    })()+
+    '<div class="panelbox"><h3>참여자 목록</h3>'+
+    '<p class="sub">응답을 제외하면 모든 집계와 화면에서 즉시 빠집니다</p>'+
+    (plist.length
+      ? '<div class="rows">'+plist.map(function(p){
+          return '<div class="prow"><span class="pd">'+esc(p.div)+'</span>'+
+            '<span class="pn">'+esc(mask(p.name))+'</span>'+
+            '<span class="pt">'+(p.d1?"1":"·")+" "+(p.d2?"2":"·")+" "+(p.d3?"3":"·")+'</span>'+
+            (p.uid?'<button class="lnk" data-exuid="'+esc(p.uid)+'">제외</button>':'')+'</div>';
+        }).join("")+'</div>'
+      : '<p class="empty">아직 참여자가 없습니다.</p>')+'</div>'+
+
+    /* 5. 의견 관리 */
+    '<h2>의견 관리</h2>'+
+    '<div class="panelbox"><h3>올라온 의견 '+cms.length+'건</h3>'+
+    '<p class="sub">부적절한 의견은 숨기면 참여자 화면과 스크린에서 사라집니다</p>'+
+    (cms.length
+      ? cms.sort(function(a,b){return b.n-a.n;}).map(function(c){
+          return '<div class="cmt"><div class="ch"><span class="ckind">'+esc(c.kind)+'</span>'+
+            '<span class="ctgt">'+esc(c.target)+'</span><span class="cwho">'+esc(c.who)+' · ♥ '+c.n+'</span></div>'+
+            '<p class="cbody">'+esc(c.text)+'</p>'+
+            '<button class="lnk" style="margin-top:9px" data-hide="'+esc(c.cid)+'">숨기기</button></div>';
+        }).join("")
+      : '<p class="empty">아직 올라온 의견이 없습니다.</p>')+'</div>'+
+
+    /* 6. 집계 */
+    '<h2>집계</h2>'+
+    '<div class="panelbox"><h3>선택된 시·군</h3><p class="sub">선택된 횟수</p>'+
+    '<div class="mapbox" style="background:none;padding:0">'+mapSVG({heat:heat,max:mx})+'</div></div>'+
+    (z?'<div class="panelbox"><h3>모인 응답으로 그려본 권역안</h3><p class="sub">같은 분과로 '+z.thr+
+      '번 이상 함께 선택된 지역끼리 이었습니다 · '+z.zones.length+'개 권역</p>'+
+      '<div class="mapbox" style="background:none;padding:0">'+mapSVG({colorOf:function(n){
+        return z.idx[n]!=null?ZC[z.idx[n]%ZC.length]:null; }})+'</div>'+
+      '<div class="picked" style="margin-top:16px">'+z.zones.map(function(zz,i){
+        return '<div><i style="background:'+ZC[i%ZC.length]+'"></i><span><b>'+esc(zz.join(" · "))+
+          '</b> <em>'+zz.length+'개</em></span></div>'; }).join("")+'</div></div>'
+      :'<div class="panelbox"><h3>모인 응답으로 그려본 권역안</h3><p class="sub">응답이 더 모이면 권역이 그려집니다</p></div>')+
+    '<div class="g2">'+
+      '<div class="panelbox"><h3>함께 묶인 시·군</h3><p class="sub">두 지역이 같은 분과로 함께 선택된 횟수</p>'+
+      '<div class="pairs">'+(top.length?top.map(function(p){
+        return '<div>'+esc(p)+'<span>'+pr[p]+'</span></div>';}).join("")
+        :'<p class="empty">아직 응답이 없습니다.</p>')+'</div></div>'+
+      '<div class="panelbox"><h3>가장 먼저 보완이 필요한 단계</h3><p class="sub">논의 2</p>'+bars(sc,keysOf(STAGES))+'</div>'+
+      '<div class="panelbox"><h3>권역별을 유지한다면</h3><p class="sub">논의 1</p>'+bars(tally(r1,"fixR"),keysOf(FIX_REGION))+'</div>'+
+      '<div class="panelbox"><h3>의제별로 바꾼다면</h3><p class="sub">논의 1</p>'+bars(tally(r1,"fixA"),keysOf(FIX_AGENDA))+'</div>'+
+      '<div class="panelbox"><h3>보완 방식</h3><p class="sub">논의 2</p>'+bars(tally(r2,"ways"),keysOf(WAYS))+'</div>'+
+      '<div class="panelbox"><h3>영역별 항목</h3><p class="sub">논의 3 · 한 사람이 최대 3개</p>'+bars(tally(r3,"topics"),allTopicKeys())+'</div>'+
+    '</div>'+
+    '<div class="panelbox"><h3>남겨주신 의견</h3>'+
+      '<h2 style="margin:14px 0 8px">지도에 묶은 이유</h2>'+quotesOf(r1,"reason")+
+      '<h2 style="margin:20px 0 8px">그 밖에 필요한 조건 · 기타</h2>'+
+        quotesOf(r1,"cond")+quotesOf(r1,"fixRetc",1)+quotesOf(r1,"fixAetc",1)+
+      '<h2 style="margin:20px 0 8px">투표 흐름 의견 · 기타</h2>'+
+        quotesOf(r2,"way")+quotesOf(r2,"stageEtc",1)+quotesOf(r2,"waysEtc",1)+
+      '<h2 style="margin:20px 0 8px">영역별 기타</h2>'+
+        ["A","B","C","D"].map(function(cd){return quotesOf(r3,"tetc"+cd,1);}).join("")+
+      '<h2 style="margin:20px 0 8px">활동 경험 · 관계·소통</h2>'+quotesOf(r3,"keep")+
+      '<h2 style="margin:20px 0 8px">운영·지원 · 대외·확장</h2>'+quotesOf(r3,"culture")+
+    '</div>'+
+
+    /* 7. 데이터 */
+    '<h2>데이터</h2>'+
+    '<div class="panelbox"><h3>리허설</h3>'+
+    '<p class="sub">가상 응답 12명분과 의견 5건을 넣어 화면을 미리 확인합니다. 초기화로 언제든 지울 수 있습니다</p>'+
+    '<div class="ctl"><button id="rehearse">리허설 응답 넣기</button></div></div>'+
+    '<div class="panelbox"><h3>초기화</h3>'+
+    '<p class="sub">누른 시점 이전 응답을 집계에서 제외합니다. 시트 원본은 지워지지 않아 언제든 되돌릴 수 있습니다</p>'+
+    (STATE.reset
+      ? '<div class="card" style="background:var(--warn-bg);border-color:#EDCFC4;margin:0 0 12px">'+
+        '<p class="meta" style="color:#7A3A28">현재 <b>'+esc(STATE.reset.slice(0,19).replace("T"," "))+
+        '</b> 이후 응답만 집계하고 있습니다.</p></div>'
+      : '<div class="card" style="margin:0 0 12px"><p class="meta">전체 응답을 집계하고 있습니다.</p></div>')+
+    '<div class="ctl">'+
+      '<button id="reset" style="color:var(--warn);border-color:#EDCFC4">지금 시점으로 초기화</button>'+
+      (STATE.reset?'<button id="unreset">초기화 해제</button>':'')+
+    '</div></div>'+
+    '<div class="panelbox"><h3>PIN 관리</h3>'+
+    '<p class="sub">진행자 콘솔에 들어올 때 쓰는 번호입니다. 바꾸면 다른 기기에서도 새 번호로 들어옵니다</p>'+
+    '<div class="field" style="margin:0 0 10px"><label for="np">새 PIN (숫자 4자리 이상)</label>'+
+    '<input id="np" type="password" inputmode="numeric" maxlength="8" placeholder="숫자만"></div>'+
+    '<div class="ctl"><button id="pinchg">PIN 바꾸기</button>'+
+    '<button id="lock">지금 잠그기</button></div>'+
+    '<p class="msg" id="pcmsg" style="text-align:left"></p></div>'+
+    '<div class="panelbox"><h3>내려받기</h3>'+
+    '<p class="sub">초기화와 무관하게 지금까지 쌓인 전체 응답을 내려받습니다</p>'+
+    '<div class="ctl"><button id="rf">새로고침</button>'+
+    '<button id="csv">응답 내려받기 (CSV)</button></div></div>'+
+    '</div></div>';
+
+  bind("[data-cue]", function(b){ b.onclick=function(){ STATE.cue=+b.dataset.cue; pushState(); }; });
+  bind("[data-open]", function(b){ b.onclick=function(){
+    STATE.open=STATE.open||{}; STATE.open[b.dataset.open]=STATE.open[b.dataset.open]?0:1; pushState(); }; });
+  bind("[data-rev]", function(b){ b.onclick=function(){
+    STATE.reveal=STATE.reveal||{};
+    STATE.reveal[b.dataset.rev]=STATE.reveal[b.dataset.rev]?0:1; pushState(); }; });
+  bind("[data-screen]", function(b){ b.onclick=function(){
+    var p=b.dataset.screen.split(":"); STATE.screen={v:p[0], p:+p[1]}; pushState(); }; });
+  bind("[data-follow]", function(b){ b.onclick=function(){ STATE.follow=STATE.follow?0:1; pushState(); }; });
+  bind("[data-show]", function(b){ b.onclick=function(){
+    STATE.show = (STATE.show===undefined?1:STATE.show) ? 0 : 1; pushState(); }; });
+  bind("[data-hide]", function(b){ b.onclick=function(){
+    b.disabled=true;
+    Store.post({type:"row", rec:{part:"mod", ts:new Date().toISOString(), cmt:b.dataset.hide, v:"1"}})
+      .then(pull).then(vHost).catch(function(){ b.disabled=false; }); }; });
+  bind("[data-exuid]", function(b){ b.onclick=function(){
+    if(!confirm("이 참여자의 응답을 집계에서 제외할까요?")) return;
+    b.disabled=true;
+    Store.post({type:"row", rec:{part:"modu", ts:new Date().toISOString(), uid:b.dataset.exuid, v:"1"}})
+      .then(pull).then(vHost).catch(function(){ b.disabled=false; }); }; });
+  document.getElementById("openscreen").onclick=function(){
+    window.open(location.pathname+location.search+"#/screen","_blank"); };
+  document.getElementById("savetext").onclick=function(){
+    STATE.nameResult=valOf("nmres"); STATE.awardResult=valOf("awres"); pushState(); };
+  document.getElementById("savenotice").onclick=function(){ STATE.notice=valOf("notice"); pushState(); };
+  document.getElementById("clearnotice").onclick=function(){ STATE.notice=""; pushState(); };
+  document.getElementById("rf").onclick=function(){ pull().then(vHost); };
+  document.getElementById("csv").onclick=csv;
+  document.getElementById("pinchg").onclick=function(){
+    var v=valOf("np"), m=document.getElementById("pcmsg");
+    if(!/^\d{4,8}$/.test(v)){ m.className="msg"; m.textContent="숫자 4자리 이상으로 정해 주세요."; return; }
+    STATE.pin=pinHash(v);
+    m.className="msg ok"; m.textContent="바꿨습니다.";
+    pushState();
+  };
+  document.getElementById("lock").onclick=function(){
+    try{ sessionStorage.removeItem("gg5adm"); }catch(e){}
+    location.hash="#/host"; route();
+  };
+  document.getElementById("reset").onclick=function(){
+    if(!confirm("지금 시점 이전의 응답을 집계에서 모두 제외합니다. 계속할까요?")) return;
+    STATE.reset=new Date().toISOString(); pushState();
+  };
+  var un=document.getElementById("unreset");
+  if(un) un.onclick=function(){
+    if(!confirm("초기화를 해제하고 이전 응답을 다시 집계할까요?")) return;
+    STATE.reset=""; pushState();
+  };
+  document.getElementById("rehearse").onclick=function(){
+    var b=this;
+    if(!confirm("리허설 응답 12명분을 넣을까요?")) return;
+    b.disabled=true; b.textContent="넣는 중";
+    Store.postMany(rehearsalRows()).then(pull).then(function(){ vHost(); })
+      .catch(function(){ b.disabled=false; b.textContent="리허설 응답 넣기";
+        alert("넣지 못했습니다. 잠시 후 다시 시도해 주세요."); });
+  };
+  var rsv=document.getElementById("rostsave");
+  if(rsv) rsv.onclick=function(){
+    var list=parseRoster(valOf("rost"));
+    if(!list.length){ alert("형식을 확인해 주세요. 한 줄에 «7분과 이기영» 처럼 적어야 합니다."); return; }
+    STATE.roster=list; pushState();
+  };
+  var red=document.getElementById("rostedit");
+  if(red) red.onclick=function(){
+    if(!confirm("등록된 명단을 지우고 다시 입력할까요?")) return;
+    STATE.roster=[]; pushState();
+  };
+}
+
+var MASTER_PIN = "0712";   // PIN을 잊었을 때 쓰는 예비 번호. 필요하면 이 값만 바꾸세요
+function pinHash(p){
+  var h = 5381, str = "gg5-" + String(p);
+  for (var i = 0; i < str.length; i++) h = ((h * 33) ^ str.charCodeAt(i)) >>> 0;
+  return "h" + h.toString(36);
+}
+function pinOK(p){
+  if (String(p) === MASTER_PIN) return true;
+  return !!STATE.pin && pinHash(p) === STATE.pin;
+}
+function adminOK(){
+  try{ return sessionStorage.getItem("gg5adm")==="1"; }catch(e){ return false; }
+}
+function setAdmin(){ try{ sessionStorage.setItem("gg5adm","1"); }catch(e){} }
+function vAdminGate(){
+  var first = !STATE.pin;
+  panel("host",
+    head("진행자", first ? "진행자 PIN을<br>정해 주세요" : "진행자 콘솔",
+      first
+        ? "처음 여는 화면입니다. 이 총회에서 쓸 PIN을 정하면, 다음부터는 이 번호로만 들어올 수 있습니다."
+        : "PIN을 입력해 주세요.") +
+    (first
+      ? '<div class="card"><p class="k">새 PIN 설정</p>' +
+        '<div class="field" style="margin:14px 0 0"><label for="p1">PIN (숫자 4자리 이상)</label>' +
+        '<input id="p1" type="password" inputmode="numeric" maxlength="8" placeholder="숫자만"></div>' +
+        '<div class="field" style="margin:0"><label for="p2">한 번 더</label>' +
+        '<input id="p2" type="password" inputmode="numeric" maxlength="8" placeholder="다시 입력"></div>' +
+        '<button class="btn" id="pinset" style="margin-top:16px">이 PIN으로 정하기</button>' +
+        '<p class="msg" id="pinmsg"></p>' +
+        '<p class="note" style="margin-top:14px">정하신 PIN은 서버에 저장되어 다른 기기에서도 같은 번호로 들어올 수 있습니다. 잊으셨다면 파일 안의 예비 번호로 들어와 다시 정하실 수 있습니다.</p></div>'
+      : '<div class="card"><p class="k">잠금 해제</p>' +
+        '<div class="field" style="margin:14px 0 0"><label for="p1">PIN</label>' +
+        '<input id="p1" type="password" inputmode="numeric" maxlength="8" placeholder="숫자"></div>' +
+        '<button class="btn" id="pinok">들어가기</button>' +
+        '<p class="msg" id="pinmsg"></p></div>'));
+
+  var msg = document.getElementById("pinmsg");
+  if (first){
+    document.getElementById("pinset").onclick = function(){
+      var a = valOf("p1"), b = valOf("p2");
+      if(!/^\d{4,8}$/.test(a)){ msg.textContent = "숫자 4자리 이상으로 정해 주세요."; return; }
+      if(a !== b){ msg.textContent = "두 번 입력한 번호가 다릅니다."; return; }
+      STATE.pin = pinHash(a);
+      setAdmin();
+      pushState();
+    };
+  } else {
+    document.getElementById("pinok").onclick = function(){
+      if(!pinOK(valOf("p1"))){ msg.textContent = "PIN이 맞지 않습니다."; return; }
+      setAdmin();
+      pull().then(vHost);
+    };
+  }
+  var f = document.getElementById("p1");
+  if (f) f.onkeydown = function(e){
+    if(e.key === "Enter"){
+      var b = document.getElementById(first ? "pinset" : "pinok");
+      if (first && !valOf("p2")) { document.getElementById("p2").focus(); return; }
+      b.click();
+    }
+  };
+}
+
+
+/* ══════════ 17.5 콘솔 보조 ══════════ */
+function pushState(){
+  Store.post({type:"state", state:STATE}).then(function(){
+    ROWS = applyFilters(RAW);      // 초기화·제외를 곧바로 반영
+    vHost();
+  }).catch(function(){ alert("저장하지 못했습니다. 잠시 후 다시 시도해 주세요."); });
+}
+
+function csv(){
+  var cols=["part","ts","uid","name","div","groups","regions","reason","fixR","fixRetc","fixA","fixAetc",
+            "cond","stage","stageEtc","ways","waysEtc","way","topics",
+            "tetcA","tetcB","tetcC","tetcD","keep","culture",
+            "cid","who","kind","target","text","cmt","v"];
+  var out="\uFEFF"+cols.join(",")+"\n"+RAW.map(function(r){
+    return cols.map(function(c){ return '"'+String(r[c]==null?"":r[c]).replace(/"/g,'""')+'"'; }).join(",");
+  }).join("\n");
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([out],{type:"text/csv;charset=utf-8"}));
+  a.download="총회_의견수렴_"+new Date().toISOString().slice(0,10)+".csv"; a.click();
+}
+
+/* 위원 명단 — 「7분과 이기영」 형식을 한 줄에 한 명씩 */
+function parseRoster(txt){
+  var out=[];
+  String(txt||"").split(/[\n\r]+/).forEach(function(line){
+    line = line.trim();
+    if(!line) return;
+    var m = line.match(/(\d+)\s*분과/);
+    if(!m) return;
+    var name = line.replace(m[0], "").replace(/[,\t·\-|]+/g, " ").trim();
+    if(!name) return;
+    out.push([m[1]+"분과", name]);
+  });
+  return out;
+}
+function rosterStat(){
+  var roster = (STATE.roster||[]), done = {};
+  ROWS.forEach(function(r){
+    if(["d1","d2","d3"].indexOf(r.part)<0) return;
+    if(r.name && r.div) done[r.div+"/"+String(r.name).trim()] = 1;
+  });
+  var by = {};
+  roster.forEach(function(p){
+    var d=p[0]; by[d]=by[d]||{yes:[],no:[]};
+    (done[d+"/"+p[1]] ? by[d].yes : by[d].no).push(p[1]);
+  });
+  return {by:by, total:roster.length,
+          yes:roster.filter(function(p){ return done[p[0]+"/"+p[1]]; }).length};
+}
+
+/* 리허설용 가상 응답 — 12개 분과 한 명씩 + 의견 5건 */
+function rehearsalRows(){
+  var pick=function(a,n){ var c=a.slice(),o=[];
+    while(o.length<n&&c.length) o.push(c.splice(Math.floor(Math.random()*c.length),1)[0]); return o; };
+  var cl=[["수원","용인","화성","오산"],["성남","광주","하남"],["고양","파주","김포"],
+          ["의정부","양주","동두천","남양주"],["안양","군포","의왕","과천"],["부천","광명","시흥","안산"],
+          ["포천","연천","가평"],["평택","안성","오산"],["이천","여주","광주"],["양평","가평","남양주"],
+          ["김포","부천","고양"],["수원","의왕","군포"]];
+  var nm=["김민준","이서연","박지후","최유진","정하윤","강도현","조서윤","윤지안",
+          "장예준","임하은","한시우","오다인"];
+  var out=[], now=Date.now();
+  for(var i=0;i<12;i++){
+    var uid="rh"+i, div=DIVISIONS[i], name=nm[i], g2=cl[(i+4)%cl.length];
+    var base={ts:new Date(now-(13-i)*60000).toISOString(), uid:uid, name:name, div:div};
+    out.push(Object.assign({part:"d1",
+      groups: cl[i].join("|")+(i%3?"":";"+g2.join("|")),
+      regions: cl[i].concat(i%3?[]:g2).join("|"),
+      reason: i%2?"":["대중교통으로 30분 안에 닿습니다","생활권이 이어져 있습니다","모임 장소를 잡기 쉬웠습니다"][i%3],
+      fixR: pick(FIX_REGION.map(function(x){return x[0];}),2).join("|"),
+      fixA: pick(FIX_AGENDA.map(function(x){return x[0];}),2).join("|"),
+      cond: i%5?"":"회의 공간을 미리 잡아 주셨으면 합니다"}, base));
+    out.push(Object.assign({part:"d2",
+      stage: STAGES[i%5][0],
+      ways: pick(WAYS.map(function(x){return x[0];}),2).join("|"),
+      way: i%4?"":"제안자가 직접 설명하는 자리가 있으면 좋겠습니다"}, base));
+    out.push(Object.assign({part:"d3",
+      topics: pick(TOPICS[i%4][2],2).join("|"),
+      keep: i%6?"":"정책 제안 활동은 그대로 이어갔으면 합니다",
+      culture: i%7?"":"분과별 운영 편차를 줄일 기준이 필요합니다"}, base));
+  }
+  var demo=[["개선 제안","논의 1","권역을 나눌 때 이동시간 60분을 기준으로 잡았으면 합니다"],
+            ["동의","논의 2","제안자가 직접 설명하는 자리가 꼭 필요하다고 봅니다"],
+            ["다른 의견","논의 1","의제별로 바꾸면 북부 참여가 더 어려워질 것 같습니다"],
+            ["질문","논의 2","미선정 제안은 다음 기수로 넘어가나요?"],
+            ["개선 제안","논의 3","분과장 교육을 활동 시작 전에 한 번 했으면 합니다"]];
+  demo.forEach(function(x,i){
+    var cid="rhc"+i;
+    out.push({part:"cmt", ts:new Date(now-(6-i)*60000).toISOString(), cid:cid, uid:"rh"+i,
+      who:DIVISIONS[i]+" "+mask(nm[i]), div:DIVISIONS[i], kind:x[0], target:x[1], text:x[2]});
+    for(var j=0;j<(5-i);j++)
+      out.push({part:"like", ts:new Date(now-(5-i)*60000+j*100).toISOString(),
+        cmt:cid, uid:"rhv"+i+"_"+j, v:"1"});
+  });
+  return out;
+}
+
+/* ══════════ 18. 라우팅 ══════════ */
+var RAW = [];
+function applyFilters(raw){
+  var cut = (STATE && STATE.reset) || "";
+  var rows = raw.filter(function(r){ return !cut || String(r.ts||"") >= cut; });
+  var ex = {};
+  rows.forEach(function(r){ if(r.part==="modu") ex[r.uid] = String(r.v)==="1"; });
+  rows = rows.filter(function(r){ return r.part==="modu" || !(r.uid && ex[r.uid]); });
+  var hid = {};
+  rows.forEach(function(r){ if(r.part==="mod") hid[r.cmt] = String(r.v)==="1"; });
+  rows = rows.filter(function(r){ return !(r.part==="cmt" && hid[r.cid]); });
+  // 같은 사람이 다시 제출하면 마지막 것만 센다
+  var last = {}, other = [];
+  rows.forEach(function(r){
+    if(["d1","d2","d3"].indexOf(r.part) < 0){ other.push(r); return; }
+    var k = r.part + "|" + (r.uid || (r.div+"/"+r.name));
+    if(!last[k] || String(r.ts||"") >= String(last[k].ts||"")) last[k] = r;
+  });
+  for(var k in last) other.push(last[k]);
+  return other;
+}
+function pull(){
+  return Store.fetchAll().then(function(d){
+    STATE=d.state||STATE;
+    RAW=d.rows||[];
+    ROWS=applyFilters(RAW);
+    var t=new Date();
+    LASTSYNC=("0"+t.getHours()).slice(-2)+":"+("0"+t.getMinutes()).slice(-2)+":"+("0"+t.getSeconds()).slice(-2);
+    return d;
+  }).catch(function(){ return {}; });
+}
+var ROUTES={"":vHome,"review":vReview,"d1":vD1,"d2":vD2,"d3":vD3,"results":vResults,"host":vHost};
+function route(){
+  var h=(location.hash||"#/").replace(/^#\/?/,"").split("?")[0];
+  clearInterval(LIVE.timer); clearInterval(LIVE.poll);
+  if(h==="screen"){ pull().then(vScreen); return; }
+  if(h.indexOf("live")===0){
+    var w=h.split("/")[1];
+    if(w) pull().then(function(){ vLive(w); }); else vLiveHub();
+    return;
+  }
+  if(h==="host"){ pull().then(vHost); return; }
+  var v=ROUTES[h]||vHome;
+  if(h==="results") pull().then(v); else v();
+}
+window.addEventListener("hashchange", route);
+document.addEventListener("visibilitychange", function(){
+  if(document.hidden) return;
+  var h=(location.hash||"").replace(/^#\/?/,"");
+  if(h==="results"||h==="host"||h==="screen"||h.indexOf("live/")===0)
+    pull().then(function(){ SIG=sigOf(); route(); });
+});
+setInterval(function(){
+  if(document.hidden) return;
+  var h=(location.hash||"").replace(/^#\/?/,"");
+  if(h==="host"||h==="screen"||h.indexOf("live/")===0) return;
+  pull().then(function(){
+    if (STATE.follow && STATE.screen && ["d1","d2","d3"].indexOf(STATE.screen.v)>-1
+        && h !== STATE.screen.v && ROUTES[h]){
+      location.hash = "#/" + STATE.screen.v; return;
+    }
+    var sg = sigOf();
+    if (sg === SIG) return;               // 바뀐 게 없으면 화면을 건드리지 않는다
+    SIG = sg;
+    if (typing()) return;                 // 입력 중이면 다음 기회에
+    if (h==="" ) quiet(vHome);
+    else if (h==="results") quiet(vResults);
+  });
+},8000);
+pull().then(function(){ SIG=sigOf(); route(); });
+</script>
+</body>
+</html>
