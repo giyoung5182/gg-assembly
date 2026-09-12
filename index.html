@@ -880,9 +880,11 @@ var SCREENS = [
     ["d2",1,"적절하다고 본 방식"],
     ["d2",2,"덧붙여 주신 의견"]]],
   ["논의 3 · 참여기구 활성화", [
-    ["d3",0,"영역별 항목"],
-    ["d3",1,"가장 많이 선택된 항목"],
-    ["d3",2,"함께 이야기 나눠볼 질문"]]],
+    ["d3",0,"A. 활동 경험 측면"],
+    ["d3",1,"B. 관계·소통 측면"],
+    ["d3",2,"C. 운영·지원 측면"],
+    ["d3",3,"D. 대외·확장 측면"],
+    ["d3",4,"함께 이야기 나눠볼 질문"]]],
   ["의견 나누기", [["talk",0,"공감 많은 의견"]]]
 ];
 var GC = ["#0E5AA7","#0E7C74","#6B4FBF","#B5761A","#A93C5E"];
@@ -2028,33 +2030,37 @@ function liveD2(){
 function liveD3(){
   var rows=ROWS.filter(function(r){return r.part==="d3";});
   var c=tally(rows,"topics");
-  var areas=TOPICS.map(function(g){
-    var keys=g[2].concat([topicEtcVal(g[0])]), sub={};
-    keys.forEach(function(t){ sub[t]=c[t]||0; });
-    var tot=0; for(var k in sub) tot+=sub[k];
-    return '<div class="area"><h4>'+esc(g[0]+". "+g[1])+' · '+tot+'건</h4>'+
-      lbarsTop(sub, keys, 4)+'</div>';
-  }).join("");
-  var p0='<div class="lcol"><div class="lpanel fill"><h3>다음 기수에서 다뤄야 할 항목</h3>'+
-    '<p class="ps">네 영역 18개 항목 · 한 사람이 최대 3개 · 영역마다 가장 위가 오늘 다룰 논제입니다</p>'+
-    '<div class="areas">'+areas+'</div></div></div>';
 
-  var top=Object.keys(c).sort(function(a,b){return c[b]-c[a];}).slice(0,8), tc={};
-  top.forEach(function(k){ tc[k]=c[k]; });
-  var p1='<div class="lcol" style="flex:1.3"><div class="lpanel fill"><h3>가장 많이 선택된 항목</h3>'+
-    '<p class="ps">영역을 가리지 않고 상위 8개</p><div class="lscroll">'+lbars(tc)+'</div></div></div>'+
-    '<div class="lcol"><div class="lpanel fill"><h3>영역별 기타</h3>'+
-    '<p class="ps">목록에 없어 직접 적어주신 항목</p>'+
-    lstream(rows,["tetcA","tetcB","tetcC","tetcD"],8)+'</div></div>';
+  /* 영역 하나를 한 화면에 — 항목이 잘리지 않습니다 */
+  var panes = TOPICS.map(function(g){
+    var keys = g[2].concat([topicEtcVal(g[0])]), sub = {};
+    keys.forEach(function(t){ sub[t] = c[t]||0; });
+    var tot = 0; for(var k in sub) tot += sub[k];
+    var sorted = keys.slice().sort(function(a,b){ return (c[b]||0)-(c[a]||0); });
+    var lead = (c[sorted[0]]||0) ? sorted[0] : null;
+    var etcText = rows.filter(function(r){ return String(r["tetc"+g[0]]||"").trim(); });
 
-  var p2='<div class="lcol"><div class="lpanel fill"><h3>활동 경험 · 관계·소통 측면</h3>'+
+    return '<div class="lcol" style="flex:1.45"><div class="lpanel fill">' +
+      '<h3>'+esc(g[0]+". "+g[1])+'</h3>' +
+      '<p class="ps">'+tot+'건 선택 · 한 사람이 최대 3개' +
+      (lead ? ' · 오늘 다룰 논제 <b style="color:var(--blue)">'+esc(lead)+'</b>' : '') + '</p>' +
+      '<div class="lscroll">' + bars(sub, sorted, "lbar") + '</div></div></div>' +
+      '<div class="lcol"><div class="lpanel fill"><h3>이 영역에 덧붙여 주신 의견</h3>' +
+      '<p class="ps">목록에 없어 직접 적어주신 내용</p>' +
+      (etcText.length ? lstream(rows,["tetc"+g[0]],6)
+        : '<p class="lempty">아직 없습니다</p>') + '</div></div>';
+  });
+
+  /* 마지막 장 — 두 질문의 답 */
+  panes.push(
+    '<div class="lcol"><div class="lpanel fill"><h3>활동 경험 · 관계·소통 측면</h3>'+
     '<p class="ps">유지·강화할 부분과 보완이 필요한 부분</p>'+
     lstream(rows,["keep"],6)+'</div></div>'+
     '<div class="lcol"><div class="lpanel fill"><h3>운영·지원 · 대외·확장 측면</h3>'+
     '<p class="ps">유지·강화할 부분과 보완이 필요한 부분</p>'+
-    lstream(rows,["culture"],6)+'</div></div>';
+    lstream(rows,["culture"],6)+'</div></div>');
 
-  return [p0,p1,p2];
+  return panes;
 }
 
 var LIVEDEF={
