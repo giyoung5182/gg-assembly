@@ -254,6 +254,10 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,va
   border-bottom:1px solid var(--line);font-size:14px;color:var(--mid)}
 .pairs div:last-child{border:0}
 .pairs span{color:var(--blue);font-weight:800;font-variant-numeric:tabular-nums}
+.qcount{margin:0 0 10px;font-size:12.5px;color:var(--faint)}
+.qmore{appearance:none;width:100%;background:#fff;border:1px solid var(--line);border-radius:11px;
+  padding:12px;font-size:13.5px;font-weight:700;color:var(--blue);cursor:pointer;margin:4px 0 0}
+.qmore:active{background:var(--blue-tint)}
 .q{border-left:2px solid var(--blue-mid);padding:2px 0 2px 13px;margin:0 0 14px;
   font-size:14.5px;color:var(--ink);line-height:1.62}
 .q em{display:block;font-style:normal;font-size:11.5px;color:var(--faint);margin-top:5px}
@@ -454,6 +458,18 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,va
 .zonelist em{font-style:normal;color:var(--faint);font-size:.85em;margin-left:5px}
 .lfoot{display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);padding:clamp(8px,.9vw,14px) 0 0;
   font-size:clamp(11px,.85vw,15px);color:var(--faint);flex-wrap:wrap}
+.qrbtn{appearance:none;background:#fff;border:1px solid var(--line);border-radius:9px;
+  padding:6px 13px;font-size:clamp(11px,.85vw,15px);font-weight:800;color:var(--blue);
+  cursor:pointer;letter-spacing:.04em}
+.qrbtn:hover{background:var(--blue-tint)}
+.qrveil{position:absolute;inset:0;z-index:50;display:grid;place-items:center;
+  background:rgba(9,55,102,.55);backdrop-filter:blur(3px);cursor:pointer}
+.qrcard{background:#fff;border-radius:24px;padding:clamp(24px,3vw,48px);text-align:center;
+  box-shadow:0 12px 60px rgba(9,55,102,.35)}
+.qrcard svg{width:clamp(220px,26vw,420px);height:auto;display:block;margin:0 auto}
+.qru{margin:clamp(14px,1.6vw,26px) 0 0;font-size:clamp(20px,2.4vw,42px);font-weight:800;
+  color:var(--blue);font-family:"경기천년제목 Bold",inherit;letter-spacing:-.03em;word-break:break-all}
+.qrh{margin:10px 0 0;font-size:clamp(11px,.95vw,16px);color:var(--mid)}
 .lfoot .url{background:var(--blue);color:#fff;border-radius:9px;padding:7px 15px;font-weight:800;
   font-size:clamp(12px,1vw,19px);letter-spacing:-.02em;font-family:"경기천년제목 Bold",inherit}
 .dots{margin-left:auto;display:flex;gap:7px;align-items:center}
@@ -1641,11 +1657,19 @@ function commentsOf(rows){
             who:r.who||"", ts:r.ts||"", n:n, mine:mineOn, byMe:(r.uid===UID)};
   });
 }
+var QMORE = {};
 function quotesOf(rows,key,quiet){
   var l=rows.filter(function(r){return String(r[key]||"").trim();});
   if(!l.length) return quiet?"":'<p class="empty">아직 올라온 의견이 없습니다.</p>';
-  return l.slice().reverse().map(function(r){
+  var show = QMORE[key] || 10;
+  var arr = l.slice().reverse();
+  var head = l.length > 10
+    ? '<p class="qcount">총 '+l.length+'건 · 최근 것부터</p>' : '';
+  var body = arr.slice(0, show).map(function(r){
     return '<div class="q">'+esc(r[key])+'<em>'+esc(r.div||"")+'</em></div>'; }).join("");
+  var rest = l.length - show;
+  return head + body + (rest > 0
+    ? '<button class="qmore" data-qmore="'+esc(key)+'">남은 '+rest+'건 더 보기</button>' : '');
 }
 
 /* ══════════ 15. 모인 의견 ══════════ */
@@ -1768,7 +1792,9 @@ function vResults(){
     '<button class="btn ghost" id="rf" style="margin-top:10px">지금 새로고침</button>';
   panel("results", body);
   bind(".chip[data-r]", function(b){ b.onclick=function(){
-    RTAB=b.dataset.r; SIG=sigOf(); quiet(vResults); }; });
+    RTAB=b.dataset.r; QMORE={}; SIG=sigOf(); quiet(vResults); }; });
+  bind("[data-qmore]", function(b){ b.onclick=function(){
+    var k=b.dataset.qmore; QMORE[k]=(QMORE[k]||10)+20; SIG=sigOf(); quiet(vResults); }; });
   var rg = document.getElementById("rgo");
   if(rg) rg.onclick = function(){
     RTAB = screenNow().v; SIG = sigOf(); quiet(vResults); };
@@ -1896,7 +1922,7 @@ function hookTalk(){
 }
 
 /* ══════════ 16. 현장 화면 ══════════ */
-var LIVE={pane:0, auto:true, timer:null, poll:null, seen:{}};
+var LIVE={pane:0, auto:true, timer:null, poll:null, rot:null, seen:{}};
 function lbars(c,o,n){ return bars(c,o,"lbar"); }
 /* 화면에 넘치지 않게 상위 N개만 그리고, 나머지는 한 줄로 알린다 */
 function lbarsTop(counts, keys, n){
@@ -1913,6 +1939,7 @@ function lrank(pairs,n){
   return '<div class="lrank">'+keys.map(function(k){
     return '<div><b>'+esc(k)+'</b><span>'+pairs[k]+'</span></div>'; }).join("")+'</div>';
 }
+var STREAMPAGE = 0, STREAMPAGES = 1, QRSHOW = false;
 function lstream(rows,keys,limit){
   var items=[];
   rows.slice().reverse().forEach(function(r){ keys.forEach(function(k){
@@ -1920,10 +1947,19 @@ function lstream(rows,keys,limit){
     if(t) items.push({t:t, who:r.div||"", id:(r.ts||"")+k});   // 분과만 표시 · 이름은 내보내지 않음
   });});
   if(!items.length) return '<p class="lempty">의견이 올라오면 이곳에 표시됩니다</p>';
-  return '<div class="stream">'+items.slice(0,limit||12).map(function(it){
-    var fresh=!LIVE.seen[it.id]; LIVE.seen[it.id]=1;
-    return '<div class="scard'+(fresh?" fresh":"")+'">'+esc(it.t)+'<em>'+esc(it.who)+'</em></div>';
-  }).join("")+'</div>';
+  var per = limit || 9;
+  var pages = Math.max(1, Math.ceil(items.length / per));
+  if (pages > STREAMPAGES) STREAMPAGES = pages;     // 이 화면에서 필요한 쪽수
+  var pg = pages > 1 ? (STREAMPAGE % pages) : 0;
+  var slice = items.slice(pg*per, pg*per + per);
+  return '<div class="stream">'+slice.map(function(it){
+      var fresh=!LIVE.seen[it.id]; LIVE.seen[it.id]=1;
+      return '<div class="scard'+(fresh?" fresh":"")+'">'+esc(it.t)+'<em>'+esc(it.who)+'</em></div>';
+    }).join("")+'</div>' +
+    (pages > 1
+      ? '<p class="lmore">전체 '+items.length+'건 중 '+(pg*per+1)+'–'+(pg*per+slice.length)+
+        '번째 · 10초마다 다음 의견으로 넘어갑니다</p>'
+      : '');
 }
 function liveShell(badge,title,sub,count,panes,idx,screenMode,paneName){
   var url = location.host ? (location.host+location.pathname).replace(/index\.html$/,"").replace(/\/$/,"") : "";
@@ -1936,7 +1972,7 @@ function liveShell(badge,title,sub,count,panes,idx,screenMode,paneName){
     '<div class="lbody">'+panes[idx]+'</div>'+
     '<div class="lfoot"><span>휴대폰으로 참여하기</span><span class="url">'+
     esc(url||"주소는 배포 후 표시됩니다")+'</span>'+
-    '<span>'+(screenMode?'← → 다음 화면 · 스페이스 결과 공개/감추기 · F 전체화면':'5초마다 자동으로 새로고침됩니다 · ← → 로 화면 전환')+'</span>'+
+    (screenMode ? '<button class="qrbtn" id="qrtoggle" title="QR 보기 (Q)">QR</button>' : '')+
     '<span class="dots"><span class="dnum">'+(idx+1)+' / '+panes.length+'</span>'+
     panes.map(function(_,i){
       return '<i class="'+(i===idx?"on":"")+'"'+(screenMode?'':' data-pane="'+i+'"')+'></i>'; }).join("")+
@@ -2095,7 +2131,25 @@ function vLive(which){
     });
   },5000);
 }
+function paintQR(url){
+  if(!QRSHOW || !url) return;
+  var full = location.protocol + "//" + url;
+  var live = document.querySelector(".live");
+  if(!live) return;
+  var box = document.createElement("div");
+  box.className = "qrveil";
+  box.innerHTML = '<div class="qrcard">'+qrSVG(full, 420)+
+    '<p class="qru">'+esc(url)+'</p>'+
+    '<p class="qrh">휴대폰 카메라로 찍어 주세요 · 아무 곳이나 누르면 닫힙니다</p></div>';
+  box.onclick = function(){ QRSHOW = false; vScreen(); };
+  live.appendChild(box);
+}
+function hookQR(url){
+  var b = document.getElementById("qrtoggle");
+  if(b) b.onclick = function(e){ e.stopPropagation(); QRSHOW = !QRSHOW; vScreen(); };
+}
 function vScreen(){
+  STREAMPAGES = 1;                        // 이번 화면에서 다시 계산한다
   var sc = STATE.screen || {v:"idle", p:0};
   var url = location.host ? (location.host+location.pathname).replace(/index\.html$/,"").replace(/\/$/,"") : "";
   if (sc.v !== "idle" && sc.v !== "talk" && !LIVEDEF[sc.v]) sc = {v:"idle", p:0};
@@ -2116,7 +2170,6 @@ function vScreen(){
         '<div><b>'+n2+'</b><span>논의 2</span></div>' +
         '<div><b>'+n3+'</b><span>논의 3</span></div>' +
       '</div>' +
-      '<p class="idlekey">← → 로 화면을 넘길 수 있습니다</p>' +
       '</div></div></div>';
   } else if (STATE.show === 0){
     var lab = {d1:"논의 1 · 분과 운영방식", d2:"논의 2 · 정책공감투표",
@@ -2129,8 +2182,8 @@ function vScreen(){
       '<div class="idlestat"><div><b>'+tot+'</b><span>지금까지 참여</span></div>' +
       '<div style="background:#fff"><b style="font-size:clamp(18px,2vw,34px)">'+esc(url||"주소 확인")+
       '</b><span>참여 주소</span></div></div>' +
-      '<p class="idlekey">스페이스를 누르면 결과가 공개됩니다 · ← → 로 화면 이동</p>' +
       '</div></div></div>';
+    hookQR(url);
   } else if (sc.v === "talk"){
     var list = commentsOf(ROWS).sort(function(a,b){ return b.n-a.n || (a.ts<b.ts?1:-1); }).slice(0,9);
     root.innerHTML = '<div class="live"><div class="lsheet">' +
@@ -2150,7 +2203,8 @@ function vScreen(){
       '</div></div></div>' +
       '<div class="lfoot"><span>휴대폰으로 참여하기</span><span class="url">'+
       esc(url||"주소는 배포 후 표시됩니다")+'</span>' +
-      '<span>진행자가 화면을 넘깁니다 · 3초마다 갱신</span></div></div></div>';
+      '<button class="qrbtn" id="qrtoggle" title="QR 보기 (Q)">QR</button></div></div></div>';
+    paintQR(url); hookQR(url);
   } else {
     var def = LIVEDEF[sc.v], panes = def[3]();
     var idx = Math.min(sc.p||0, panes.length-1);
@@ -2159,6 +2213,8 @@ function vScreen(){
     SCREENS.forEach(function(g){ g[1].forEach(function(x){
       if(x[0]===sc.v && x[1]===idx) nm = x[2]; }); });
     root.innerHTML = liveShell(def[0], def[1], def[2], n, panes, idx, true, nm);
+    paintQR(url);
+    hookQR(url);
   }
   clearInterval(LIVE.poll);
   LIVE.poll = setInterval(function(){
@@ -2170,6 +2226,14 @@ function vScreen(){
       if((location.hash||"").indexOf("screen")>-1) vScreen();
     });
   }, 3000);
+  clearInterval(LIVE.rot);
+  if (STREAMPAGES > 1){                   // 의견이 한 화면을 넘치면 돌아가며 보여준다
+    LIVE.rot = setInterval(function(){
+      if (document.hidden) return;
+      if ((location.hash||"").indexOf("screen") < 0) return;
+      STREAMPAGE++; vScreen();
+    }, 10000);
+  }
 }
 
 function vLiveHub(){
@@ -2213,6 +2277,8 @@ document.addEventListener("keydown", function(e){
                          .catch(function(){ vScreen(); });
       else vScreen();
     }
+    else if(e.key==="q"||e.key==="Q"){ e.preventDefault(); QRSHOW = !QRSHOW; vScreen(); }
+    else if(e.key==="Escape"){ if(QRSHOW){ QRSHOW = false; vScreen(); } }
     else if(e.key==="f"||e.key==="F"){
       if(document.fullscreenElement) document.exitFullscreen();
       else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
@@ -2833,7 +2899,7 @@ function pull(){
 var ROUTES={"":vHome,"review":vReview,"d1":vD1,"d2":vD2,"d3":vD3,"results":vResults,"host":vHost};
 function route(){
   var h=(location.hash||"#/").replace(/^#\/?/,"").split("?")[0];
-  clearInterval(LIVE.timer); clearInterval(LIVE.poll);
+  clearInterval(LIVE.timer); clearInterval(LIVE.poll); clearInterval(LIVE.rot);
   if(h==="screen"){ pull().then(vScreen); return; }
   if(h.indexOf("live")===0){
     var w=h.split("/")[1];
