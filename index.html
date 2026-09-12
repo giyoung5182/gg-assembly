@@ -294,6 +294,20 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,va
 .prow .pt{flex:1;color:var(--blue-mid);font-weight:700;letter-spacing:.14em;font-variant-numeric:tabular-nums}
 .host h2{margin:30px 0 12px;font-size:11px;letter-spacing:.18em;color:var(--blue)}
 .host>h2:first-of-type{margin-top:22px}
+.guide{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(9,55,102,.45);backdrop-filter:blur(3px);
+  animation:gfade .2s ease}
+@keyframes gfade{from{opacity:0}to{opacity:1}}
+.gcard{background:#fff;border-radius:22px;padding:26px 24px;max-width:460px;width:100%;
+  max-height:88vh;overflow:auto;box-shadow:0 16px 60px rgba(9,55,102,.3)}
+.gsteps{list-style:none;counter-reset:g;margin:0 0 22px;padding:0}
+.gsteps li{counter-increment:g;display:flex;gap:13px;padding:13px 0;border-top:1px solid var(--line-soft)}
+.gsteps li:first-child{border-top:0;padding-top:0}
+.gsteps li::before{content:counter(g);flex:0 0 24px;height:24px;border-radius:50%;
+  background:var(--blue-pale);color:var(--blue);font-size:12.5px;font-weight:800;
+  display:grid;place-items:center;margin-top:1px}
+.gsteps b{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em}
+.gsteps span{display:block;font-size:13.5px;color:var(--mid);line-height:1.6;margin-top:3px}
 .movebar{position:sticky;top:52px;z-index:25;display:none;align-items:center;gap:10px;flex-wrap:wrap;
   margin:0 var(--pad);padding:12px 15px;background:var(--blue);color:#fff;
   border-radius:12px;font-size:13.5px;box-shadow:0 4px 16px rgba(9,55,102,.2)}
@@ -1116,6 +1130,37 @@ function markTabs(active){
     if (on && b.scrollIntoView) b.scrollIntoView({block:"nearest", inline:"nearest", behavior:"smooth"});
   });
 }
+/* 처음 들어온 분에게 쓰는 법을 한 번만 보여준다 */
+function guideSeen(){ try{ return localStorage.getItem("gg5guide")==="1"; }catch(e){ return false; } }
+function showGuide(force){
+  if(!force && guideSeen()) return;
+  if(document.getElementById("guide")) return;
+  var root = document.getElementById("root");
+  if(!root) return;
+  var steps = [
+    ["소속을 한 번만 알려주세요",
+     "분과·이름·휴대폰 뒷 4자리를 입력합니다. 화면에는 <b>7분과 이*영</b> 처럼만 표시됩니다."],
+    ["위 탭에서 논의를 골라 주세요",
+     "<b>논의 1 · 2 · 3</b>을 차례로 열어 의견을 남기시면 됩니다. 진행 순서에 맞춰 하나씩 열립니다."],
+    ["낸 뒤에도 고칠 수 있습니다",
+     "각 논의 맨 위에 <b>내가 낸 응답</b>이 보입니다. 고쳐서 다시 내면 마지막 것만 집계됩니다."],
+    ["모인 의견에서 함께 봅니다",
+     "모두의 응답이 실시간으로 쌓입니다. 다른 분의 의견에 <b>공감</b>을 누르거나 의견을 남기실 수 있습니다."]
+  ];
+  var g = document.createElement("div");
+  g.id = "guide"; g.className = "guide";
+  g.innerHTML = '<div class="gcard"><span class="badge">안내</span>' +
+    '<h1 class="ptitle" style="margin-top:12px">이렇게 참여하시면 됩니다</h1>' +
+    '<p class="psub" style="margin-bottom:18px">1분이면 끝납니다.</p>' +
+    '<ol class="gsteps">' + steps.map(function(x){
+      return '<li><b>'+x[0]+'</b><span>'+x[1]+'</span></li>'; }).join("") + '</ol>' +
+    '<button class="btn" id="gstart">시작하기</button></div>';
+  root.appendChild(g);
+  document.getElementById("gstart").onclick = function(){
+    try{ localStorage.setItem("gg5guide","1"); }catch(e){}
+    g.parentNode && g.parentNode.removeChild(g);
+  };
+}
 var QUIET = false;
 function panel(active, html){
   if (!document.querySelector("nav")) shell();
@@ -1132,6 +1177,7 @@ function panel(active, html){
     window.scrollTo({top:0});
   }
   markTabs(active);
+  showGuide(false);
 }
 function typing(){
   var a = document.activeElement;
@@ -1319,10 +1365,13 @@ function vHome(){
       : "") +
     '<h2>진행 순서</h2><div class="rail">'+steps+'</div>' +
     '<h2>도움이 필요하시면</h2>' +
-    '<div class="card"><p class="meta">화면이 잘 열리지 않거나 궁금한 점이 있으면 공동대표 또는 사무국에 말씀해 주세요.</p></div>');
+    '<div class="card"><p class="meta">화면이 잘 열리지 않거나 궁금한 점이 있으면 공동대표 또는 사무국에 말씀해 주세요.</p>' +
+    '<p style="margin:12px 0 0"><button class="lnk" id="gagain">사용 방법 다시 보기</button></p></div>');
   hookId();
   var fx=document.getElementById("fixid");
   if(fx) fx.onclick=function(){ gate("홈","참여 정보 수정"); };
+  var ga=document.getElementById("gagain");
+  if(ga) ga.onclick=function(){ showGuide(true); };
 }
 
 /* ══════════ 10. 활동 기록 ══════════ */
