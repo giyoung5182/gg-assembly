@@ -308,6 +308,19 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,va
   display:grid;place-items:center;margin-top:1px}
 .gsteps b{display:block;font-size:15px;font-weight:700;letter-spacing:-.02em}
 .gsteps span{display:block;font-size:13.5px;color:var(--mid);line-height:1.6;margin-top:3px}
+.enterlist{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;margin:0 0 10px}
+a.enter{display:flex;align-items:center;gap:13px;text-decoration:none;color:inherit;
+  padding:15px 17px;border-bottom:1px solid var(--line-soft);transition:background .12s}
+a.enter:last-child{border-bottom:0}
+a.enter:active{background:var(--blue-tint)}
+a.enter .ent{flex:1;min-width:0}
+a.enter .ent b{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.025em;color:var(--ink)}
+a.enter .ent span{display:block;font-size:13px;color:var(--mid);margin-top:3px;line-height:1.45}
+a.enter .go{flex:0 0 auto;color:var(--faint);font-size:16px}
+a.enter .badge2{flex:0 0 auto;font-size:11.5px;font-weight:700;border-radius:999px;
+  padding:5px 11px;background:var(--blue-pale);color:var(--blue);letter-spacing:-.01em}
+a.enter .badge2.done{background:var(--blue);color:#fff}
 .movebar{position:sticky;top:52px;z-index:25;display:none;align-items:center;gap:10px;flex-wrap:wrap;
   margin:0 var(--pad);padding:12px 15px;background:var(--blue);color:#fff;
   border-radius:12px;font-size:13.5px;box-shadow:0 4px 16px rgba(9,55,102,.2)}
@@ -472,6 +485,12 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,va
 .zonelist em{font-style:normal;color:var(--faint);font-size:.85em;margin-left:5px}
 .lfoot{display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);padding:clamp(8px,.9vw,14px) 0 0;
   font-size:clamp(11px,.85vw,15px);color:var(--faint);flex-wrap:wrap}
+.sync{position:absolute;right:clamp(18px,2vw,34px);bottom:clamp(8px,1vw,16px);z-index:40;
+  font-size:clamp(10px,.78vw,13px);color:var(--faint);padding:5px 12px;border-radius:999px;
+  background:var(--blue-tint);white-space:nowrap;border:1px solid var(--line)}
+.sync.ok{background:#E4F1E9;color:#1B7A55}
+.sync.bad{background:var(--warn-bg);color:var(--warn);font-weight:700}
+.sync.warn{background:#FBEDDD;color:#9A5B12;font-weight:700}
 .qrbtn{appearance:none;background:#fff;border:1px solid var(--line);border-radius:9px;
   padding:6px 13px;font-size:clamp(11px,.85vw,15px);font-weight:800;color:var(--blue);
   cursor:pointer;letter-spacing:.04em}
@@ -1367,8 +1386,16 @@ function vHome(){
       ? '<h2>내가 낸 응답</h2><div class="enterlist">' +
         ["d1","d2","d3"].map(function(k,i){
           if(!sent[k]) return "";
+          var sub = {
+            d1: (D1.groups.filter(function(g){return g.length;})[0]||[]).join(" · ") || "분과 운영방식",
+            d2: D2.stage ? (D2.stage==="기타" ? "기타 · "+D2.stageEtc : D2.stage) : "정책공감투표",
+            d3: (D3.topics[0] ? (D3.topics[0].indexOf("기타 · ")===0
+                  ? "기타 · "+(D3.tetc[D3.topics[0].slice(-1)]||"")
+                  : D3.topics[0]) : "참여기구 활성화")
+              + (D3.topics.length>1 ? " 외 "+(D3.topics.length-1)+"개" : "")
+          }[k];
           return '<a class="enter" href="#/'+k+'"><span class="ent"><b>논의 '+(i+1)+'</b>' +
-            '<span>제출한 내용을 보고 고칠 수 있습니다</span></span>' +
+            '<span>'+esc(sub)+'</span></span>' +
             '<span class="badge2 done">제출함</span><span class="go">›</span></a>';
         }).join("") + '</div>'
       : "") +
@@ -2274,6 +2301,7 @@ function vScreen(){
     paintQR(url);
     hookQR(url);
   }
+  showSync();
   clearInterval(LIVE.poll);
   LIVE.poll = setInterval(function(){
     if (document.hidden) return;
@@ -2285,8 +2313,7 @@ function vScreen(){
     });
   }, 3000);
   clearInterval(LIVE.tick);
-  LIVE.tick = setInterval(function(){     // 진행 상태만 가볍게 확인 — 화면 전환이 빨라진다
-    if (document.hidden) return;
+  LIVE.tick = setInterval(function(){     // 진행 상태만 가볍게 확인 — 화면이 가려져 있어도 계속
     if ((location.hash||"").indexOf("screen") < 0) return;
     if (Date.now() - LOCALTS < 2000) return;   // 방금 내가 바꾼 건 그대로 둔다
     Store.pollState().then(function(st){
@@ -2339,14 +2366,36 @@ function screenMove(dir){
   if (adminOK()) saveScreen();                                                  // 저장은 뒤에서
 }
 var LOCALTS = 0;          // 내가 마지막으로 화면을 바꾼 시각
-function saveScreen(){
+var SYNC = {ok:null, at:"", msg:""};
+function stamp(){
+  var t=new Date();
+  return ("0"+t.getHours()).slice(-2)+":"+("0"+t.getMinutes()).slice(-2)+":"+("0"+t.getSeconds()).slice(-2);
+}
+function saveScreen(tries){
   LOCALTS = Date.now();
-  Store.post({type:"state", state:STATE}).catch(function(){
-    setTimeout(function(){
-      LOCALTS = Date.now();
-      Store.post({type:"state", state:STATE}).catch(function(){});
-    }, 400);
+  tries = tries || 0;
+  Store.post({type:"state", state:STATE}).then(function(){
+    SYNC = {ok:true, at:stamp(), msg:""};
+    var f=document.getElementById("syncbar"); if(f) paintSync(f);
+  }).catch(function(e){
+    if(tries < 3){ setTimeout(function(){ saveScreen(tries+1); }, 500); return; }
+    SYNC = {ok:false, at:stamp(), msg:(e&&e.message)||"저장 실패"};
+    var f=document.getElementById("syncbar"); if(f) paintSync(f);
   });
+}
+function showSync(){
+  var live = document.querySelector(".live");
+  if(!live) return;
+  var el = document.getElementById("syncbar");
+  if(!el){ el = document.createElement("span"); el.id = "syncbar"; live.appendChild(el); }
+  paintSync(el);
+}
+function paintSync(el){
+  if(!Store.live()){ el.className="sync warn"; el.textContent="서버 미연결 (연습 모드)"; return; }
+  if(!adminOK()){ el.className="sync warn"; el.textContent="진행자 인증 전 — 이 기기에서 넘겨도 다른 화면은 따라오지 않습니다"; return; }
+  if(SYNC.ok===null){ el.className="sync"; el.textContent="연결됨"; return; }
+  if(SYNC.ok){ el.className="sync ok"; el.textContent="전달됨 "+SYNC.at; return; }
+  el.className="sync bad"; el.textContent="전달 실패 "+SYNC.at+" · "+esc(SYNC.msg);
 }
 document.addEventListener("keydown", function(e){
   var h0=(location.hash||"").replace(/^#\/?/,"");
